@@ -1,21 +1,28 @@
 import type { NextPage } from "next";
-import { selectAuthState, setAuthState } from "../store/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppSelector, useAppDispatch } from '../hooks/redux'
+import { fetchUsers } from "../store/authSlice";
+import { authenticateUser } from "../store/authSilce1";
+
 
 const Home: NextPage = () => {
-  const authState = useSelector(selectAuthState);
-  const dispatch = useDispatch();
+  // const count = useAppSelector((state) => state.counter.value)
+  const dispatch = useAppDispatch();
+  
   return (
     <div>
-      <div>{authState ? "Logged in" : "Not Logged In"}</div>
       <button
         onClick={() =>
-          authState
-            ? dispatch(setAuthState(false))
-            : dispatch(setAuthState(true))
+          dispatch(authenticateUser({username: 're', email:'asd', password: 'ads'}))
         }
       >
-        {authState ? "Logout" : "LogIn"}
+        Test
+      </button>
+      <button
+        onClick={() =>
+          dispatch(fetchUsers())
+        }
+      >
+        Test
       </button>
     </div>
   );

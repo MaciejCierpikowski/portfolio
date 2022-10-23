@@ -1,38 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { User } from '../types/user';
+import { RootState } from './store';
 
-import { AppState } from "../store/store";
-import { HYDRATE } from "next-redux-wrapper";
-
-export interface AuthState {
-  authState: boolean;
+export interface IUsersList {
+  isLoadingUsers: boolean;
+  userList?: User[];
 }
-
-const initialState: AuthState = {
-  authState: false,
-};
-
-export const authSlice = createSlice({
-  name: "auth",
+const initialState: IUsersList = { isLoadingUsers: false };
+export const userListSlice = createSlice({
+  name: 'userList',
   initialState,
   reducers: {
-    setAuthState(state, action) {
-      state.authState = action.payload;
-    },
-  },
-
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      console.log("HYDRATE", action.payload);
+    start: (state) => {
       return {
         ...state,
-        ...action.payload.auth,
+        isLoadingUsers: true,
+      };
+    },
+    success: (state, action: PayloadAction<any>) => {
+      return {
+        ...state,
+        ...action.payload,
+        isLoadingUsers: false,
+      };
+    },
+    error: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        isLoadingUsers: false,
       };
     },
   },
 });
-
-export const { setAuthState } = authSlice.actions;
-
-export const selectAuthState = (state: AppState) => state.auth.authState;
-
-export default authSlice.reducer;
+export const fetchUsers = () => async (dispatch: any) => {
+  dispatch(start());
+  try {
+    const {data} = await axios.get('http://localhost:1337/users');;
+    dispatch(success({userList : data}));
+  } catch (err: any) {
+    dispatch(error(err));
+  }
+};
+export const { start, success, error } = userListSlice.actions;
+export const selectUserLists = (state: RootState) => state.userList;
+export const usersListReducer = userListSlice.reducer;
