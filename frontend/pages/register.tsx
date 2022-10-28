@@ -15,7 +15,7 @@ interface IFormInput {
 const Register: NextPage = () => {
   const dispatch = useAppDispatch();
   const {isProcessingRequest, accessToken, error} = useAppSelector((state) => state.authentication);
-
+  console.log(process.env.API_HOST, 'process.env.API_HOST');
   const {
     register,
     handleSubmit,

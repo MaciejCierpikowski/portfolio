@@ -28,9 +28,6 @@ export const authenticationSlice = createSlice({
       };
     },
     error: (state, action: PayloadAction<string>) => {
-      console.log(state, 'state');
-      console.log(action, 'action');
-
       return {
         ...state,
         error: action.payload,
@@ -44,7 +41,7 @@ export const authenticateUser =
   (userData: User) => async (dispatch: AppDispatch) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:1337/api/auth/local/register",
+        process.env.API_HOST + "/api/auth/local/register",
         userData
       );
       dispatch(success(data));
