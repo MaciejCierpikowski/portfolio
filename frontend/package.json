@@ -17,12 +17,15 @@
     "next-redux-wrapper": "^8.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-redux": "^8.0.4"
+    "react-hook-form": "^7.38.0",
+    "react-redux": "^8.0.4",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@types/redux-logger": "^3.0.9",
     "eslint": "8.26.0",
     "eslint-config-next": "12.3.1",
     "prettier": "^2.7.1",

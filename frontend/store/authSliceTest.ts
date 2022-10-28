@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { User } from '../types/user';
-import { RootState } from './store';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
+import { User } from "../types/user";
+import { RootState } from "./store";
 
 export interface IUsersList {
   isLoadingUsers: boolean;
@@ -9,7 +9,7 @@ export interface IUsersList {
 }
 const initialState: IUsersList = { isLoadingUsers: false };
 export const userListSlice = createSlice({
-  name: 'userList',
+  name: "userList",
   initialState,
   reducers: {
     start: (state) => {
@@ -36,8 +36,8 @@ export const userListSlice = createSlice({
 export const fetchUsers = () => async (dispatch: any) => {
   dispatch(start());
   try {
-    const {data} = await axios.get('http://localhost:1337/users');;
-    dispatch(success({userList : data}));
+    const { data } = await axios.get("http://localhost:1337/users");
+    dispatch(success({ userList: data }));
   } catch (err: any) {
     dispatch(error(err));
   }
