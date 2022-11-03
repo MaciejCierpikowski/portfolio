@@ -14,8 +14,10 @@ interface IFormInput {
 
 const Register: NextPage = () => {
   const dispatch = useAppDispatch();
-  const {isProcessingRequest, accessToken, error} = useAppSelector((state) => state.authentication);
-  console.log(process.env.API_HOST, 'process.env.API_HOST');
+  const { isProcessingRequest, accessToken, error } = useAppSelector(
+    (state) => state.authentication
+  );
+  console.log(process.env.API_HOST, "process.env.API_HOST");
   const {
     register,
     handleSubmit,
@@ -25,8 +27,8 @@ const Register: NextPage = () => {
   });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    dispatch(authenticateUser(data))
-  }
+    dispatch(authenticateUser(data));
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -64,7 +66,6 @@ const Register: NextPage = () => {
       {errors.password && <Error message={errors.password.message} />}
 
       {error && <Error message={error} />}
-
 
       <Input type="submit" />
     </form>

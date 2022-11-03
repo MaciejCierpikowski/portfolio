@@ -1,12 +1,19 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import { useState } from "react";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
+
 import { store } from "../store/store";
+import { defaultTheme } from "../styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [theme] = useState(defaultTheme);
+
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </Provider>
   );
 }
