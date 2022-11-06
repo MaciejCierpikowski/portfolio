@@ -44,4 +44,9 @@ export const Wrapper = styled.div`
   border-radius: 30px;
   padding: 30px 0;
   background-color: ${(props) => props.theme.palette.common.orange};
+  z-index: 1;
+
+  @media screen and (max-width: ${(props) => props.theme.sizes.laptop}) {
+    display: none;
+  }
 `;

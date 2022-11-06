@@ -26,7 +26,13 @@ const HomeInfo = () => {
         8-klasisty. Studiowałam Położnictwo na Uniwersytecie Medycznym w Łodzi.
         Matematyką zajmuję się hobbystycznie.
       </Text>
-      <Button>Przyjdź na korki</Button>
+      <Button
+        onClick={() => {
+          console.log("test");
+        }}
+      >
+        Przyjdź na korki
+      </Button>
     </WrapperInfo>
   );
 };
