@@ -11,6 +11,8 @@ export const defaultTheme: DefaultTheme = {
       blue: "#93d8f9",
       orange: "#f3af26",
       black: "#000000",
+      white: "#ffffff",
+      gray: "#414141",
     },
     primary: {
       main: "#726a95",

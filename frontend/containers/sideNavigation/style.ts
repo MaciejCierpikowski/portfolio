@@ -31,7 +31,7 @@ export const Dots = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: 30vh;
+  height: 35vh;
   width: 50px;
   position: fixed;
   top: 50%;

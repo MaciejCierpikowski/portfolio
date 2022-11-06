@@ -1,0 +1,61 @@
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+`;
+
+export const WrapperInfo = styled.div`
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15vw;
+`;
+
+export const Header = styled.h1`
+  font-size: 3rem;
+  margin: 10px 0 5px 0;
+  letter-spacing: 1px;
+`;
+
+export const SubHeaderWrapper = styled.div`
+  display: flex;
+  font-size: 2rem;
+  margin: 5px 0 10px 0;
+`;
+
+export const SubHeader = styled.h1`
+  white-space: nowrap;
+  margin: auto 0;
+  letter-spacing: 1px;
+`;
+
+export const Inline = styled.span`
+  align-self: center;
+  font-family: "Bungee", sans-serif;
+  font-size: 3.01rem;
+  padding-left: 10px;
+  letter-spacing: 1px;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: ${(props) => props.theme.palette.common.orange};
+  -webkit-text-fill-color: ${(props) => props.theme.palette.common.white};
+  text-shadow: 2px 2px 4px ${(props) => props.theme.palette.common.orange};
+`;
+
+export const Headline = styled.div`
+  background-color: ${(props) => props.theme.palette.common.orange};
+  font-family: "Bungee", sans-serif;
+  padding: 5px 10px;
+  width: fit-content;
+  margin: 25px 0 5px 0;
+  letter-spacing: 1px;
+`;
+
+export const Text = styled.p`
+  width: 430px;
+  text-align: justify;
+  margin: 5px 0 25px 0;
+  color: ${(props) => props.theme.palette.common.gray};
+`;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import Image from "next/image";
 
@@ -30,12 +30,12 @@ const SideNavigation = () => {
   return (
     <Wrapper>
       {sideNavigationItems.map((item, index) => (
-        <>
+        <Fragment key={item.src}>
           <Element>
             <Image src={item.src} width={item.width} height={item.height} />
           </Element>
           {index + 1 !== sideNavigationItems.length && <Dots />}
-        </>
+        </Fragment>
       ))}
     </Wrapper>
   );
