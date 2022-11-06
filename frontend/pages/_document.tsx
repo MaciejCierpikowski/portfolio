@@ -5,17 +5,12 @@ export default function Document() {
     <Html>
       <Head>
         <link
-          href="http://fonts.googleapis.com/css?family=Bungee&subset=latin,latin-ext"
+          href="https://fonts.googleapis.com/css?family=Bungee&subset=latin,latin-ext"
           rel="stylesheet"
           type="text/css"
         />
         <link
-          href="http://fonts.googleapis.com/css?family=Bungee+Inline&subset=latin,latin-ext"
-          rel="stylesheet"
-          type="text/css"
-        />
-        <link
-          href="http://fonts.googleapis.com/css?family=Bitter&subset=latin,latin-ext"
+          href="https://fonts.googleapis.com/css?family=Bitter&subset=latin,latin-ext"
           rel="stylesheet"
           type="text/css"
         />
