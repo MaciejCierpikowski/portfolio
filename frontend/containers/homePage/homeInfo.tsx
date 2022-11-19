@@ -28,7 +28,7 @@ const HomeInfo = () => {
       </Text>
       <Button
         onClick={() => {
-          console.log("test");
+          console.log("test2");
         }}
       >
         Przyjdź na korki
