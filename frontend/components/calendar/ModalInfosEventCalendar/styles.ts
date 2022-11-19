@@ -1,7 +1,6 @@
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import styled from "styled-components";
 
-export const BoxContainer = styled(Box)`
+export const BoxContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,7 +16,7 @@ export const BoxContainer = styled(Box)`
   }
 `;
 
-export const SelectColors = styled("div")`
+export const SelectColors = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 40px);
   justify-content: center;
@@ -30,9 +29,7 @@ type BackgroundColorRoundedProps = {
   selected: boolean;
 };
 
-export const BackgroundColorRounded = styled(
-  "div"
-)<BackgroundColorRoundedProps>`
+export const BackgroundColorRounded = styled.div<BackgroundColorRoundedProps>`
   width: 20px;
   height: 20px;
   background-color: ${(props) => props.color};
