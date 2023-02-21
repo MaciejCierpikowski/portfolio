@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.ul`
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
   display: flex;
   align-items: center;
   list-style: none;

@@ -15,6 +15,7 @@ export const WrapperInfo = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 44.4444444vh;
+  margin-top: 18.5185185vh;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -23,13 +24,7 @@ export const HeaderWrapper = styled.div`
   margin-top: 205px;
 `;
 
-export const Header = styled.h1`
-  font: normal normal bold 64px/78px var(--font-montserrat);
-  letter-spacing: 0px;
-  color: ${(props) => props.theme.palette.common.black};
-  text-transform: uppercase;
-  text-align: center;
-`;
+export const Header = styled.h1``;
 
 export const SubHeader = styled.h2`
   font: normal normal 300 56px/68px var(--font-montserrat);

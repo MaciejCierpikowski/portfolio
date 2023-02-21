@@ -1,5 +1,8 @@
 import React, { ReactNode, useEffect, useState } from "react";
+
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import useMobileDetect from "../../hooks/useMobileDetect";
+import { toggleScrollDown } from "../../store/generalState";
 import animatedScrollTo from "../../utils/animated-scroll-to";
 
 interface IFullPageSlider {
@@ -12,6 +15,9 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
     const childrenArr = React.Children.toArray(children);
     return childrenArr.length;
   };
+
+  const dispatch = useAppDispatch();
+  const scrollDown = useAppSelector((state) => state.general.scrollDown);
 
   const isScrollPending = React.useRef<boolean>(false);
   const isScrolledAlready = React.useRef<boolean>(false);
@@ -34,6 +40,7 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
   };
 
   useEffect(() => {
+    console.log("test", document);
     if (currentDevice.isMobile()) {
       console.log("currentDevice.isMobile()", currentDevice.isMobile());
 
@@ -101,9 +108,15 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
   const scrollToSlide = (slide: number) => {
     if (!isScrollPending.current && slide >= 0 && slide < slidesCount) {
       setActiveSlideState(slide);
-      console.log(slide, "slide");
+
+      if (slide === 0) {
+        dispatch(toggleScrollDown());
+      } else {
+        !scrollDown && dispatch(toggleScrollDown());
+      }
+
       isScrollPending.current = true;
-      console.log(slides.current[slide], "slides.current[slide]");
+      console.log(slide, "ttet");
       animatedScrollTo(slides.current[slide], () => {
         isScrollPending.current = false;
         isScrolledAlready.current = true;

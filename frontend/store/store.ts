@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authenticationSlice } from "./authSilce";
 import { userListSlice } from "./authSliceTest";
+import { generalSlice } from "./generalState";
 
 export const store = configureStore({
   reducer: {
     userList: userListSlice.reducer,
     authentication: authenticationSlice.reducer,
+    general: generalSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
