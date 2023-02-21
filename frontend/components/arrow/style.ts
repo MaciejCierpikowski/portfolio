@@ -1,0 +1,46 @@
+import styled, { keyframes } from "styled-components";
+
+interface Props {
+  direction: "UP" | "DOWN";
+}
+
+const animate = keyframes`
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(0px, 0px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+
+`;
+
+export const Wrapper = styled.div<Props>`
+  transform: rotate(${(p) => (p.direction === "DOWN" ? "0deg" : "180deg")})
+    translate(0px, 20px);
+  cursor: pointer;
+  padding-top: 10px;
+
+  span {
+    display: block;
+    width: 1vw;
+    height: 1vw;
+    border-bottom: 2.5px solid ${(props) => props.theme.palette.common.black};
+    border-right: 2.5px solid ${(props) => props.theme.palette.common.black};
+    transform: rotate(45deg);
+    margin: -5px;
+    animation: ${animate} 2s infinite;
+  }
+
+  span:nth-child(2) {
+    animation-delay: -0.2s;
+  }
+
+  span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+`;

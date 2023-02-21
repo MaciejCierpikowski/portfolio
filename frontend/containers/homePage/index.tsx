@@ -1,4 +1,6 @@
 import React from "react";
+import Arrow from "../../components/arrow";
+import Button from "../../components/button";
 
 import HomeInfo from "./homeInfo";
 
@@ -8,7 +10,10 @@ const HomePage = () => {
   return (
     <Wrapper>
       <HomeInfo />
-      <BottomRectangle> </BottomRectangle>
+      <BottomRectangle>
+        <Button onClick={() => console.log("test")}>Sprawdź!</Button>
+        <Arrow direction="DOWN" />
+      </BottomRectangle>
     </Wrapper>
   );
 };

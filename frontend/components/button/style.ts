@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.button`
-  background-color: ${(props) => props.theme.palette.common.orange};
-  border-radius: 20px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 16px #00000029;
+  border-radius: 60px;
+  opacity: 1;
+  width: 500px;
+  height: 120px;
   border: none;
-  padding: 15px 15px;
-  cursor: pointer;
   outline: inherit;
-  width: fit-content;
-  color: ${(props) => props.theme.palette.common.white};
-  font-size: 1rem;
-  margin: 10px 0;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: ${(props) => props.theme.palette.common.gray};
-  -webkit-text-fill-color: ${(props) => props.theme.palette.common.white};
-  letter-spacing: 1px;
+
+  font: normal normal bold 36px/44px Montserrat;
+  letter-spacing: 0px;
+  color: #161616;
+  text-transform: uppercase;
+
+  cursor: pointer;
 `;

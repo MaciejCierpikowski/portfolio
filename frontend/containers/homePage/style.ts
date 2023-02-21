@@ -14,7 +14,7 @@ export const WrapperInfo = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 480px;
+  height: 44.4444444vh;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -24,18 +24,20 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Header = styled.h1`
-  font: normal normal bold 64px/78px Montserrat;
+  font: normal normal bold 64px/78px var(--font-montserrat);
   letter-spacing: 0px;
   color: ${(props) => props.theme.palette.common.black};
   text-transform: uppercase;
+  text-align: center;
 `;
 
 export const SubHeader = styled.h2`
-  font: normal normal 300 56px/68px Montserrat;
+  font: normal normal 300 56px/68px var(--font-montserrat);
   letter-spacing: 0px;
   color: ${(props) => props.theme.palette.common.black};
   opacity: 1;
   align-self: end;
+  margin: 5px 0;
 `;
 
 export const ImageWrapper = styled.div<Props>`
@@ -58,6 +60,11 @@ export const Line = styled.div`
 
 export const BottomRectangle = styled.div`
   background: #ff9b30 0% 0% no-repeat padding-box;
-  height: 400px;
+  height: 37.037037vh;
   width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
