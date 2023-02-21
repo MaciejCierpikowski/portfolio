@@ -1,16 +1,18 @@
 import type { NextPage } from "next";
 
+import FullPageSlider from "../components/fullPageSlider";
 import HomePage from "../containers/homePage";
-import SideNavigation from "../containers/sideNavigation";
 
 const Home: NextPage = () => {
   return (
-    <>
-      <SideNavigation />
+    <FullPageSlider initialSlide={0}>
       <section>
         <HomePage />
       </section>
-    </>
+      <section>
+        <HomePage />
+      </section>
+    </FullPageSlider>
   );
 };
 
