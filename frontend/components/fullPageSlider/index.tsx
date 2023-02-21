@@ -34,7 +34,10 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
   };
 
   useEffect(() => {
+    console.log("test", document);
     if (currentDevice.isMobile()) {
+      console.log("currentDevice.isMobile()", currentDevice.isMobile());
+
       document.addEventListener("touchmove", (event) => onTouchMove(event), {
         passive: false,
       });
@@ -101,7 +104,7 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
       setActiveSlideState(slide);
 
       isScrollPending.current = true;
-
+      console.log(slide, "ttet");
       animatedScrollTo(slides.current[slide], () => {
         isScrollPending.current = false;
         isScrolledAlready.current = true;
