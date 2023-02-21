@@ -1,15 +1,14 @@
 import React from "react";
 
 import HomeInfo from "./homeInfo";
-import HomePhoto from "./homePhoto";
 
-import { Wrapper } from "./style";
+import { BottomRectangle, Wrapper } from "./style";
 
 const HomePage = () => {
   return (
     <Wrapper>
       <HomeInfo />
-      <HomePhoto />
+      <BottomRectangle> </BottomRectangle>
     </Wrapper>
   );
 };

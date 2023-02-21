@@ -6,6 +6,10 @@ export const Wrapper = styled.ul`
   list-style: none;
   height: 200px;
   padding-left: 140px;
+  margin: 0;
+
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 16px #00000029;
 `;
 export const ItemElement = styled.li`
   color: ${(props) => props.theme.palette.common.green};
