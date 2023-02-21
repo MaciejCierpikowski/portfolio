@@ -10,7 +10,7 @@ export const Wrapper = styled.button`
   border: none;
   outline: inherit;
 
-  font: normal normal bold 36px/44px Montserrat;
+  font: normal normal bold 36px/44px var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   text-transform: uppercase;

@@ -4,6 +4,7 @@ import FullPageSlider from "../components/fullPageSlider";
 import Navigation from "../components/navigation";
 import HomePage from "../containers/homePage";
 import localFont from "@next/font/local";
+import OfferPage from "../containers/offerPage";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -23,14 +24,14 @@ const montserratLocal = localFont({
 
 const Home: NextPage = () => {
   return (
-    <div
-      style={{ height: "100vh", overflow: "hidden" }}
-      className={montserratLocal.variable}
-    >
+    <div className={montserratLocal.variable}>
       <Navigation />
       <FullPageSlider initialSlide={0}>
         <section>
           <HomePage />
+        </section>
+        <section>
+          <OfferPage />
         </section>
       </FullPageSlider>
     </div>

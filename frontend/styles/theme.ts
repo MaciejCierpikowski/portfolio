@@ -13,12 +13,12 @@ export const defaultTheme: DefaultTheme = {
   },
   palette: {
     common: {
-      red: "#f8687f",
+      red: "#EC90A7",
       yellow: "#fee563",
       ping: "#f5bbeb",
       green: "#51D6D4",
       blue: "#93d8f9",
-      orange: "#f3af26",
+      orange: "#FF9B30",
       orangeHover: "#C28C1E",
       black: "#161616",
       white: "#ffffff",

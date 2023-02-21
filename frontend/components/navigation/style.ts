@@ -17,4 +17,6 @@ export const ItemElement = styled.li`
   font: normal normal bold 36px/44px var(--font-montserrat);
   letter-spacing: 0px;
   padding: 0 25px;
+
+  cursor: pointer;
 `;
