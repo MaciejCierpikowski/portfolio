@@ -22,7 +22,6 @@ import { useTheme } from "styled-components";
 const OfferPage = () => {
   const theme = useTheme();
 
-  console.log(theme, "theme");
   return (
     <Wrapper>
       <HeaderWrapper>

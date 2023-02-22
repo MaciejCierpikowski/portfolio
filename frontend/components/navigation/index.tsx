@@ -2,7 +2,10 @@ import React from "react";
 
 import { ItemElement, Wrapper } from "./style";
 import Image from "next/image";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useWindowResize } from "../../hooks/useWindowResize";
+import animatedScrollTo from "../../utils/animated-scroll-to";
+import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
 
 interface INavigation {}
 
@@ -26,8 +29,20 @@ const Navigation = ({}: INavigation) => {
   ];
 
   const scrollDown = useAppSelector((state) => state.general.scrollDown);
+  const dispatch = useAppDispatch();
 
-  console.log(scrollDown, "scrollDown");
+  const windowSize = useWindowResize();
+
+  const scrollToSlide = (index: number) => {
+    if (index === 0) {
+      dispatch(toggleScrollDown());
+    } else {
+      !scrollDown && dispatch(toggleScrollDown());
+    }
+    dispatch(setActiveSlide(index));
+    animatedScrollTo(index * windowSize[1], () => {});
+  };
+
   return (
     <Wrapper isFixed={scrollDown}>
       <Image
@@ -41,6 +56,7 @@ const Navigation = ({}: INavigation) => {
           style={index === 0 && scrollDown ? { marginLeft: "100px" } : {}}
           isFixed={scrollDown}
           key={item.name}
+          onClick={() => scrollToSlide(index)}
         >
           {item.name}
         </ItemElement>

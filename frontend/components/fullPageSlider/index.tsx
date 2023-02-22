@@ -2,7 +2,8 @@ import React, { ReactNode, useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import useMobileDetect from "../../hooks/useMobileDetect";
-import { toggleScrollDown } from "../../store/generalState";
+import { useWindowResize } from "../../hooks/useWindowResize";
+import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
 import animatedScrollTo from "../../utils/animated-scroll-to";
 
 interface IFullPageSlider {
@@ -18,6 +19,7 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
 
   const dispatch = useAppDispatch();
   const scrollDown = useAppSelector((state) => state.general.scrollDown);
+  const activeSlide = useAppSelector((state) => state.general.activeSlide);
 
   const isScrollPending = React.useRef<boolean>(false);
   const isScrolledAlready = React.useRef<boolean>(false);
@@ -26,24 +28,25 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
   const slides = React.useRef<Array<number>>([]);
   const touchSensitivity = 5;
 
-  const [activeSlide, setActiveSlide] = useState<number>(initialSlide);
   const [slidesCount] = useState<number>(getChildrenCount(children));
-  const [height, setHeight] = useState<number>();
 
   const currentDevice = useMobileDetect();
+  const windowResize = useWindowResize();
 
   const activeSlideRef = React.useRef(activeSlide);
 
   const setActiveSlideState = (slide: number) => {
     activeSlideRef.current = slide;
-    setActiveSlide(slide);
+
+    dispatch(setActiveSlide(slide));
   };
 
   useEffect(() => {
-    console.log("test", document);
-    if (currentDevice.isMobile()) {
-      console.log("currentDevice.isMobile()", currentDevice.isMobile());
+    activeSlideRef.current = activeSlide;
+  }, [activeSlide]);
 
+  useEffect(() => {
+    if (currentDevice.isMobile()) {
       document.addEventListener("touchmove", (event) => onTouchMove(event), {
         passive: false,
       });
@@ -51,10 +54,11 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
     } else {
       document.addEventListener("wheel", onScroll, { passive: false });
     }
-    window.addEventListener("resize", onResize);
-
-    onResize();
   }, []);
+
+  useEffect(() => {
+    updateSlides();
+  }, [windowResize]);
 
   const updateSlides = () => {
     slides.current = [];
@@ -62,11 +66,6 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
     for (let i = 0; i < slidesCount; i++) {
       slides.current.push(window.innerHeight * i);
     }
-  };
-
-  const onResize = () => {
-    updateSlides();
-    setHeight(window.innerHeight);
   };
 
   const onScroll = (event: any) => {
@@ -116,7 +115,7 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
       }
 
       isScrollPending.current = true;
-      console.log(slide, "ttet");
+
       animatedScrollTo(slides.current[slide], () => {
         isScrollPending.current = false;
         isScrolledAlready.current = true;
@@ -124,7 +123,7 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
     }
   };
 
-  return <div style={{ height: height }}>{children}</div>;
+  return <div style={{ height: windowResize[1] }}>{children}</div>;
 };
 
 export default FullPageSlider;

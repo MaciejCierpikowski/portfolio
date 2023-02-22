@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   scrollDown: false,
+  activeSlide: 0,
 };
 
 export const generalSlice = createSlice({
@@ -9,16 +10,14 @@ export const generalSlice = createSlice({
   initialState,
   reducers: {
     toggleScrollDown: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.scrollDown = !state.scrollDown;
+    },
+    setActiveSlide: (state, action: PayloadAction<any>) => {
+      state.activeSlide = action.payload;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { toggleScrollDown } = generalSlice.actions;
+export const { toggleScrollDown, setActiveSlide } = generalSlice.actions;
 
 export default generalSlice.reducer;
