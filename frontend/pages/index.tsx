@@ -5,6 +5,7 @@ import Navigation from "../components/navigation";
 import HomePage from "../containers/homePage";
 import localFont from "@next/font/local";
 import OfferPage from "../containers/offerPage";
+import CalendarPage from "../containers/calendarPage";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -32,6 +33,9 @@ const Home: NextPage = () => {
         </section>
         <section>
           <OfferPage />
+        </section>
+        <section>
+          <CalendarPage />
         </section>
       </FullPageSlider>
     </div>
