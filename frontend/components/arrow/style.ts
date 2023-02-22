@@ -7,23 +7,29 @@ interface Props {
 const animate = keyframes`
     0% {
         opacity: 0;
-        transform: rotate(45deg) translate(0px, 0px);
     }
     50% {
         opacity: 1;
     }
     100% {
         opacity: 0;
-        transform: rotate(45deg) translate(20px, 20px);
     }
 
 `;
 
 export const Wrapper = styled.div<Props>`
   transform: rotate(${(p) => (p.direction === "DOWN" ? "0deg" : "180deg")})
-    translate(0px, 20px);
+    translate(${(p) => (p.direction === "DOWN" ? "0, 0" : "0, -15px")});
   cursor: pointer;
-  padding-top: 10px;
+
+  width: 100px;
+  height: 100px;
+  margin: 0 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   span {
     display: block;
@@ -32,8 +38,11 @@ export const Wrapper = styled.div<Props>`
     border-bottom: 2.5px solid ${(props) => props.theme.palette.common.black};
     border-right: 2.5px solid ${(props) => props.theme.palette.common.black};
     transform: rotate(45deg);
-    margin: -5px;
+    margin: -2px;
     animation: ${animate} 2s infinite;
+  }
+  span:first-child {
+    animation-delay: -0.4s;
   }
 
   span:nth-child(2) {
@@ -41,6 +50,6 @@ export const Wrapper = styled.div<Props>`
   }
 
   span:nth-child(3) {
-    animation-delay: -0.4s;
+    animation-delay: 0s;
   }
 `;

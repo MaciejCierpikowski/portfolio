@@ -27,12 +27,23 @@ const Navigation = ({}: INavigation) => {
 
   const scrollDown = useAppSelector((state) => state.general.scrollDown);
 
-  console.log(scrollDown, 'scrollDown');
+  console.log(scrollDown, "scrollDown");
   return (
-    <Wrapper >
-      <Image alt="logo" src="/assets/logo.svg" width={scrollDown ? 100 : 297} height={scrollDown ? 500 : 100} />
-      {items.map((item) => (
-        <ItemElement key={item.name}>{item.name}</ItemElement>
+    <Wrapper isFixed={scrollDown}>
+      <Image
+        alt="logo"
+        src="/assets/logo.svg"
+        width={scrollDown ? 150 : 297}
+        height={scrollDown ? 50 : 100}
+      />
+      {items.map((item, index) => (
+        <ItemElement
+          style={index === 0 && scrollDown ? { marginLeft: "100px" } : {}}
+          isFixed={scrollDown}
+          key={item.name}
+        >
+          {item.name}
+        </ItemElement>
       ))}
     </Wrapper>
   );

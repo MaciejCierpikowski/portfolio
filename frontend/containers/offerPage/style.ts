@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   margin: 0;
 
   height: 100vh;
+  position: relative;
 `;
 
 export const CardWrapper = styled.div`
@@ -73,6 +74,10 @@ export const ArrowWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 `;
 
 export const Line = styled.div`
@@ -97,4 +102,5 @@ export const Header = styled.h1`
 export const HeaderWrapper = styled.div`
   position: relative;
   padding: 100px 0;
+  margin-top: 9.26vh;
 `;
