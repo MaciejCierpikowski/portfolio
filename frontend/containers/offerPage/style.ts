@@ -70,16 +70,6 @@ export const Text = styled.p`
   margin: 0;
 `;
 
-export const ArrowWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-`;
-
 export const Line = styled.div`
   width: 100%;
   border: 10px solid ${(props) => props.theme.palette.common.green};

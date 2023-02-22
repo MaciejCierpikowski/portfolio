@@ -2,8 +2,6 @@ import React from "react";
 
 import Image from "next/image";
 
-import Arrow from "../../components/arrow";
-
 import {
   Card,
   Cards,
@@ -12,12 +10,12 @@ import {
   Wrapper,
   Background,
   Text,
-  ArrowWrapper,
   Line,
   Header,
   HeaderWrapper,
 } from "./style";
 import { useTheme } from "styled-components";
+import ArrowWrapper from "../../components/arrowWrapper";
 
 const OfferPage = () => {
   const theme = useTheme();
@@ -68,10 +66,7 @@ const OfferPage = () => {
         </CardWrapper>
         <Background />
       </Cards>
-      <ArrowWrapper>
-        <Arrow direction="DOWN" />
-        <Arrow direction="UP" />
-      </ArrowWrapper>
+      <ArrowWrapper />
     </Wrapper>
   );
 };

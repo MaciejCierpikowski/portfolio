@@ -35,9 +35,9 @@ const Navigation = ({}: INavigation) => {
 
   const scrollToSlide = (index: number) => {
     if (index === 0) {
-      dispatch(toggleScrollDown());
+      dispatch(toggleScrollDown(false));
     } else {
-      !scrollDown && dispatch(toggleScrollDown());
+      !scrollDown && dispatch(toggleScrollDown(true));
     }
     dispatch(setActiveSlide(index));
     animatedScrollTo(index * windowSize[1], () => {});

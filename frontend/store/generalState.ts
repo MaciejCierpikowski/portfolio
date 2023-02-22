@@ -9,8 +9,8 @@ export const generalSlice = createSlice({
   name: "general",
   initialState,
   reducers: {
-    toggleScrollDown: (state) => {
-      state.scrollDown = !state.scrollDown;
+    toggleScrollDown: (state, action: PayloadAction<any>) => {
+      state.scrollDown = action.payload;
     },
     setActiveSlide: (state, action: PayloadAction<any>) => {
       state.activeSlide = action.payload;

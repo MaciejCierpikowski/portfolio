@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   return (
     <div className={montserratLocal.variable}>
       <Navigation />
-      <FullPageSlider initialSlide={0}>
+      <FullPageSlider>
         <section>
           <HomePage />
         </section>

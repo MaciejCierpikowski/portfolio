@@ -1,29 +1,11 @@
 import React, { useState } from "react";
 
-import Image from "next/image";
-
-import Arrow from "../../components/arrow";
-
-import {
-  Card,
-  Cards,
-  CardWrapper,
-  Headline,
-  Wrapper,
-  Background,
-  Text,
-  ArrowWrapper,
-  Line,
-  Header,
-  HeaderWrapper,
-} from "./style";
-import { useTheme } from "styled-components";
+import { Wrapper, Line, Header, HeaderWrapper } from "./style";
 import Calendar from "../../components/calendar";
+import ArrowWrapper from "../../components/arrowWrapper";
 
 const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-
-  const handleSetToday = () => setCurrentDate(new Date());
 
   return (
     <Wrapper>
@@ -33,6 +15,8 @@ const CalendarPage = () => {
       </HeaderWrapper>
 
       <Calendar value={currentDate} onChange={setCurrentDate} />
+
+      <ArrowWrapper />
     </Wrapper>
   );
 };

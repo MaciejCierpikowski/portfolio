@@ -8,10 +8,9 @@ import animatedScrollTo from "../../utils/animated-scroll-to";
 
 interface IFullPageSlider {
   children: ReactNode;
-  initialSlide: number;
 }
 
-const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
+const FullPageSlider = ({ children }: IFullPageSlider) => {
   const getChildrenCount = (children: ReactNode) => {
     const childrenArr = React.Children.toArray(children);
     return childrenArr.length;
@@ -109,9 +108,9 @@ const FullPageSlider = ({ initialSlide, children }: IFullPageSlider) => {
       setActiveSlideState(slide);
 
       if (slide === 0) {
-        dispatch(toggleScrollDown());
+        dispatch(toggleScrollDown(false));
       } else {
-        !scrollDown && dispatch(toggleScrollDown());
+        !scrollDown && dispatch(toggleScrollDown(true));
       }
 
       isScrollPending.current = true;

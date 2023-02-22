@@ -14,7 +14,7 @@ export const defaultTheme: DefaultTheme = {
   palette: {
     common: {
       red: "#EC90A7",
-      yellow: "#fee563",
+      yellow: "#FFCD45",
       ping: "#f5bbeb",
       green: "#51D6D4",
       blue: "#93d8f9",
