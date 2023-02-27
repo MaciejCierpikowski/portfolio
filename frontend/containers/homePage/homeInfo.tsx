@@ -10,31 +10,36 @@ import {
   SubHeader,
   WrapperInfo,
 } from "./style";
+import { useTheme } from "styled-components";
 
 const HomeInfo = () => {
+  const theme = useTheme();
+
   return (
     <WrapperInfo>
-      <ImageWrapper topOffset={3}>
-        <Image
-          alt="logo"
-          src="/assets/home_image_left.svg"
-          width={178}
-          height={200}
-        />
+      <ImageWrapper
+        leftOffset={19}
+        leftOffsetMobile={-11}
+        topOffset={4}
+        width={43}
+      >
+        <Image alt="logo" src="/assets/home_image_left.svg" fill />
         <Line />
       </ImageWrapper>
 
       <HeaderWrapper>
-        <Header>POMAGAM W MATEMATYCE</Header>
-        <SubHeader>z pasją!</SubHeader>
+        <Header>
+          POMAGAM W MATEMATYCE
+          <SubHeader>z pasją!</SubHeader>
+        </Header>
       </HeaderWrapper>
-      <ImageWrapper topOffset={15}>
-        <Image
-          alt="logo"
-          src="/assets/home_image_right.svg"
-          width={195}
-          height={200}
-        />
+      <ImageWrapper
+        leftOffset={-47}
+        leftOffsetMobile={0}
+        topOffset={3}
+        width={52}
+      >
+        <Image alt="logo" src="/assets/home_image_right.svg" fill />
         <Line />
       </ImageWrapper>
     </WrapperInfo>

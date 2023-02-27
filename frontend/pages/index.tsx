@@ -6,6 +6,9 @@ import HomePage from "../containers/homePage";
 import localFont from "@next/font/local";
 import OfferPage from "../containers/offerPage";
 import CalendarPage from "../containers/calendarPage";
+import { useTheme } from "styled-components";
+import NavigationMobile from "../components/navigationMobile";
+import { useWindowResize } from "../hooks/useWindowResize";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -24,19 +27,27 @@ const montserratLocal = localFont({
 });
 
 const Home: NextPage = () => {
+  const theme = useTheme();
+  const windowSize = useWindowResize();
+
   return (
     <div className={montserratLocal.variable}>
-      <Navigation />
+      {windowSize[0] > theme.sizes.laptop ? (
+        <Navigation />
+      ) : (
+        <NavigationMobile />
+      )}
+
       <FullPageSlider>
         <section>
           <HomePage />
         </section>
-        <section>
+        {/* <section>
           <OfferPage />
         </section>
         <section>
           <CalendarPage />
-        </section>
+        </section> */}
       </FullPageSlider>
     </div>
   );

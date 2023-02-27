@@ -6,28 +6,11 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import animatedScrollTo from "../../utils/animated-scroll-to";
 import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
+import { menuItems } from "../../utils/menu";
 
 interface INavigation {}
 
 const Navigation = ({}: INavigation) => {
-  const items = [
-    {
-      name: "Główna",
-    },
-    {
-      name: "Oferta",
-    },
-    {
-      name: "Harmonogram",
-    },
-    {
-      name: "Opinie",
-    },
-    {
-      name: "Kontakt",
-    },
-  ];
-
   const scrollDown = useAppSelector((state) => state.general.scrollDown);
   const dispatch = useAppDispatch();
 
@@ -51,7 +34,7 @@ const Navigation = ({}: INavigation) => {
         width={scrollDown ? 150 : 297}
         height={scrollDown ? 50 : 100}
       />
-      {items.map((item, index) => (
+      {menuItems.map((item, index) => (
         <ItemElement
           style={index === 0 && scrollDown ? { marginLeft: "100px" } : {}}
           isFixed={scrollDown}

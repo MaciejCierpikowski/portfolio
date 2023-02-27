@@ -9,13 +9,14 @@ declare module "styled-components" {
   export interface DefaultTheme {
     borderRadius: string;
     sizes: {
-      mobileS: string;
-      mobileM: string;
-      mobileL: string;
-      tablet: string;
-      laptop: string;
-      laptopL: string;
-      desktop: string;
+      mobileS: number;
+      mobileM: number;
+      mobileL: number;
+      tablet: number;
+      laptop: number;
+      laptopL: number;
+      laptopXL: number;
+      desktop: number;
     };
     palette: {
       common: {

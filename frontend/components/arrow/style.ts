@@ -24,7 +24,7 @@ export const Wrapper = styled.div<Props>`
 
   width: 100px;
   height: 100px;
-  margin: 0 40px;
+  margin: 40px 40px 0 40px;
 
   display: flex;
   justify-content: center;
@@ -33,8 +33,8 @@ export const Wrapper = styled.div<Props>`
 
   span {
     display: block;
-    width: 1vw;
-    height: 1vw;
+    width: 15px;
+    height: 15px;
     border-bottom: 2.5px solid ${(props) => props.theme.palette.common.black};
     border-right: 2.5px solid ${(props) => props.theme.palette.common.black};
     transform: rotate(45deg);
