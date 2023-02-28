@@ -42,10 +42,10 @@ const Home: NextPage = () => {
         <section>
           <HomePage />
         </section>
-        {/* <section>
+        <section>
           <OfferPage />
         </section>
-        <section>
+        {/*<section>
           <CalendarPage />
         </section> */}
       </FullPageSlider>
