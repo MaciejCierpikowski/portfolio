@@ -9,6 +9,8 @@ import CalendarPage from "../containers/calendarPage";
 import { useTheme } from "styled-components";
 import NavigationMobile from "../components/navigationMobile";
 import { useWindowResize } from "../hooks/useWindowResize";
+import { useLandscape } from "../hooks/useLandscape";
+import LandscapePage from "../containers/landscapePage";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -29,6 +31,7 @@ const montserratLocal = localFont({
 const Home: NextPage = () => {
   const theme = useTheme();
   const windowSize = useWindowResize();
+  const orientation = useLandscape();
 
   return (
     <div className={montserratLocal.variable}>
@@ -48,6 +51,7 @@ const Home: NextPage = () => {
         {/*<section>
           <CalendarPage />
         </section> */}
+        <LandscapePage display={orientation === "landscape" } />
       </FullPageSlider>
     </div>
   );
