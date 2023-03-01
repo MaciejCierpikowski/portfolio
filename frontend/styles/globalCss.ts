@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     overflow: hidden;
+    min-height: 100vh;
     height: -webkit-fill-available;
   }
   * {

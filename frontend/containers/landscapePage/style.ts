@@ -6,7 +6,7 @@ interface Props {
 
 export const Wrapper = styled.div<Props>`
   display: ${({ display }) => (display ? "flex" : "none")};
-  
+
   position: fixed;
   top: 0;
   z-index: 999;
