@@ -3,15 +3,15 @@ import styled from "styled-components";
 interface Props {
   direction?: "LEFT" | "RIGHT";
   active?: boolean;
+  disable?: boolean;
 }
 
-export const WrapperItem = styled.div`
+export const WrapperItem = styled.div<Props>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  width: 70%;
-  margin: 0 17%;
+  margin: 0 ${({ disable }) => (disable ? "1.8%" : "17%")};
 `;
 
 export const Wrapper = styled.div`
@@ -19,9 +19,17 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const Inner = styled.div`
+export const Inner = styled.div<Props>`
   white-space: nowrap;
   transition: transform 0.3s;
+
+  ${({ disable }) =>
+    disable &&
+    `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `}
 `;
 
 export const ArrowSingleWrapper = styled.div<Props>`

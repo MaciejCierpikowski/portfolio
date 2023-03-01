@@ -18,8 +18,13 @@ export const WrapperInfo = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  height: 47.4444444vh;
-  margin-top: 18.5185185vh;
+  height: 46.4444444vh;
+  margin-top: 16.518518vh;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    margin-top: 18.5185185vh;
+    height: 47.4444444vh;
+  }
 `;
 
 export const HeaderWrapper = styled.div`
@@ -128,5 +133,8 @@ export const BottomRectangle = styled.div`
 
   button {
     margin-top: 40px;
+  }
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    height: 34vh;
   }
 `;

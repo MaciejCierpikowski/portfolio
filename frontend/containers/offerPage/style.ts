@@ -20,6 +20,10 @@ export const CardWrapper = styled.div`
 
   height: 44vh;
   width: 100%;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    height: 66vh;
+  }
 `;
 
 export const Card = styled.div`
@@ -60,7 +64,7 @@ export const Background = styled.div`
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     transform: translate(-50%, -50%);
 
-    top: 40%;
+    top: 51%;
     left: 50%;
     bottom: inherit;
 
@@ -77,6 +81,12 @@ export const Text = styled.p`
   margin: 0;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    font: normal normal 300 23px/29px var(--font-montserrat);
+  }
+  @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
+    font: normal normal 300 28px/35px var(--font-montserrat);
+  }
+  @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
     font: normal normal 300 36px/44px var(--font-montserrat);
   }
 `;
@@ -86,7 +96,7 @@ export const Line = styled.div`
   border: 3px solid ${(props) => props.theme.palette.common.green};
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    border: 10px solid ${(props) => props.theme.palette.common.green};
+    border: 5px solid ${(props) => props.theme.palette.common.green};
   }
 `;
 
@@ -106,6 +116,7 @@ export const Header = styled.h1`
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 350px;
     height: 78px;
+    margin-top: 15px;
   }
 `;
 
@@ -115,7 +126,7 @@ export const HeaderWrapper = styled.div`
   margin-top: 11.7vh;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    padding: 100px 0;
-    margin-top: 9.26vh;
+    padding: 100px 0 65px 0;
+    margin-top: 9vh;
   }
 `;

@@ -1,5 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
+import { useWindowResize } from "../../hooks/useWindowResize";
+import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 import ArrowSingle from "../arrowSingle";
 
 import {
@@ -14,10 +16,15 @@ import {
 interface ICarouselItem {
   children: ReactNode;
   width?: number;
+  disable: boolean;
 }
 
-export const CarouselItem = ({ children, width }: ICarouselItem) => {
-  return <WrapperItem style={{ width: width }}>{children}</WrapperItem>;
+export const CarouselItem = ({ children, width, disable }: ICarouselItem) => {
+  return (
+    <WrapperItem disable={disable} style={{ width: width }}>
+      {children}
+    </WrapperItem>
+  );
 };
 
 interface IDots {
@@ -37,11 +44,13 @@ export const Dots = ({ length, active }: IDots) => {
 
 interface ICarousel {
   children: ReactNode;
+  disable: boolean;
 }
 
-const Carousel = ({ children }: ICarousel) => {
+const Carousel = ({ children, disable }: ICarousel) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const windowSize = useWindowResize();
 
   const updateIndex = (newIndex: number) => {
     if (newIndex < 0) {
@@ -53,55 +62,74 @@ const Carousel = ({ children }: ICarousel) => {
     setActiveIndex(newIndex);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!paused) {
-        updateIndex(activeIndex + 1);
-      }
-    }, 3000);
+  // useEffect(() => {
+  //   if (disable) return;
 
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  });
+  //   const interval = setInterval(() => {
+  //     if (!paused) {
+  //       updateIndex(activeIndex + 1);
+  //     }
+  //   }, 3000);
+
+  //   return () => {
+  //     if (interval) {
+  //       clearInterval(interval);
+  //     }
+  //   };
+  // });
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
     onSwipedRight: () => updateIndex(activeIndex - 1),
   });
 
+  const widthBreakpoints = {
+    isLaptopXL: 26,
+    isLaptopL: 26,
+    isLaptop: 30,
+    isMobile: 0,
+  };
+
   return (
     <Wrapper
-      {...handlers}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      {...(!disable && handlers)}
+      {...(!disable && { onMouseEnter: () => setPaused(true) })}
+      {...(!disable && { onMouseLeave: () => setPaused(false) })}
     >
-      <ArrowSingleWrapper direction="LEFT">
-        <ArrowSingle
-          direction="LEFT"
-          onClick={() => {
-            updateIndex(activeIndex - 1);
-          }}
-        />
-      </ArrowSingleWrapper>
+      {!disable && (
+        <ArrowSingleWrapper direction="LEFT">
+          <ArrowSingle
+            direction="LEFT"
+            onClick={() => {
+              updateIndex(activeIndex - 1);
+            }}
+          />
+        </ArrowSingleWrapper>
+      )}
 
-      <Inner style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
+      <Inner
+        disable={disable}
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+      >
         {React.Children.map(children, (child: any, index) => {
-          return React.cloneElement(child, { width: "66%" });
+          return React.cloneElement(child, {
+            width: disable
+              ? widthBreakpoints[getBreakpoint(windowSize[0])!] + "%"
+              : "66%",
+          });
         })}
       </Inner>
-      <ArrowSingleWrapper direction="RIGHT">
-        <ArrowSingle
-          direction="RIGHT"
-          onClick={() => {
-            updateIndex(activeIndex + 1);
-          }}
-        />
-      </ArrowSingleWrapper>
-
-      <Dots length={3} active={activeIndex} />
+      {!disable && (
+        <ArrowSingleWrapper direction="RIGHT">
+          <ArrowSingle
+            direction="RIGHT"
+            onClick={() => {
+              updateIndex(activeIndex + 1);
+            }}
+          />
+        </ArrowSingleWrapper>
+      )}
+      {!disable && <Dots length={3} active={activeIndex} />}
     </Wrapper>
   );
 };
