@@ -21,6 +21,8 @@ import {
   HeadlineWrapper,
 } from "./style";
 import ArrowSingle from "../arrowSingle";
+import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
+import { useWindowResize } from "../../hooks/useWindowResize";
 
 interface ICalendar {
   value?: Date;
@@ -43,6 +45,14 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
     onChange(date);
   };
 
+  const data = {
+    image: {
+      width: { isLaptopXL: 183, isLaptopL: 183, isLaptop: 150, isMobile: 121 },
+      height: { isLaptopXL: 130, isLaptopL: 130, isLaptop: 100, isMobile: 86 },
+    },
+  };
+  const windowSize = useWindowResize();
+
   return (
     <Wrapper>
       <ArrowSingle onClick={prevMonth} direction="LEFT" />
@@ -52,7 +62,12 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
             locale: pl,
           })}
         </Headline>
-        <Image alt="logo" src="/assets/calendar.svg" width={183} height={130} />
+        <Image
+          alt="logo"
+          src="/assets/calendar.svg"
+          width={data.image.width[getBreakpoint(windowSize[0])!]}
+          height={data.image.height[getBreakpoint(windowSize[0])!]}
+        />
       </HeadlineWrapper>
 
       <WrapperCalendar>

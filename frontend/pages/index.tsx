@@ -48,10 +48,10 @@ const Home: NextPage = () => {
         <section>
           <OfferPage />
         </section>
-        {/*<section>
+        <section>
           <CalendarPage />
-        </section> */}
-        <LandscapePage display={orientation === "landscape"} />
+        </section>
+        {/* <LandscapePage display={orientation === "landscape"} /> */}
       </FullPageSlider>
     </div>
   );

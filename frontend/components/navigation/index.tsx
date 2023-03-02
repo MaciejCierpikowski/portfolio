@@ -7,6 +7,7 @@ import { useWindowResize } from "../../hooks/useWindowResize";
 import animatedScrollTo from "../../utils/animated-scroll-to";
 import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
 import { menuItems } from "../../utils/menu";
+import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 
 interface INavigation {}
 
@@ -26,13 +27,30 @@ const Navigation = ({}: INavigation) => {
     animatedScrollTo(index * windowSize[1], () => {});
   };
 
+  const data = {
+    logo: {
+      width: {
+        isLaptopXL: scrollDown ? 150 : 297,
+        isLaptopL: scrollDown ? 130 : 267,
+        isLaptop: scrollDown ? 110 : 247,
+        isMobile: scrollDown ? 90 : 227,
+      },
+      height: {
+        isLaptopXL: scrollDown ? 50 : 100,
+        isLaptopL: scrollDown ? 40 : 80,
+        isLaptop: scrollDown ? 30 : 60,
+        isMobile: scrollDown ? 20 : 40,
+      },
+    },
+  };
+
   return (
     <Wrapper isFixed={scrollDown}>
       <Image
         alt="logo"
         src="/assets/logo.svg"
-        width={scrollDown ? 150 : 297}
-        height={scrollDown ? 50 : 100}
+        width={data.logo.width[getBreakpoint(windowSize[0])!]}
+        height={data.logo.height[getBreakpoint(windowSize[0])!]}
       />
       {menuItems.map((item, index) => (
         <ItemElement

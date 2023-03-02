@@ -48,14 +48,42 @@ const fadeOutLogo = () =>
     }
 `;
 
+const backgroundColorIn = () =>
+  keyframes`
+    100% {
+      background-color: transparent;
+
+    }
+    0% {
+      background-color: white;
+    }
+`;
+
+const backgroundColorOut = () =>
+  keyframes`
+    100% {
+      background-color: white;
+    }
+    0% {
+      background-color: transparent;
+
+    }
+`;
+
 export const Wrapper = styled.div<Props>`
   position: fixed;
   height: 11.1vh;
   width: 100%;
   z-index: 3;
 
-  background: transparent 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 16px #00000029;
+
+  animation: ${(props) =>
+      props.isNavOpen ? backgroundColorIn() : backgroundColorOut()}
+    0s;
+  animation-delay: ${(props) =>
+    props.isNavOpen !== undefined && (props.isNavOpen ? "0s" : "0.6s")};
+  animation-fill-mode: forwards;
 
   img {
     position: absolute;
