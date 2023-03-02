@@ -12,7 +12,7 @@ export const Wrapper = styled.ul<Props>`
   display: flex;
   align-items: center;
   list-style: none;
-  height: ${(props) => (props.isFixed ? 9.26 : 18.5185185)}vh;
+  height: ${(props) => (props.isFixed ? 9.26 : 18.5185185)}%;
 
   padding-left: 40px;
   margin: 0;

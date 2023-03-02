@@ -52,7 +52,6 @@ const backgroundColorIn = () =>
   keyframes`
     100% {
       background-color: transparent;
-
     }
     0% {
       background-color: white;
@@ -66,7 +65,6 @@ const backgroundColorOut = () =>
     }
     0% {
       background-color: transparent;
-
     }
 `;
 

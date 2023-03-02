@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   margin: 0;
 
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   position: relative;
 `;
 
@@ -18,11 +19,11 @@ export const CardWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  height: 44vh;
+  height: 44%;
   width: 100%;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    height: 66vh;
+    height: 66%;
   }
 `;
 
@@ -54,7 +55,7 @@ export const Background = styled.div`
   bottom: 0;
 
   width: 100vw;
-  height: 29vh;
+  height: 29%;
   background: ${(props) => props.theme.palette.common.green} 0% 0% no-repeat
     padding-box;
   box-shadow: 0px 0px 16px #00000029;

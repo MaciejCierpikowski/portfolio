@@ -11,6 +11,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 `;
 
 export const WrapperInfo = styled.div`
@@ -18,12 +20,12 @@ export const WrapperInfo = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  height: 46.4444444vh;
+  height: 46.4444444%;
   margin-top: 16.518518vh;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     margin-top: 18.5185185vh;
-    height: 47.4444444vh;
+    height: 47.4444444%;
   }
 `;
 
@@ -123,7 +125,7 @@ export const Line = styled.div`
 
 export const BottomRectangle = styled.div`
   background: #ff9b30 0% 0% no-repeat padding-box;
-  height: 37.037037vh;
+  height: 37.037037%;
   width: 100%;
 
   display: flex;
@@ -135,6 +137,6 @@ export const BottomRectangle = styled.div`
     margin-top: 40px;
   }
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    height: 34vh;
+    height: 34%;
   }
 `;

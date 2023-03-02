@@ -11,6 +11,7 @@ import NavigationMobile from "../components/navigationMobile";
 import { useWindowResize } from "../hooks/useWindowResize";
 import { useLandscape } from "../hooks/useLandscape";
 import LandscapePage from "../containers/landscapePage";
+import { useEffect } from "react";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -32,6 +33,12 @@ const Home: NextPage = () => {
   const theme = useTheme();
   const windowSize = useWindowResize();
   const orientation = useLandscape();
+
+  useEffect(() => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  }, [windowSize])
 
   return (
     <div className={montserratLocal.variable}>

@@ -1,14 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  html {
-    height: -webkit-fill-available;
-  }
   body {
     margin: 0;
     overflow: hidden;
-    min-height: 100vh;
-    height: -webkit-fill-available;
   }
   * {
     box-sizing: border-box;

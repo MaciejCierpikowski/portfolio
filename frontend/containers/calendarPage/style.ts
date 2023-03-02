@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   margin: 0;
 
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   position: relative;
 `;
 
