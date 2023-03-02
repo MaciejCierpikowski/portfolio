@@ -18,13 +18,12 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-
   height: 100%;
-    width: 100%;
-    padding-top: 20px;
+  width: 100%;
+  padding-top: 20px;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    height: 66%;
+    padding-top: 0px;
   }
 `;
 
@@ -38,7 +37,7 @@ export const Card = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 70%;
+  height: 100%;
 `;
 
 export const Headline = styled.h1<Props>`
@@ -90,45 +89,5 @@ export const Text = styled.p`
   }
   @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
     font: normal normal 300 36px/44px var(--font-montserrat);
-  }
-`;
-
-export const Line = styled.div`
-  width: 100%;
-  border: 3px solid ${(props) => props.theme.palette.common.green};
-
-  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    border: 5px solid ${(props) => props.theme.palette.common.green};
-  }
-`;
-
-export const Header = styled.h1`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 180px;
-  height: 40px;
-
-  text-transform: inherit;
-
-  background-color: ${(props) => props.theme.palette.common.white};
-
-  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    width: 350px;
-    height: 78px;
-    margin-top: 15px;
-  }
-`;
-
-export const HeaderWrapper = styled.div`
-  position: relative;
-  padding: 50px 0 65px 0;
-  margin-top: 11.7vh;
-
-  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    padding: 100px 0 65px 0;
-    margin-top: 9vh;
   }
 `;

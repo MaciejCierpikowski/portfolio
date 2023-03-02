@@ -19,6 +19,10 @@ export const Wrapper = styled.div`
   overflow: hidden;
   position: relative;
   height: 56%;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    height: 60%;
+  }
 `;
 
 export const Inner = styled.div<Props>`
@@ -33,6 +37,10 @@ export const Inner = styled.div<Props>`
     align-items: center;
     justify-content: center;
   `}
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    height: 100%;
+  }
 `;
 
 export const ArrowSingleWrapper = styled.div<Props>`
@@ -65,8 +73,9 @@ export const DotItem = styled.div<Props>`
   height: 17px;
   margin: 0 5px;
 
-  background: ${({ active }) => (active ? "black" : "white")} 0% 0% no-repeat
-    padding-box;
+  background: ${({ active, theme }) =>
+      active ? theme.palette.common.white : theme.palette.common.green}
+    0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 16px #00000029;
   border: 1px solid #161616;
   border-radius: 15px;

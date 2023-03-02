@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 
-import { Wrapper, Line, Header, HeaderWrapper } from "./style";
+import { Wrapper } from "./style";
 import Calendar from "../../components/calendar";
 import ArrowWrapper from "../../components/arrowWrapper";
+import MainHeadline from "../../components/headine";
 
 const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   return (
     <Wrapper>
-      <HeaderWrapper>
-        <Line></Line>
-        <Header>Harmonogram</Header>
-      </HeaderWrapper>
+      <MainHeadline text="Harmonogram" />
 
       <Calendar value={currentDate} onChange={setCurrentDate} />
 

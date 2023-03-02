@@ -10,5 +10,4 @@ export default function animatedScrollTo(scrollTo: number, callback: Function) {
   setTimeout(function () {
     callback();
   }, 600);
-
 }

@@ -9,15 +9,13 @@ import {
   Wrapper,
   Background,
   Text,
-  Line,
-  Header,
-  HeaderWrapper,
 } from "./style";
 import { useTheme } from "styled-components";
 import ArrowWrapper from "../../components/arrowWrapper";
 import Carousel, { CarouselItem } from "../../components/carousel";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
+import MainHeadline from "../../components/headine";
 
 const OfferPage = () => {
   const theme = useTheme();
@@ -57,10 +55,7 @@ const OfferPage = () => {
 
   return (
     <Wrapper>
-      <HeaderWrapper>
-        <Line></Line>
-        <Header>Oferta</Header>
-      </HeaderWrapper>
+      <MainHeadline text="Oferta" />
 
       <Carousel disable={isLaptop}>
         {data.map((item) => (
