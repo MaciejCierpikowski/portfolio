@@ -7,6 +7,8 @@ export default function animatedScrollTo(scrollTo: number, callback: Function) {
       behavior: "smooth",
     });
   }, 200);
+  setTimeout(function () {
+    callback();
+  }, 600);
 
-  callback();
 }

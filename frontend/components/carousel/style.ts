@@ -10,6 +10,7 @@ export const WrapperItem = styled.div<Props>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 
   margin: 0 ${({ disable }) => (disable ? "1.8%" : "17%")};
 `;
@@ -17,11 +18,13 @@ export const WrapperItem = styled.div<Props>`
 export const Wrapper = styled.div`
   overflow: hidden;
   position: relative;
+  height: 56%;
 `;
 
 export const Inner = styled.div<Props>`
   white-space: nowrap;
   transition: transform 0.3s;
+  height: 80%;
 
   ${({ disable }) =>
     disable &&
@@ -35,7 +38,7 @@ export const Inner = styled.div<Props>`
 export const ArrowSingleWrapper = styled.div<Props>`
   position: absolute;
   top: 50%;
-  transform: translateY(-100%);
+  transform: translateY(-215%);
 
   ${({ direction }) =>
     direction === "LEFT" &&
@@ -54,7 +57,7 @@ export const WrapperDots = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 50px;
+  margin-top: 30px;
 `;
 
 export const DotItem = styled.div<Props>`

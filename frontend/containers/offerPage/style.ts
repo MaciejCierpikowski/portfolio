@@ -16,11 +16,12 @@ export const Wrapper = styled.div`
 
 export const CardWrapper = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: column;
 
-  height: 44%;
-  width: 100%;
+
+  height: 100%;
+    width: 100%;
+    padding-top: 20px;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     height: 66%;

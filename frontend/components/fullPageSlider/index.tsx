@@ -116,6 +116,7 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
       isScrollPending.current = true;
 
       animatedScrollTo(slides.current[slide], () => {
+        console.log('test');
         isScrollPending.current = false;
         isScrolledAlready.current = true;
       });
