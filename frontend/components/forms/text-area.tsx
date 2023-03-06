@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InputElement } from "./style";
+import { TextAreaElement } from "./style";
 
 interface IInput {
   name?: string;
@@ -9,14 +9,13 @@ interface IInput {
   width?: number;
 }
 
-const Input = React.forwardRef(
-  ({ name, label, type, width, ...rest }: IInput, ref: any) => {
+const TextArea = React.forwardRef(
+  ({ name, label, width, ...rest }: IInput, ref: any) => {
     return (
       <>
         {/* <label htmlFor={name}>{label}</label> */}
-        <InputElement
+        <TextAreaElement
           placeholder={label}
-          type={type}
           name={name}
           {...rest}
           ref={ref}
@@ -27,4 +26,4 @@ const Input = React.forwardRef(
   }
 );
 
-export default Input;
+export default TextArea;

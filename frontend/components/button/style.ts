@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.button`
+interface Props {
+  sizes: {
+    widthMobile: number;
+    heightMobile: number;
+    widthDesktop: number;
+    heightDesktop: number;
+  };
+}
+
+export const Wrapper = styled.button<Props>`
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 16px #00000029;
   border-radius: 60px;
   opacity: 1;
 
-  width: 272px;
-  height: 66px;
+  width: ${(props) => props.sizes.widthMobile}px;
+  height: ${(props) => props.sizes.heightMobile}px;
   border: none;
   outline: inherit;
 
@@ -19,8 +28,8 @@ export const Wrapper = styled.button`
   cursor: pointer;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    width: 500px;
-    height: 120px;
+    width: ${(props) => props.sizes.widthDesktop}px;
+    height: ${(props) => props.sizes.heightDesktop}px;
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {

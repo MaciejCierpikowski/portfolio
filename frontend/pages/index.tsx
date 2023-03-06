@@ -12,6 +12,7 @@ import { useWindowResize } from "../hooks/useWindowResize";
 import { useLandscape } from "../hooks/useLandscape";
 import LandscapePage from "../containers/landscapePage";
 import { useEffect } from "react";
+import ContactPage from "../containers/contactPage";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -56,6 +57,9 @@ const Home: NextPage = () => {
         </section>
         <section>
           <CalendarPage />
+        </section>
+        <section>
+          <ContactPage />
         </section>
         {/* <LandscapePage display={orientation === "landscape"} /> */}
       </FullPageSlider>
