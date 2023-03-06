@@ -31,7 +31,9 @@ const HomePage = () => {
     <Wrapper>
       <HomeInfo />
       <BottomRectangle>
-        <Button onClick={() => scrollToSlide(1)}>Sprawdź!</Button>
+        <Button type="button" onClick={() => scrollToSlide(1)}>
+          Sprawdź!
+        </Button>
         <Arrow direction="DOWN" />
       </BottomRectangle>
     </Wrapper>
