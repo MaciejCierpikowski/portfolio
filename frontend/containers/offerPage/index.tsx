@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
 
@@ -16,8 +16,12 @@ import Carousel, { CarouselItem } from "../../components/carousel";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 import MainHeadline from "../../components/headine";
+import Modal from "../../components/modal";
+import useModal from "../../hooks/useModal";
 
 const OfferPage = () => {
+  const { isOpen, toggle } = useModal();
+
   const theme = useTheme();
   const windowSize = useWindowResize();
 
@@ -61,7 +65,7 @@ const OfferPage = () => {
         {data.map((item) => (
           <CarouselItem disable={isLaptop}>
             <CardWrapper>
-              <Card>
+              <Card onClick={toggle}>
                 <Image
                   alt={item.alt}
                   src={item.src}
@@ -78,6 +82,9 @@ const OfferPage = () => {
 
       <Background />
       <ArrowWrapper />
+      <Modal isOpen={isOpen} toggle={toggle}>
+        dasdas
+      </Modal>
     </Wrapper>
   );
 };
