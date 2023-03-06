@@ -9,6 +9,7 @@ import {
   Wrapper,
   Background,
   Text,
+  Description,
 } from "./style";
 import { useTheme } from "styled-components";
 import ArrowWrapper from "../../components/arrowWrapper";
@@ -18,10 +19,12 @@ import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 import MainHeadline from "../../components/headine";
 import Modal from "../../components/modal";
 import useModal from "../../hooks/useModal";
+import ModalContent from "./modalContent";
+import Button from "../../components/button";
 
 const OfferPage = () => {
   const { isOpen, toggle } = useModal();
-
+  const [currentCard, setCurrentCard] = useState<number>(-1);
   const theme = useTheme();
   const windowSize = useWindowResize();
 
@@ -62,29 +65,81 @@ const OfferPage = () => {
       <MainHeadline text="Oferta" />
 
       <Carousel disable={isLaptop}>
-        {data.map((item) => (
-          <CarouselItem disable={isLaptop}>
-            <CardWrapper>
-              <Card onClick={toggle}>
-                <Image
-                  alt={item.alt}
-                  src={item.src}
-                  width={item.width[getBreakpoint(windowSize[0])!]}
-                  height={item.height[getBreakpoint(windowSize[0])!]}
-                />
-              </Card>
-              <Headline color={item.color}>{item.headlineText}</Headline>
-              <Text>{item.text}</Text>
-            </CardWrapper>
-          </CarouselItem>
+        {data.map((item, index) => (
+          <>
+            {index === 0 && (
+              <Modal isOpen={isOpen} toggle={toggle}>
+                <ModalContent>
+                  <Description>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                    nonumy eirmod tempor invidunt ut labore et dolore magna
+                    
+                    aliquyam erat, sed diam voluptua.
+                  </Description>
+                  <Button
+                    sizes={{
+                      widthMobile: 450,
+                      heightMobile: 100,
+                      widthDesktop: 450,
+                      heightDesktop: 100,
+                    }}
+                    fontSizes={{
+                      mobile: "17px/20px",
+                      laptop: "20px/23px",
+                      laptopL: "22px/26px",
+                      laptopXL: "24px/29px",
+                    }}
+                    type="button"
+                    onClick={() => {
+                      console.log("lodd");
+                    }}
+                    color={theme.palette.common.yellow}
+                  >
+                    Sprawdz wolne terminy
+                  </Button>
+                </ModalContent>
+              </Modal>
+            )}
+            <CarouselItem key={index} disable={isLaptop}>
+              <CardWrapper isOpen={isOpen} isAnimation={index === currentCard}>
+                <Card
+                  isOpen={isOpen}
+                  isAnimation={index === currentCard}
+                  onClick={() => {
+                    toggle();
+                    setCurrentCard(index);
+                  }}
+                >
+                  <Image
+                    alt={item.alt}
+                    src={item.src}
+                    width={item.width[getBreakpoint(windowSize[0])!]}
+                    height={item.height[getBreakpoint(windowSize[0])!]}
+                  />
+                </Card>
+                <Headline
+                  isOpen={isOpen}
+                  isAnimation={index === currentCard}
+                  color={item.color}
+                >
+                  {item.headlineText}
+                </Headline>
+                <Text isOpen={isOpen} isAnimation={index === currentCard}>
+                  {item.text}
+                </Text>
+              </CardWrapper>
+            </CarouselItem>
+          </>
         ))}
       </Carousel>
 
       <Background />
       <ArrowWrapper />
-      <Modal isOpen={isOpen} toggle={toggle}>
-        dasdas
-      </Modal>
     </Wrapper>
   );
 };

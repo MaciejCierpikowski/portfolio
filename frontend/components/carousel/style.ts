@@ -16,7 +16,7 @@ export const WrapperItem = styled.div<Props>`
 `;
 
 export const Wrapper = styled.div`
-  overflow: hidden;
+  overflow-x: clip;
   position: relative;
   height: 56%;
 

@@ -7,10 +7,17 @@ interface Props {
     widthDesktop: number;
     heightDesktop: number;
   };
+  fontSizes: {
+    mobile: string;
+    laptop: string;
+    laptopL: string;
+    laptopXL: string;
+  };
+  color: string;
 }
 
 export const Wrapper = styled.button<Props>`
-  background: #ffffff 0% 0% no-repeat padding-box;
+  background: ${(props) => props.color} 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 16px #00000029;
   border-radius: 60px;
   opacity: 1;
@@ -20,7 +27,8 @@ export const Wrapper = styled.button<Props>`
   border: none;
   outline: inherit;
 
-  font: normal normal bold 19px/23px var(--font-montserrat);
+  font: normal normal bold ${(props) => props.fontSizes.mobile}
+    var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   text-transform: uppercase;
@@ -33,14 +41,17 @@ export const Wrapper = styled.button<Props>`
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    font: normal normal bold 24px/30px var(--font-montserrat);
+    font: normal normal bold ${(props) => props.fontSizes.laptop}
+      var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
-    font: normal normal bold 30px/37px var(--font-montserrat);
+    font: normal normal bold ${(props) => props.fontSizes.laptopL}
+      var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
-    font: normal normal bold 36px/44px var(--font-montserrat);
+    font: normal normal bold ${(props) => props.fontSizes.laptopXL}
+      var(--font-montserrat);
   }
 `;

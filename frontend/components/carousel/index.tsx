@@ -20,6 +20,7 @@ interface ICarouselItem {
 }
 
 export const CarouselItem = ({ children, width, disable }: ICarouselItem) => {
+  console.log(children, 'children');
   return (
     <WrapperItem disable={disable} style={{ width: width }}>
       {children}
@@ -51,7 +52,7 @@ const Carousel = ({ children, disable }: ICarousel) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const windowSize = useWindowResize();
-
+  console.log(children, 'children');
   const updateIndex = (newIndex: number) => {
     if (newIndex < 0) {
       newIndex = React.Children.count(children) - 1;
@@ -112,6 +113,7 @@ const Carousel = ({ children, disable }: ICarousel) => {
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {React.Children.map(children, (child: any, index) => {
+          console.log(child, 'child');
           return React.cloneElement(child, {
             width: disable
               ? widthBreakpoints[getBreakpoint(windowSize[0])!] + "%"
