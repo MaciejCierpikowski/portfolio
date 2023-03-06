@@ -50,7 +50,7 @@ export const TextAreaElement = styled.textarea<Props>`
   &:focus {
     outline: none;
   }
-  
+
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: ${(props) => props.width}%;
   }
