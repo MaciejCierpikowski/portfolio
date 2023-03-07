@@ -17,10 +17,15 @@ interface ICarouselItem {
   children: ReactNode;
   width?: number;
   disable: boolean;
+  isModal?: boolean;
 }
 
-export const CarouselItem = ({ children, width, disable }: ICarouselItem) => {
-  console.log(children, 'children');
+export const CarouselItem = ({
+  children,
+  width,
+  disable,
+  isModal,
+}: ICarouselItem) => {
   return (
     <WrapperItem disable={disable} style={{ width: width }}>
       {children}
@@ -46,13 +51,14 @@ export const Dots = ({ length, active }: IDots) => {
 interface ICarousel {
   children: ReactNode;
   disable: boolean;
+  isModal?: boolean;
 }
 
-const Carousel = ({ children, disable }: ICarousel) => {
+const Carousel = ({ children, disable, isModal }: ICarousel) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const windowSize = useWindowResize();
-  console.log(children, 'children');
+
   const updateIndex = (newIndex: number) => {
     if (newIndex < 0) {
       newIndex = React.Children.count(children) - 1;
@@ -97,7 +103,7 @@ const Carousel = ({ children, disable }: ICarousel) => {
       {...(!disable && { onMouseEnter: () => setPaused(true) })}
       {...(!disable && { onMouseLeave: () => setPaused(false) })}
     >
-      {!disable && (
+      {!disable && !isModal && (
         <ArrowSingleWrapper direction="LEFT">
           <ArrowSingle
             direction="LEFT"
@@ -113,7 +119,6 @@ const Carousel = ({ children, disable }: ICarousel) => {
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {React.Children.map(children, (child: any, index) => {
-          console.log(child, 'child');
           return React.cloneElement(child, {
             width: disable
               ? widthBreakpoints[getBreakpoint(windowSize[0])!] + "%"
@@ -121,7 +126,7 @@ const Carousel = ({ children, disable }: ICarousel) => {
           });
         })}
       </Inner>
-      {!disable && (
+      {!disable && !isModal && (
         <ArrowSingleWrapper direction="RIGHT">
           <ArrowSingle
             direction="RIGHT"

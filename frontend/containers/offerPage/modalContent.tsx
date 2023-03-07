@@ -12,11 +12,7 @@ interface IModalContent {
 const ModalContent = ({ children }: IModalContent) => {
   const theme = useTheme();
 
-  return (
-    <WrapperModalContent>
-      <ChildrenInner>{children}</ChildrenInner>
-    </WrapperModalContent>
-  );
+  return <ChildrenInner>{children}</ChildrenInner>;
 };
 
 export default ModalContent;

@@ -22,6 +22,45 @@ import useModal from "../../hooks/useModal";
 import ModalContent from "./modalContent";
 import Button from "../../components/button";
 
+const ModalInner = () => {
+  const theme = useTheme();
+
+  return (
+    <ModalContent>
+      <Description>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        {/* clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+        sed diam voluptua. */}
+      </Description>
+      <Button
+        sizes={{
+          widthMobile: 320,
+          heightMobile: 72,
+          widthDesktop: 450,
+          heightDesktop: 100,
+        }}
+        fontSizes={{
+          mobile: "17px/20px",
+          laptop: "20px/23px",
+          laptopL: "22px/26px",
+          laptopXL: "24px/29px",
+        }}
+        type="button"
+        onClick={() => {
+          console.log("lodd");
+        }}
+        color={theme.palette.common.yellow}
+      >
+        Sprawdz wolne terminy
+      </Button>
+    </ModalContent>
+  );
+};
+
 const OfferPage = () => {
   const { isOpen, toggle } = useModal();
   const [currentCard, setCurrentCard] = useState<number>(-1);
@@ -63,78 +102,60 @@ const OfferPage = () => {
   return (
     <Wrapper>
       <MainHeadline text="Oferta" />
-
-      <Carousel disable={isLaptop}>
+      <Carousel isModal={isOpen && !isLaptop} disable={isLaptop}>
         {data.map((item, index) => (
-          <>
-            {index === 0 && (
+          <CarouselItem
+            key={index}
+            disable={isLaptop}
+            isModal={isOpen && !isLaptop}
+          >
+            {index === 0 && isLaptop && (
               <Modal isOpen={isOpen} toggle={toggle}>
-                <ModalContent>
-                  <Description>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna
-                    
-                    aliquyam erat, sed diam voluptua.
-                  </Description>
-                  <Button
-                    sizes={{
-                      widthMobile: 450,
-                      heightMobile: 100,
-                      widthDesktop: 450,
-                      heightDesktop: 100,
-                    }}
-                    fontSizes={{
-                      mobile: "17px/20px",
-                      laptop: "20px/23px",
-                      laptopL: "22px/26px",
-                      laptopXL: "24px/29px",
-                    }}
-                    type="button"
-                    onClick={() => {
-                      console.log("lodd");
-                    }}
-                    color={theme.palette.common.yellow}
-                  >
-                    Sprawdz wolne terminy
-                  </Button>
-                </ModalContent>
+                <ModalInner />
               </Modal>
             )}
-            <CarouselItem key={index} disable={isLaptop}>
-              <CardWrapper isOpen={isOpen} isAnimation={index === currentCard}>
-                <Card
-                  isOpen={isOpen}
-                  isAnimation={index === currentCard}
-                  onClick={() => {
-                    toggle();
-                    setCurrentCard(index);
-                  }}
-                >
-                  <Image
-                    alt={item.alt}
-                    src={item.src}
-                    width={item.width[getBreakpoint(windowSize[0])!]}
-                    height={item.height[getBreakpoint(windowSize[0])!]}
-                  />
-                </Card>
-                <Headline
-                  isOpen={isOpen}
-                  isAnimation={index === currentCard}
-                  color={item.color}
-                >
-                  {item.headlineText}
-                </Headline>
-                <Text isOpen={isOpen} isAnimation={index === currentCard}>
-                  {item.text}
-                </Text>
-              </CardWrapper>
-            </CarouselItem>
-          </>
+            <CardWrapper
+              isModal={isOpen && !isLaptop}
+              isOpen={isOpen}
+              isAnimation={index === currentCard}
+            >
+              <Card
+                isOpen={isOpen}
+                isAnimation={index === currentCard}
+                index={index}
+                isModal={isOpen && !isLaptop}
+                onClick={() => {
+                  toggle();
+                  setCurrentCard(index);
+                }}
+              >
+                <Image
+                  alt={item.alt}
+                  src={item.src}
+                  width={item.width[getBreakpoint(windowSize[0])!]}
+                  height={item.height[getBreakpoint(windowSize[0])!]}
+                />
+              </Card>
+              <Headline
+                isModal={isOpen && !isLaptop}
+                isOpen={isOpen}
+                isAnimation={index === currentCard}
+                index={index}
+                color={item.color}
+              >
+                {item.headlineText}
+              </Headline>
+              <Text
+                isModal={isOpen && !isLaptop}
+                index={index}
+                isOpen={isOpen}
+                isAnimation={index === currentCard}
+              >
+                {item.text}
+              </Text>
+              {isOpen && !isLaptop && index === currentCard && <ModalInner />}
+            </CardWrapper>
+          </CarouselItem>
         ))}
       </Carousel>
 

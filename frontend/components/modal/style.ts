@@ -35,7 +35,7 @@ export const Wrapper = styled.div<Props>`
   top: -40px;
   left: 50%;
 
-  animation: ${(props) => (props.isOpen ? fadeIn() : fadeOut())} 1s;
+  animation: ${(props) => (props.isOpen ? fadeIn() : fadeOut())} 0.6s;
   animation-fill-mode: both;
 `;
 
@@ -43,22 +43,18 @@ export const Close = styled.div`
   position: absolute;
   right: 32px;
   top: 32px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.3;
+  width: 35px;
+  height: 35px;
   z-index: 2;
 
-  &:hover {
-    opacity: 1;
-  }
   &:before,
   &:after {
     position: absolute;
     left: 15px;
     content: " ";
-    height: 33px;
+    height: 35px;
     width: 2px;
-    background-color: #333;
+    background-color: ${(props) => props.theme.palette.common.green};
   }
   &:before {
     transform: rotate(45deg);
