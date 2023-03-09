@@ -79,7 +79,6 @@ const Feedback = () => {
             />
           </ImageWrapper>
           <Line />
-
           <Headline>Opinie</Headline>
         </HeadlineInner>
         <Button
@@ -88,12 +87,12 @@ const Feedback = () => {
             heightDesktop: 100,
             widthDesktop: 500,
             heightMobile: 50,
-            widthMobile: 150,
+            widthMobile: 250,
           }}
           fontSizes={{
-            mobile: "36px/44px",
-            laptop: "36px/44px",
-            laptopL: "36px/44px",
+            mobile: "18px/22px",
+            laptop: "24px/28px",
+            laptopL: "30px/36px",
             laptopXL: "36px/44px",
           }}
           onClick={() => {
@@ -105,7 +104,12 @@ const Feedback = () => {
         </Button>
       </HeadlineWrapper>
       <FeedbackWrapper>
-        <Carousel disable={false}>
+        <Carousel
+          initActiveIndex={1}
+          disable={false}
+          color={theme.palette.common.ping}
+          width={80}
+        >
           {feedbacks.map((item, index) => (
             <CarouselItem key={index} disable={isLaptop}>
               <CardWrapper>

@@ -22,17 +22,16 @@ export const HeadlineWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   justify-content: flex-end;
-  order: -1;
   flex-direction: column;
 
   position: relative;
-  width: 50vw;
   height: 100%;
   padding-bottom: 10vh;
+  width: 100vw;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    order: 0;
     align-self: center;
+    width: 50vw;
   }
 `;
 
@@ -100,10 +99,19 @@ export const FeedbackWrapper = styled.div`
   background: ${(props) => props.theme.palette.common.ping};
   display: flex;
   flex-direction: column;
+  justify-content: end;
 
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  width: 50vw;
+  width: 100vw;
+
+  order: -1;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    width: 50vw;
+    order: 0;
+    justify-content: center;
+  }
 `;
 
 export const CardWrapper = styled.div`
@@ -112,6 +120,7 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   align-items: center;
 `;
 
@@ -124,17 +133,41 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const Description = styled.p`
-  font: normal normal 300 26px/32px var(--font-montserrat);
+  font: normal normal 300 10px/13px var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   opacity: 1;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    font: normal normal 300 15px/18px var(--font-montserrat);
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
+    font: normal normal 300 20px/25px var(--font-montserrat);
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
+    font: normal normal 300 26px/32px var(--font-montserrat);
+  }
 `;
 
 export const Name = styled.p`
-  font: normal normal 300 56px/68px var(--font-montserrat);
+  font: normal normal 300 30px/35px var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   opacity: 1;
   margin: 0;
   text-align: center;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    font: normal normal 300 38px/45px var(--font-montserrat);
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
+    font: normal normal 300 46px/55px var(--font-montserrat);
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
+    font: normal normal 300 56px/68px var(--font-montserrat);
+  }
 `;

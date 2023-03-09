@@ -36,13 +36,14 @@ export const CarouselItem = ({
 interface IDots {
   length: number;
   active: number;
+  color?: string;
 }
 
-export const Dots = ({ length, active }: IDots) => {
+export const Dots = ({ length, active, color }: IDots) => {
   return (
     <WrapperDots>
       {Array.from({ length: length }).map((_, index) => (
-        <DotItem key={index} active={active === index} />
+        <DotItem key={index} active={active === index} color={color} />
       ))}
     </WrapperDots>
   );
@@ -52,10 +53,20 @@ interface ICarousel {
   children: ReactNode;
   disable: boolean;
   isModal?: boolean;
+  color?: string;
+  initActiveIndex?: number;
+  width?: number;
 }
 
-const Carousel = ({ children, disable, isModal }: ICarousel) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const Carousel = ({
+  children,
+  disable,
+  isModal,
+  color,
+  initActiveIndex = 0,
+  width,
+}: ICarousel) => {
+  const [activeIndex, setActiveIndex] = useState(initActiveIndex);
   const [paused, setPaused] = useState(false);
   const windowSize = useWindowResize();
 
@@ -96,7 +107,7 @@ const Carousel = ({ children, disable, isModal }: ICarousel) => {
     isLaptop: 30,
     isMobile: 0,
   };
-
+  const movePerecent = Number(width) ? Number(width) : 100;
   return (
     <Wrapper
       {...(!disable && handlers)}
@@ -116,12 +127,14 @@ const Carousel = ({ children, disable, isModal }: ICarousel) => {
 
       <Inner
         disable={disable}
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        style={{ transform: `translateX(-${activeIndex * movePerecent}%)` }}
       >
         {React.Children.map(children, (child: any, index) => {
           return React.cloneElement(child, {
             width: disable
               ? widthBreakpoints[getBreakpoint(windowSize[0])!] + "%"
+              : width
+              ? width + "%"
               : "66%",
           });
         })}
@@ -136,7 +149,7 @@ const Carousel = ({ children, disable, isModal }: ICarousel) => {
           />
         </ArrowSingleWrapper>
       )}
-      {!disable && <Dots length={3} active={activeIndex} />}
+      {!disable && <Dots color={color} length={3} active={activeIndex} />}
     </Wrapper>
   );
 };

@@ -4,6 +4,7 @@ interface Props {
   direction?: "LEFT" | "RIGHT";
   active?: boolean;
   disable?: boolean;
+  color?: string;
 }
 
 export const WrapperItem = styled.div<Props>`
@@ -73,8 +74,8 @@ export const DotItem = styled.div<Props>`
   height: 17px;
   margin: 0 5px;
 
-  background: ${({ active, theme }) =>
-      active ? theme.palette.common.white : theme.palette.common.green}
+  background: ${({ active, theme, color }) =>
+      active ? theme.palette.common.white : color ?? theme.palette.common.green}
     0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 16px #00000029;
   border: 1px solid #161616;
