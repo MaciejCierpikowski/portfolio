@@ -16,7 +16,7 @@ export const defaultTheme: DefaultTheme = {
     common: {
       red: "#EC90A7",
       yellow: "#FFCD45",
-      ping: "#f5bbeb",
+      ping: "#EC90A7",
       green: "#51D6D4",
       blue: "#93d8f9",
       orange: "#FF9B30",

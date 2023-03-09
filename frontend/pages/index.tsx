@@ -14,6 +14,7 @@ import LandscapePage from "../containers/landscapePage";
 import { useEffect } from "react";
 import ContactPage from "../containers/contactPage";
 import Footer from "../components/footer";
+import Feedback from "../containers/feedbackPage";
 
 const montserratLocal = localFont({
   variable: "--font-montserrat",
@@ -58,6 +59,9 @@ const Home: NextPage = () => {
         </section>
         <section>
           <CalendarPage />
+        </section>
+        <section>
+          <Feedback />
         </section>
         <section>
           <ContactPage />

@@ -72,12 +72,10 @@ export const SocialMedia = styled.div`
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
     width: 285px;
-
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
     width: 367px;
-
   }
 `;
 
