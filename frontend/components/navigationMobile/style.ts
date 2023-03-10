@@ -103,13 +103,14 @@ export const BlackBackground = styled.div<Props>`
   max-height: ${(props) => (props.isNavOpen ? "100vh" : "0")};
   transition: max-height 0.4s ease-out;
   z-index: 1;
+  pointer-events: none;
 `;
 
 export const MenuWrapper = styled.ul<Props>`
   position: fixed;
   width: 100%;
   height: 100vh;
-  pointer-events: none;
+  pointer-events: ${(props) => (props.isNavOpen ? "initial" : "none")};
   z-index: 2;
 
   display: flex;

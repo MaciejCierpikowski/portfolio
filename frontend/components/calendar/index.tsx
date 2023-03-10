@@ -47,8 +47,20 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
 
   const data = {
     image: {
-      width: { isLaptopXL: 183, isLaptopL: 183, isLaptop: 150, isMobile: 121 },
-      height: { isLaptopXL: 130, isLaptopL: 130, isLaptop: 100, isMobile: 86 },
+      width: {
+        isLaptopXL: 183,
+        isLaptopL: 183,
+        isLaptop: 150,
+        isMobileL: 121,
+        isMobileM: 121,
+      },
+      height: {
+        isLaptopXL: 130,
+        isLaptopL: 130,
+        isLaptop: 100,
+        isMobileL: 86,
+        isMobileM: 86,
+      },
     },
   };
   const windowSize = useWindowResize();

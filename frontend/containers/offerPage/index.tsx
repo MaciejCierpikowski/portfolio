@@ -21,18 +21,35 @@ import Modal from "../../components/modal";
 import useModal from "../../hooks/useModal";
 import ModalContent from "./modalContent";
 import Button from "../../components/button";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
+import animatedScrollTo from "../../utils/animated-scroll-to";
 
 interface IModalInner {
   currentCard: number;
 }
 
 const ModalInner = ({ currentCard }: IModalInner) => {
+  const windowSize = useWindowResize();
   const theme = useTheme();
 
+  const scrollDown = useAppSelector((state) => state.general.scrollDown);
+  const dispatch = useAppDispatch();
+
+  const scrollToSlide = (index: number) => {
+    if (index === 0) {
+      dispatch(toggleScrollDown(false));
+    } else {
+      !scrollDown && dispatch(toggleScrollDown(true));
+    }
+    dispatch(setActiveSlide(index));
+    animatedScrollTo(index * windowSize[1], () => {});
+  };
+
   const data = [
-    "Jeśli macie trudności z matematyką, a jednocześnie szukacie nauczyciela, który pozwoli Wam zrozumieć trudne zagadnienia w ciekawy sposób, to dobrze trafiliście! Jesteśmy zespołem pasjonatów matematyki i chcielibyśmy pomóc Wam w opanowaniu tej przedmiotu.",
-    "Nasza nauczycielka skutecznie pomoże Wam w odrabianiu prac domowych, przyswojeniu wiedzy oraz rozwiązaniu trudnych zadań. Jej podejście do nauki jest ciekawe, przystępne i opiera się na rozumieniu matematycznych zasad i związków.",
-    "Jeśli macie trudności z matematyką, a jednocześnie szukacie nauczyciela, który pozwoli Wam zrozumieć trudne zagadnienia w ciekawy sposób, to dobrze trafiliście! Jesteśmy zespołem pasjonatów matematyki i chcielibyśmy pomóc Wam w opanowaniu tej przedmiotu.",
+    "Jako pasjonatka matematyki chętnie pomogę Wam w odrabianiu prac domowych, przyswojeniu wiedzy oraz rozwiązaniu trudnych zadań. Moje podejście do nauki jest ciekawe, przystępne i opiera się na rozumieniu matematycznych reguł.",
+    "Jeśli macie trudności z matematyką, a jednocześnie szukacie nauczyciela, który pozwoli Wam zrozumieć trudne zagadnienia w ciekawy sposób, to dobrze trafiliście! Jestem pasjonatką matematyki i chętnie pomogę Wam w opanowaniu tego przedmiotu.",
+    "Korepetycje z matematyki dla uczniów klas 4-8, prowadzone przez entuzjastyczną nauczycielkę. Zajęcia są indywidualne lub grupowe, w zależności od Waszych potrzeb i preferencji.",
   ];
 
   return (
@@ -52,9 +69,7 @@ const ModalInner = ({ currentCard }: IModalInner) => {
           laptopXL: "24px/29px",
         }}
         type="button"
-        onClick={() => {
-          console.log("lodd");
-        }}
+        onClick={() => scrollToSlide(2)}
         color={theme.palette.common.yellow}
       >
         Sprawdz wolne terminy
@@ -75,8 +90,20 @@ const OfferPage = () => {
     {
       alt: "image_pomogę",
       src: "/assets/image_pomogę.png",
-      width: { isLaptopXL: 400, isLaptopL: 320, isLaptop: 290, isMobile: 220 },
-      height: { isLaptopXL: 320, isLaptopL: 250, isLaptop: 250, isMobile: 180 },
+      width: {
+        isLaptopXL: 400,
+        isLaptopL: 320,
+        isLaptop: 290,
+        isMobileL: 220,
+        isMobileM: 180,
+      },
+      height: {
+        isLaptopXL: 320,
+        isLaptopL: 250,
+        isLaptop: 250,
+        isMobileL: 180,
+        isMobileM: 140,
+      },
       color: theme.palette.common.green,
       headlineText: "Pomogę",
       text: "w odrabianiu prac domowych",
@@ -84,8 +111,20 @@ const OfferPage = () => {
     {
       alt: "image_przygotuję",
       src: "/assets/image_przygotuję.svg",
-      width: { isLaptopXL: 400, isLaptopL: 320, isLaptop: 290, isMobile: 220 },
-      height: { isLaptopXL: 331, isLaptopL: 255, isLaptop: 255, isMobile: 180 },
+      width: {
+        isLaptopXL: 400,
+        isLaptopL: 320,
+        isLaptop: 290,
+        isMobileL: 220,
+        isMobileM: 180,
+      },
+      height: {
+        isLaptopXL: 331,
+        isLaptopL: 255,
+        isLaptop: 255,
+        isMobileL: 180,
+        isMobileM: 140,
+      },
       color: theme.palette.common.orange,
       headlineText: "Przygotuję",
       text: "do egzaminu 8 klasisty",
@@ -93,8 +132,20 @@ const OfferPage = () => {
     {
       alt: "image_nauczę",
       src: "/assets/image_nauczę.svg",
-      width: { isLaptopXL: 301, isLaptopL: 260, isLaptop: 260, isMobile: 220 },
-      height: { isLaptopXL: 359, isLaptopL: 270, isLaptop: 270, isMobile: 180 },
+      width: {
+        isLaptopXL: 301,
+        isLaptopL: 260,
+        isLaptop: 260,
+        isMobileL: 220,
+        isMobileM: 180,
+      },
+      height: {
+        isLaptopXL: 359,
+        isLaptopL: 270,
+        isLaptop: 270,
+        isMobileL: 180,
+        isMobileM: 140,
+      },
       color: theme.palette.common.red,
       headlineText: "Nauczę",
       text: "materiału do prac klasowych",
@@ -106,11 +157,7 @@ const OfferPage = () => {
       <MainHeadline text="Oferta" />
       <Carousel isModal={isOpen && !isLaptop} disable={isLaptop}>
         {data.map((item, index) => (
-          <CarouselItem
-            key={index}
-            disable={isLaptop}
-            isModal={isOpen && !isLaptop}
-          >
+          <CarouselItem key={index} disable={isLaptop}>
             {index === 0 && isLaptop && (
               <Modal isOpen={isOpen} toggle={toggle}>
                 <ModalInner currentCard={currentCard} />

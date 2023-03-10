@@ -15,8 +15,8 @@ export const InputElement = styled.input<Props>`
   color: ${(props) => props.theme.palette.common.white};
   font: normal normal 300 20px/24px var(--font-montserrat);
 
-  padding: 10px 0;
-  margin: 10px 0;
+  padding: 15px 0;
+  margin: 15px 0;
 
   &::placeholder {
     color: ${(props) => props.theme.palette.common.white};

@@ -5,6 +5,7 @@ interface Props {
   active?: boolean;
   disable?: boolean;
   color?: string;
+  margin?: string;
 }
 
 export const WrapperItem = styled.div<Props>`
@@ -13,7 +14,7 @@ export const WrapperItem = styled.div<Props>`
   justify-content: center;
   height: 100%;
 
-  margin: 0 ${({ disable }) => (disable ? "1.8%" : "17%")};
+  margin: 0 ${({ disable, margin }) => (disable ? "1.8%" : margin ?? "17%")};
 `;
 
 export const Wrapper = styled.div`
@@ -26,10 +27,20 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Content = styled.div`
+  position: relative;
+  width: 100%;
+  height: 75%;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    height: 100%;
+  }
+`;
+
 export const Inner = styled.div<Props>`
   white-space: nowrap;
   transition: transform 0.3s;
-  height: 80%;
+  height: 100%;
 
   ${({ disable }) =>
     disable &&
@@ -47,7 +58,7 @@ export const Inner = styled.div<Props>`
 export const ArrowSingleWrapper = styled.div<Props>`
   position: absolute;
   top: 50%;
-  transform: translateY(-215%);
+  transform: translateY(-50%);
 
   ${({ direction }) =>
     direction === "LEFT" &&
@@ -66,7 +77,11 @@ export const WrapperDots = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 30px;
+  margin-top: 70px;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    margin-top: 30px;
+  }
 `;
 
 export const DotItem = styled.div<Props>`

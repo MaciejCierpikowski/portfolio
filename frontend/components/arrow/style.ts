@@ -24,12 +24,16 @@ export const Wrapper = styled.div<Props>`
 
   width: 100px;
   height: 100px;
-  margin: 40px 40px 0 40px;
+  margin: 0px 40px 0 40px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    margin: 40px 40px 0 40px;
+  }
 
   span {
     display: block;

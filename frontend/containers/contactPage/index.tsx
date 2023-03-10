@@ -21,6 +21,7 @@ import Button from "../../components/button";
 import TextArea from "../../components/forms/text-area";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
+import ArrowWrapper from "../../components/arrowWrapper";
 
 interface IFormInput {
   name: string;
@@ -63,57 +64,59 @@ const ContactPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormWrapper>
           <Header>Zapisz się na zajęcia</Header>
-          <Names>
+          <div>
+            <Names>
+              <Input
+                width={40}
+                label="Imię"
+                {...register("name", { required: "To pole jest wymagane" })}
+              />
+              {errors.name && <Error message={errors.name.message} />}
+              <Input
+                label="Nawisko"
+                width={50}
+                {...register("surname", { required: "To pole jest wymagane" })}
+              />
+              {errors.surname && <Error message={errors.surname.message} />}
+            </Names>
+
             <Input
-              width={40}
-              label="Imię"
-              {...register("name", { required: "To pole jest wymagane" })}
+              type="text"
+              label="Email"
+              width={80}
+              {...register("email", {
+                required: "To pole jest wymagane",
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: "Niepoprawny format",
+                },
+              })}
             />
-            {errors.name && <Error message={errors.name.message} />}
+            {errors.email && <Error message={errors.email.message} />}
+
             <Input
-              label="Nawisko"
-              width={50}
-              {...register("surname", { required: "To pole jest wymagane" })}
+              label="Telefon"
+              {...register("phone", {
+                required: "To pole jest wymagane",
+                pattern: {
+                  value: /^\d{9}$/,
+                  message: "Nieprawidłowy numer telefonu",
+                },
+              })}
+              width={70}
             />
-            {errors.surname && <Error message={errors.surname.message} />}
-          </Names>
+            {errors.phone && <Error message={errors.phone.message} />}
 
-          <Input
-            type="text"
-            label="Email"
-            width={80}
-            {...register("email", {
-              required: "To pole jest wymagane",
-              pattern: {
-                value:
-                  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Niepoprawny format",
-              },
-            })}
-          />
-          {errors.email && <Error message={errors.email.message} />}
+            <TextArea
+              label="Wiadomość"
+              width={100}
+              {...register("message", { required: "To pole jest wymagane" })}
+            />
+            {errors.message && <Error message={errors.message.message} />}
 
-          <Input
-            label="Telefon"
-            {...register("phone", {
-              required: "To pole jest wymagane",
-              pattern: {
-                value: /^\d{9}$/,
-                message: "Nieprawidłowy numer telefonu",
-              },
-            })}
-            width={70}
-          />
-          {errors.phone && <Error message={errors.phone.message} />}
-
-          <TextArea
-            label="Wiadomość"
-            width={100}
-            {...register("message", { required: "To pole jest wymagane" })}
-          />
-          {errors.message && <Error message={errors.message.message} />}
-
-          {error && <Error message={error} />}
+            {error && <Error message={error} />}
+          </div>
 
           <Button
             type="submit"
@@ -150,6 +153,7 @@ const ContactPage = () => {
           <Headline>Kontakt</Headline>
         </HeadlineInner>
       </HeadlineWrapper>
+      <ArrowWrapper />
     </Wrapper>
   );
 };

@@ -11,23 +11,24 @@ import {
   Wrapper,
   WrapperDots,
   WrapperItem,
+  Content,
 } from "./style";
 
 interface ICarouselItem {
   children: ReactNode;
   width?: number;
   disable: boolean;
-  isModal?: boolean;
+  margin?: string;
 }
 
 export const CarouselItem = ({
   children,
   width,
   disable,
-  isModal,
+  margin,
 }: ICarouselItem) => {
   return (
-    <WrapperItem disable={disable} style={{ width: width }}>
+    <WrapperItem margin={margin} disable={disable} style={{ width: width }}>
       {children}
     </WrapperItem>
   );
@@ -105,7 +106,8 @@ const Carousel = ({
     isLaptopXL: 26,
     isLaptopL: 26,
     isLaptop: 30,
-    isMobile: 0,
+    isMobileL: 0,
+    isMobileM: 0,
   };
   const movePerecent = Number(width) ? Number(width) : 100;
   return (
@@ -114,41 +116,44 @@ const Carousel = ({
       {...(!disable && { onMouseEnter: () => setPaused(true) })}
       {...(!disable && { onMouseLeave: () => setPaused(false) })}
     >
-      {!disable && !isModal && (
-        <ArrowSingleWrapper direction="LEFT">
-          <ArrowSingle
-            direction="LEFT"
-            onClick={() => {
-              updateIndex(activeIndex - 1);
-            }}
-          />
-        </ArrowSingleWrapper>
-      )}
+      <Content>
+        {!disable && !isModal && (
+          <ArrowSingleWrapper direction="LEFT">
+            <ArrowSingle
+              direction="LEFT"
+              onClick={() => {
+                updateIndex(activeIndex - 1);
+              }}
+            />
+          </ArrowSingleWrapper>
+        )}
 
-      <Inner
-        disable={disable}
-        style={{ transform: `translateX(-${activeIndex * movePerecent}%)` }}
-      >
-        {React.Children.map(children, (child: any, index) => {
-          return React.cloneElement(child, {
-            width: disable
-              ? widthBreakpoints[getBreakpoint(windowSize[0])!] + "%"
-              : width
-              ? width + "%"
-              : "66%",
-          });
-        })}
-      </Inner>
-      {!disable && !isModal && (
-        <ArrowSingleWrapper direction="RIGHT">
-          <ArrowSingle
-            direction="RIGHT"
-            onClick={() => {
-              updateIndex(activeIndex + 1);
-            }}
-          />
-        </ArrowSingleWrapper>
-      )}
+        <Inner
+          disable={disable}
+          style={{ transform: `translateX(-${activeIndex * movePerecent}%)` }}
+        >
+          {React.Children.map(children, (child: any, index) => {
+            return React.cloneElement(child, {
+              width: disable
+                ? widthBreakpoints[getBreakpoint(windowSize[0])!] + "%"
+                : width
+                ? width + "%"
+                : "66%",
+            });
+          })}
+        </Inner>
+        {!disable && !isModal && (
+          <ArrowSingleWrapper direction="RIGHT">
+            <ArrowSingle
+              direction="RIGHT"
+              onClick={() => {
+                updateIndex(activeIndex + 1);
+              }}
+            />
+          </ArrowSingleWrapper>
+        )}
+      </Content>
+
       {!disable && <Dots color={color} length={3} active={activeIndex} />}
     </Wrapper>
   );

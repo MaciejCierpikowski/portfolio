@@ -18,12 +18,36 @@ import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 const Footer = () => {
   const data = {
     image: {
-      width: { isLaptopXL: 594, isLaptopL: 400, isLaptop: 250, isMobile: 150 },
-      height: { isLaptopXL: 200, isLaptopL: 150, isLaptop: 100, isMobile: 50 },
+      width: {
+        isLaptopXL: 594,
+        isLaptopL: 400,
+        isLaptop: 250,
+        isMobileL: 150,
+        isMobileM: 150,
+      },
+      height: {
+        isLaptopXL: 200,
+        isLaptopL: 150,
+        isLaptop: 100,
+        isMobileL: 50,
+        isMobileM: 50,
+      },
     },
     icon: {
-      width: { isLaptopXL: 32, isLaptopL: 24, isLaptop: 17, isMobile: 13 },
-      height: { isLaptopXL: 32, isLaptopL: 24, isLaptop: 17, isMobile: 13 },
+      width: {
+        isLaptopXL: 32,
+        isLaptopL: 24,
+        isLaptop: 17,
+        isMobileL: 13,
+        isMobileM: 13,
+      },
+      height: {
+        isLaptopXL: 32,
+        isLaptopL: 24,
+        isLaptop: 17,
+        isMobileL: 13,
+        isMobileM: 13,
+      },
     },
   };
   const windowSize = useWindowResize();

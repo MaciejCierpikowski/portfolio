@@ -51,7 +51,10 @@ const NavigationMobile = ({}: INavigation) => {
         {menuItems.map((item, index) => (
           <ItemElement
             key={item.name}
-            onClick={() => scrollToSlide(index)}
+            onClick={() => {
+              scrollToSlide(index);
+              handleHamburger();
+            }}
             isNavOpen={isNavOpen}
             index={index + 1}
           >

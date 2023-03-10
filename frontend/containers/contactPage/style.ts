@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 
@@ -18,6 +20,11 @@ export const Wrapper = styled.div`
   form {
     height: 75%;
     width: 100vw;
+
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      height: 100%;
+      width: 60vw;
+    }
   }
 `;
 
@@ -29,7 +36,7 @@ export const FormWrapper = styled.div`
 
   height: 100%;
   width: 100vw;
-  padding: 40px;
+  padding: 40px 40px 80px 40px;
 
   background-color: ${(props) => props.theme.palette.common.orange};
 

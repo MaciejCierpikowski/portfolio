@@ -331,12 +331,12 @@ export const ChildrenInner = styled.div`
 
 export const WrapperModalContent = styled.div``;
 export const Description = styled.p`
-  font: normal normal 300 24px/34px var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   opacity: 1;
   white-space: normal;
   width: 100%;
+  font: normal normal 300 19px/23px var(--font-montserrat);
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 45%;
@@ -345,5 +345,7 @@ export const Description = styled.p`
 
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 16px #00000029;
+
+    font: normal normal 300 24px/34px var(--font-montserrat);
   }
 `;

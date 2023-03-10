@@ -33,13 +33,15 @@ const Navigation = ({}: INavigation) => {
         isLaptopXL: scrollDown ? 150 : 297,
         isLaptopL: scrollDown ? 130 : 267,
         isLaptop: scrollDown ? 110 : 247,
-        isMobile: scrollDown ? 90 : 227,
+        isMobileL: scrollDown ? 90 : 227,
+        isMobileM: scrollDown ? 90 : 227,
       },
       height: {
         isLaptopXL: scrollDown ? 50 : 100,
         isLaptopL: scrollDown ? 40 : 80,
         isLaptop: scrollDown ? 30 : 60,
-        isMobile: scrollDown ? 20 : 40,
+        isMobileL: scrollDown ? 20 : 40,
+        isMobileM: scrollDown ? 20 : 40,
       },
     },
   };
