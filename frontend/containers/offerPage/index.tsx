@@ -22,20 +22,22 @@ import useModal from "../../hooks/useModal";
 import ModalContent from "./modalContent";
 import Button from "../../components/button";
 
-const ModalInner = () => {
+interface IModalInner {
+  currentCard: number;
+}
+
+const ModalInner = ({ currentCard }: IModalInner) => {
   const theme = useTheme();
+
+  const data = [
+    "Jeśli macie trudności z matematyką, a jednocześnie szukacie nauczyciela, który pozwoli Wam zrozumieć trudne zagadnienia w ciekawy sposób, to dobrze trafiliście! Jesteśmy zespołem pasjonatów matematyki i chcielibyśmy pomóc Wam w opanowaniu tej przedmiotu.",
+    "Nasza nauczycielka skutecznie pomoże Wam w odrabianiu prac domowych, przyswojeniu wiedzy oraz rozwiązaniu trudnych zadań. Jej podejście do nauki jest ciekawe, przystępne i opiera się na rozumieniu matematycznych zasad i związków.",
+    "Jeśli macie trudności z matematyką, a jednocześnie szukacie nauczyciela, który pozwoli Wam zrozumieć trudne zagadnienia w ciekawy sposób, to dobrze trafiliście! Jesteśmy zespołem pasjonatów matematyki i chcielibyśmy pomóc Wam w opanowaniu tej przedmiotu.",
+  ];
 
   return (
     <ModalContent>
-      <Description>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        {/* clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed diam voluptua. */}
-      </Description>
+      <Description>{data[currentCard]}</Description>
       <Button
         sizes={{
           widthMobile: 320,
@@ -111,7 +113,7 @@ const OfferPage = () => {
           >
             {index === 0 && isLaptop && (
               <Modal isOpen={isOpen} toggle={toggle}>
-                <ModalInner />
+                <ModalInner currentCard={currentCard} />
               </Modal>
             )}
             <CardWrapper
@@ -153,7 +155,9 @@ const OfferPage = () => {
               >
                 {item.text}
               </Text>
-              {isOpen && !isLaptop && index === currentCard && <ModalInner />}
+              {isOpen && !isLaptop && index === currentCard && (
+                <ModalInner currentCard={currentCard} />
+              )}
             </CardWrapper>
           </CarouselItem>
         ))}
