@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 37vh;
-  height: calc(var(--vh, 1vh) * 37);
+  height: 400px;
   width: 100%;
 
   background: ${(props) => props.theme.palette.common.black};
@@ -11,7 +10,7 @@ export const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
-  padding: 30px 0px 60px 0;
+  padding: 30px 0px 30px 0;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     flex-direction: row;

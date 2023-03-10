@@ -14,12 +14,17 @@ export const Wrapper = styled.div`
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     flex-direction: row;
   }
+
+  form {
+    height: 75%;
+    width: 100vw;
+  }
 `;
 
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 
   height: 100%;
@@ -30,12 +35,18 @@ export const FormWrapper = styled.div`
 
   button {
     align-self: center;
-    margin-top: 40px;
+    margin-top: 20px;
+
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      margin-top: 40px;
+      justify-content: center;
+    }
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 60vw;
     padding: 140px;
+    height: 100%;
   }
 `;
 
@@ -44,6 +55,8 @@ export const Header = styled.p`
 
   letter-spacing: 0px;
   color: ${(props) => props.theme.palette.common.black};
+  padding: 0;
+  margin: 0;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     font: normal normal 300 56px/68px var(--font-montserrat);
@@ -68,12 +81,13 @@ export const HeadlineWrapper = styled.div`
   order: -1;
 
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 25%;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     order: 0;
     align-self: center;
+    width: 40vw;
   }
 `;
 
