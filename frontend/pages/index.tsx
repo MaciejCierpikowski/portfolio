@@ -63,10 +63,10 @@ const Home: NextPage = () => {
         <section>
           <Feedback />
         </section>
-        <section>
+        {/* <section>
           <ContactPage />
-        </section>
-        {/* <LandscapePage display={orientation === "landscape"} /> */}
+        </section> */}
+        <LandscapePage display={orientation === "landscape"} />
         <Footer />
       </FullPageSlider>
     </div>
