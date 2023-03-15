@@ -12,6 +12,10 @@ export const defaultTheme: DefaultTheme = {
     laptopXL: 1920,
     desktop: 2560,
   },
+  sizesHeight: {
+    heightS: 669,
+    heightL: 844,
+  },
   palette: {
     common: {
       red: "#EC90A7",

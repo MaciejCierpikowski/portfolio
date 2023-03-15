@@ -40,6 +40,17 @@ export const InputElement = styled.input<Props>`
 
     font: normal normal 300 24px/29px var(--font-montserrat);
   }
+
+  @media only screen and (min-height: ${(props) =>
+      props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+      props.theme.sizesHeight.heightL}px) {
+    margin: 10px 0;
+  }
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    margin: 5px 0;
+    padding: 12px 0;
+  }
 `;
 
 export const TextAreaElement = styled.textarea<Props>`
@@ -72,5 +83,16 @@ export const TextAreaElement = styled.textarea<Props>`
     height: 70px;
 
     font: normal normal 300 24px/29px var(--font-montserrat);
+  }
+  @media only screen and (min-height: ${(props) =>
+      props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+      props.theme.sizesHeight.heightL}px) {
+    margin: 10px 0;
+  }
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    margin: 5px 0;
+    padding: 0px 0;
+    height: 30px;
   }
 `;

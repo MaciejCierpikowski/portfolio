@@ -48,6 +48,9 @@ export const FormWrapper = styled.div`
       margin-top: 40px;
       justify-content: center;
     }
+    @media (max-height: ${(props) => props.theme.sizesHeight.heightL}px) {
+      margin-top: 10px;
+    }
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
@@ -67,6 +70,10 @@ export const Header = styled.p`
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     font: normal normal 300 56px/68px var(--font-montserrat);
+  }
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightL}px) {
+    font: normal normal 300 28px/35px var(--font-montserrat);
   }
 `;
 

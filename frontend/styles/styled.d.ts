@@ -18,6 +18,10 @@ declare module "styled-components" {
       laptopXL: number;
       desktop: number;
     };
+    sizesHeight: {
+      heightS: number;
+      heightL: number;
+    };
     palette: {
       common: {
         red: string;

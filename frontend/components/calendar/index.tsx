@@ -19,6 +19,10 @@ import {
   WrapperGrid,
   Background,
   HeadlineWrapper,
+  Legend,
+  CellText,
+  LegendInner,
+  Line,
 } from "./style";
 import ArrowSingle from "../arrowSingle";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
@@ -67,7 +71,11 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
 
   return (
     <Wrapper>
-      <ArrowSingle onClick={prevMonth} direction="LEFT" />
+      <ArrowSingle
+        className="arrow-left"
+        onClick={prevMonth}
+        direction="LEFT"
+      />
       <HeadlineWrapper>
         <Headline>
           {format(value, "LLLL yyyy", {
@@ -110,10 +118,33 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
               <Cell key={index} />
             )
           )}
+          <Line />
         </WrapperGrid>
+        <Legend>
+          <LegendInner>
+            <Cell inLegend>27</Cell>
+            <CellText>wolne</CellText>
+          </LegendInner>
+          <LegendInner>
+            <Cell inLegend border>
+              27
+            </Cell>
+            <CellText>częściowo zajęte</CellText>
+          </LegendInner>
+          <LegendInner>
+            <Cell inLegend fill>
+              27
+            </Cell>
+            <CellText>zajęte</CellText>
+          </LegendInner>
+        </Legend>
       </WrapperCalendar>
       <Background />
-      <ArrowSingle onClick={nextMonth} direction="RIGHT" />
+      <ArrowSingle
+        className="arrow-right"
+        onClick={nextMonth}
+        direction="RIGHT"
+      />
     </Wrapper>
   );
 };

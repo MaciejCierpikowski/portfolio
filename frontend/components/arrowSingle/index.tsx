@@ -5,11 +5,12 @@ import { Wrapper } from "./style";
 interface IArrow {
   direction: "LEFT" | "RIGHT";
   onClick: () => void;
+  className?: string;
 }
 
-const ArrowSingle = ({ direction, onClick }: IArrow) => {
+const ArrowSingle = ({ direction, onClick, className }: IArrow) => {
   return (
-    <Wrapper direction={direction} onClick={onClick}>
+    <Wrapper className={className} direction={direction} onClick={onClick}>
       <span></span>
     </Wrapper>
   );

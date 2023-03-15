@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  
+
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 
