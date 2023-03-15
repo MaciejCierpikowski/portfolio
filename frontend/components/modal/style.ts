@@ -1,10 +1,11 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 interface Props {
   isOpen: boolean;
+  isOutOfContent?: boolean;
 }
 
-const fadeIn = () =>
+const fadeInOutOfContent = () =>
   keyframes`
     0% {
         transform: translateX(-200vw);
@@ -15,7 +16,7 @@ const fadeIn = () =>
 
 `;
 
-const fadeOut = () =>
+const fadeOutOutOfContent = () =>
   keyframes`
     100% {
       transform: translateX(-200vw);
@@ -25,18 +26,56 @@ const fadeOut = () =>
     }
 `;
 
+const fadeIn = () =>
+  keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+
+`;
+
+const fadeOut = () =>
+  keyframes`
+    100% {
+      opacity: 0;
+    }
+    0% {
+      opacity: 1;
+    }
+`;
+
 export const Wrapper = styled.div<Props>`
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 16px #00000029;
   opacity: 1;
-  width: 86%;
   position: absolute;
-  height: 110%;
-  top: -40px;
-  left: 50%;
 
-  animation: ${(props) => (props.isOpen ? fadeIn() : fadeOut())} 0.6s;
-  animation-fill-mode: both;
+  ${({ isOutOfContent, isOpen }) =>
+    isOutOfContent
+      ? css`
+          width: 86%;
+          height: 110%;
+          top: -40px;
+          left: 50%;
+
+          animation: ${isOpen ? fadeInOutOfContent() : fadeOutOutOfContent()}
+            0.6s;
+          animation-fill-mode: both;
+        `
+      : css`
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          pointer-events: ${isOpen ? "initial" : "none"};
+
+          animation: ${isOpen ? fadeIn() : fadeOut()} 0.6s;
+          animation-fill-mode: both;
+        `}
 `;
 
 export const Close = styled.div`

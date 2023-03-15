@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface Props {
   direction?: "LEFT" | "RIGHT";
@@ -44,11 +44,11 @@ export const Inner = styled.div<Props>`
 
   ${({ disable }) =>
     disable &&
-    `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `}
+    css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     height: 100%;
@@ -62,14 +62,14 @@ export const ArrowSingleWrapper = styled.div<Props>`
 
   ${({ direction }) =>
     direction === "LEFT" &&
-    `
-    left: 18px;
-  `}
+    css`
+      left: 18px;
+    `}
   ${({ direction }) =>
     direction === "RIGHT" &&
-    `
-    right: 18px;
-  `}
+    css`
+      right: 18px;
+    `}
 `;
 
 export const WrapperDots = styled.div`

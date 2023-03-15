@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface Props {
   left?: boolean;
@@ -85,15 +85,15 @@ export const ImageWrapper = styled.div<Props>`
 
   ${({ right }) =>
     right &&
-    `
+    css`
       right: 6vw;
-  `}
+    `}
 
   ${({ left }) =>
     left &&
-    `
+    css`
       left: 9vw;
-  `}
+    `}
 `;
 
 export const FeedbackWrapper = styled.div`

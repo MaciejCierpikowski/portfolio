@@ -6,12 +6,13 @@ interface IModal {
   children: ReactNode;
   isOpen: boolean;
   toggle: () => void;
+  isOutOfContent?: boolean;
 }
 
-const Modal = ({ children, isOpen, toggle }: IModal) => {
+const Modal = ({ children, isOpen, toggle, isOutOfContent = true }: IModal) => {
   return (
-    <Wrapper isOpen={isOpen}>
-      <Background />
+    <Wrapper isOpen={isOpen} isOutOfContent={isOutOfContent}>
+      {isOutOfContent && <Background />}
       <Close onClick={toggle} />
       {children}
     </Wrapper>

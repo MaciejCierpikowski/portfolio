@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface Props {
   inLegend?: boolean;
@@ -68,6 +68,7 @@ export const WrapperCalendar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 
   width: 80%;
   padding: 0;
@@ -131,23 +132,23 @@ export const CellItem = styled.div<Props>`
 
   ${({ border, theme }) =>
     border &&
-    `
-      border: 3px solid  ${theme.palette.common.orange};
-  `}
+    css`
+      border: 3px solid ${theme.palette.common.orange};
+    `}
 
   ${({ fill, theme }) =>
     fill &&
-    `
-     background: ${theme.palette.common.orange} 0% 0% no-repeat padding-box;
-  `}
+    css`
+      background: ${theme.palette.common.orange} 0% 0% no-repeat padding-box;
+    `}
 
   ${({ inLegend }) =>
     inLegend &&
-    `
+    css`
       width: 32px;
       height: 40px;
       font: normal normal bold 20px/24px var(--font-montserrat);
-  `}
+    `}
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 60px;
@@ -158,11 +159,11 @@ export const CellItem = styled.div<Props>`
 
     ${({ inLegend }) =>
       inLegend &&
-      `
+      css`
         width: 51px;
         height: 35px;
         font: normal normal 300 25px/30px var(--font-montserrat);
-    `}
+      `}
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
@@ -174,11 +175,11 @@ export const CellItem = styled.div<Props>`
 
     ${({ inLegend }) =>
       inLegend &&
-      `
+      css`
         width: 51px;
         height: 35px;
         font: normal normal 300 25px/30px var(--font-montserrat);
-    `}
+      `}
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
@@ -190,11 +191,11 @@ export const CellItem = styled.div<Props>`
 
     ${({ inLegend }) =>
       inLegend &&
-      `
+      css`
         width: 61px;
         height: 45px;
         font: normal normal 300 25px/30px var(--font-montserrat);
-    `}
+      `}
   }
 `;
 

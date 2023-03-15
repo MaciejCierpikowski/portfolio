@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 interface Props {
   color?: string;
@@ -151,9 +151,9 @@ export const CardWrapper = styled.div<Props>`
   ${({ isAnimation, isOpen }) =>
     !isAnimation &&
     isOpen &&
-    `
-    z-index: -1;
-  `}
+    css`
+      z-index: -1;
+    `}
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     padding-top: 0px;
@@ -185,11 +185,11 @@ export const Card = styled.div<Props>`
 
       ${({ isModal }) =>
         isModal &&
-        `
+        css`
           transform: scale(1.3, 2.1);
           top: 16%;
           transition: transform 0.6s;
-      `}
+        `}
     }
   }
 

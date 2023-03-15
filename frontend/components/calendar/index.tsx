@@ -27,6 +27,9 @@ import {
 import ArrowSingle from "../arrowSingle";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 import { useWindowResize } from "../../hooks/useWindowResize";
+import useModal from "../../hooks/useModal";
+import Modal from "../modal";
+import ModalContent from "./ModalContent";
 
 interface ICalendar {
   value?: Date;
@@ -34,6 +37,8 @@ interface ICalendar {
 }
 
 const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
+  const { isOpen, toggle } = useModal();
+
   const startDate = startOfMonth(value);
   const endDate = endOfMonth(value);
   const numDays = differenceInDays(endDate, startDate) + 1;
@@ -47,6 +52,8 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
   const handleClickDate = (index: number) => {
     const date = setDate(value, index);
     onChange(date);
+
+    toggle();
   };
 
   const data = {
@@ -91,6 +98,13 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
       </HeadlineWrapper>
 
       <WrapperCalendar>
+        <Modal isOpen={isOpen} toggle={toggle} isOutOfContent={false}>
+          <ModalContent
+            date={format(value, "d MMMM (EEEE)", {
+              locale: pl,
+            })}
+          />
+        </Modal>
         <WrapperGrid>
           {Array.from({ length: prefixDays === -1 ? 6 : prefixDays }).map(
             (_, index) => (
