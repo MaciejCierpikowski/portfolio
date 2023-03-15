@@ -1,10 +1,25 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  overflow: scroll;
   width: 100%;
   height: 100%;
   text-align: center;
+`;
+
+export const Inner = styled.div`
+  overflow: scroll;
+  width: 100%;
+  height: 70%;
+`;
+
+export const Text = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font: normal normal 300 17px/20px var(--font-montserrat);
+  letter-spacing: 0px;
+  color: ${(props) => props.theme.palette.common.black};
 `;
 
 export const Header = styled.p`
