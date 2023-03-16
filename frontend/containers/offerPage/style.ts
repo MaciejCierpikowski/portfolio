@@ -332,6 +332,7 @@ export const ChildrenInner = styled.div`
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     height: 100%;
+    width: 100%;
 
     top: 50%;
     left: 50%;
@@ -339,7 +340,11 @@ export const ChildrenInner = styled.div`
     align-items: flex-end;
 
     button {
-      margin-right: 13%;
+      position: absolute;
+
+      left: 72%;
+      top: 80%;
+      transform: translate(-50%, -50%);
     }
   }
 `;

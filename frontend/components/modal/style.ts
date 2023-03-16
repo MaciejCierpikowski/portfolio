@@ -80,8 +80,8 @@ export const Wrapper = styled.div<Props>`
 
 export const Close = styled.div`
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: 10px;
+  top: 10px;
   width: 35px;
   height: 35px;
   z-index: 2;
@@ -106,8 +106,8 @@ export const Close = styled.div`
 export const Background = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   position: absolute;
-  top: -115px;
+  top: -150px;
+  height: 150px;
   left: -8vw;
   width: 101vw;
-  height: 10vh;
 `;
