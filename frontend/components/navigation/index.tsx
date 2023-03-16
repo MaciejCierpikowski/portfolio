@@ -1,7 +1,8 @@
 import React from "react";
-
-import { ItemElement, Wrapper } from "./style";
 import Image from "next/image";
+
+import { ImageWrapper, ItemElement, Wrapper } from "./style";
+
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import animatedScrollTo from "../../utils/animated-scroll-to";
@@ -43,20 +44,31 @@ const Navigation = ({}: INavigation) => {
         isMobileL: scrollDown ? 20 : 40,
         isMobileM: scrollDown ? 20 : 40,
       },
+      widthWithoutScrollDown: {
+        isLaptopXL: 297,
+        isLaptopL: 267,
+        isLaptop: 247,
+        isMobileL: 227,
+        isMobileM: 227,
+      },
     },
   };
 
   return (
     <Wrapper isFixed={scrollDown}>
-      <Image
-        alt="logo"
-        src="/assets/logo.svg"
-        width={data.logo.width[getBreakpoint(windowSize[0])!]}
-        height={data.logo.height[getBreakpoint(windowSize[0])!]}
-      />
+      <ImageWrapper
+        width={data.logo.widthWithoutScrollDown[getBreakpoint(windowSize[0])!]}
+      >
+        <Image
+          alt="logo"
+          src="/assets/logo.svg"
+          width={data.logo.width[getBreakpoint(windowSize[0])!]}
+          height={data.logo.height[getBreakpoint(windowSize[0])!]}
+        />
+      </ImageWrapper>
+
       {menuItems.map((item, index) => (
         <ItemElement
-          style={index === 0 && scrollDown ? { marginLeft: "100px" } : {}}
           isFixed={scrollDown}
           key={item.name}
           onClick={() => scrollToSlide(index)}

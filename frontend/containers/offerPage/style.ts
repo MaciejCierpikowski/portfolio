@@ -186,8 +186,8 @@ export const Card = styled.div<Props>`
       ${({ isModal }) =>
         isModal &&
         css`
-          transform: scale(1.3, 2.1);
-          top: 16%;
+          transform: scale(1.3, 2.5);
+          top: 28%;
           transition: transform 0.6s;
         `}
     }
@@ -227,6 +227,8 @@ export const Card = styled.div<Props>`
 `;
 
 export const Headline = styled.h1<Props>`
+  font: normal normal bold 29px/35px var(--font-montserrat);
+
   color: ${(props) => props.color};
   text-align: left;
   margin: 15px 0 0 0;
@@ -246,6 +248,18 @@ export const Headline = styled.h1<Props>`
         (props.isOpen ? fadeInText(props.index!) : fadeOutText(props.index!))}
       0.6s;
     animation-fill-mode: both;
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    font: normal normal bold 34px/47px var(--font-montserrat);
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
+    font: normal normal bold 46px/57px var(--font-montserrat);
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
+    font: normal normal bold 64px/78px var(--font-montserrat);
   }
 `;
 
@@ -307,17 +321,18 @@ export const Text = styled.p<Props>`
 
 export const ChildrenInner = styled.div`
   position: absolute;
-  width: 100%;
-  bottom: -22vh;
+  width: 110%;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    height: 100%;
+
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

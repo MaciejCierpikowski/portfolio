@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 interface Props {
-  isFixed: boolean;
+  isFixed?: boolean;
+  width?: number;
 }
 
 export const Wrapper = styled.ul<Props>`
@@ -12,7 +13,8 @@ export const Wrapper = styled.ul<Props>`
   display: flex;
   align-items: center;
   list-style: none;
-  height: ${(props) => (props.isFixed ? 9.26 : 18.5185185)}%;
+  min-height: ${(props) => (props.isFixed ? 9.26 : 18.5185185)}%;
+  transition: min-height 0.6s;
 
   padding-left: 40px;
   margin: 0;
@@ -27,37 +29,33 @@ export const Wrapper = styled.ul<Props>`
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
     padding-left: 140px;
   }
+
+  img {
+    transition: width 0.6s;
+  }
+`;
+
+export const ImageWrapper = styled.div<Props>`
+  width: ${(props) => props.width}px;
 `;
 
 export const ItemElement = styled.li<Props>`
   color: ${(props) => props.theme.palette.common.green};
-  font: ${(props) =>
-    props.isFixed
-      ? "normal normal bold 25px/30px var(--font-montserrat)"
-      : "normal normal bold 36px/44px var(--font-montserrat)"};
+  font: normal normal bold 36px/44px var(--font-montserrat);
   letter-spacing: 0px;
-  padding: 0 ${(props) => (props.isFixed ? 50 : 25)}px;
+  padding: 0 50px;
 
   cursor: pointer;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    font: ${(props) =>
-      props.isFixed
-        ? "normal normal bold 10px/15px var(--font-montserrat)"
-        : "normal normal bold 21px/29px var(--font-montserrat)"};
+    font: normal normal bold 21px/29px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
-    font: ${(props) =>
-      props.isFixed
-        ? "normal normal bold 15px/20px var(--font-montserrat)"
-        : "normal normal bold 26px/34px var(--font-montserrat)"};
+    font: normal normal bold 26px/34px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
-    font: ${(props) =>
-      props.isFixed
-        ? "normal normal bold 25px/30px var(--font-montserrat)"
-        : "normal normal bold 36px/44px var(--font-montserrat)"};
+    font: normal normal bold 36px/44px var(--font-montserrat);
   }
 `;
