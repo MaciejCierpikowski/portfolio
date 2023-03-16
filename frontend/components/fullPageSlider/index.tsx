@@ -48,34 +48,24 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
 
   useEffect(() => {
     if (currentDevice.isMobile()) {
-      // document.addEventListener("touchmove", (event) => onTouchMove(event), {
-      //   passive: false,
-      // });
-      // document.addEventListener("touchstart", (event) => onTouchStart(event));
-      // document.getElementById("additional-scroll")!.addEventListener(
-      //   "touchmove",
-      //   function () {
-      //     if (!isOnScrolledElement.current) {
-      //       console.log('tetedsad');
-      //       document.removeEventListener("touchmove", (event) => onTouchMove(event), false);
-      //       document.removeEventListener("touchstart", (event) => onTouchStart(event), false);
-      //     }
-      //     isOnScrolledElement.current = true;
-      //   },
-      //   false
-      // );
-      // document.getElementById("additional-scroll")!.addEventListener(
-      //   "touchend",
-      //   function () {
-      //     if (isOnScrolledElement.current) {
-      //       document.addEventListener("touchmove", (event) => onTouchMove(event), {
-      //         passive: false,
-      //       });
-      //       document.addEventListener("touchstart", (event) => onTouchStart(event));          }
-      //     isOnScrolledElement.current = false;
-      //   },
-      //   false
-      // );
+      document.addEventListener("touchmove", (event) => onTouchMove(event), {
+        passive: false,
+      });
+      document.addEventListener("touchstart", (event) => onTouchStart(event));
+      document.getElementById("additional-scroll")!.addEventListener(
+        "touchmove",
+        function () {
+          isOnScrolledElement.current = true;
+        },
+        false
+      );
+      document.getElementById("additional-scroll")!.addEventListener(
+        "touchend",
+        function () {
+          isOnScrolledElement.current = false;
+        },
+        false
+      );
     } else {
       document.addEventListener("wheel", onScroll, { passive: false });
 
@@ -135,6 +125,9 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
   };
 
   const onTouchMove = (event: any) => {
+    if (isOnScrolledElement.current) {
+      return;
+    }
     event.preventDefault();
     const touchEnd = event.changedTouches[0].clientY;
     if (!isScrollPending.current && !isScrolledAlready.current) {
