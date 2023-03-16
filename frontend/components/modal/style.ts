@@ -86,6 +86,8 @@ export const Close = styled.div`
   height: 35px;
   z-index: 2;
 
+  cursor: pointer;
+
   &:before,
   &:after {
     position: absolute;
@@ -107,7 +109,7 @@ export const Background = styled.div`
   background: #ffffff 0% 0% no-repeat padding-box;
   position: absolute;
   top: -150px;
-  height: 150px;
+  height: 147px;
   left: -8vw;
   width: 101vw;
 `;

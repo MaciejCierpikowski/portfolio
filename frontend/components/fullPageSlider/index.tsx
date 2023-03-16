@@ -22,6 +22,8 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
 
   const isScrollPending = React.useRef<boolean>(false);
   const isScrolledAlready = React.useRef<boolean>(false);
+  const isOnScrolledElement = React.useRef<boolean>(false);
+
   const touchStart = React.useRef<number>(0);
 
   const slides = React.useRef<Array<number>>([]);
@@ -46,12 +48,58 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
 
   useEffect(() => {
     if (currentDevice.isMobile()) {
-      document.addEventListener("touchmove", (event) => onTouchMove(event), {
-        passive: false,
-      });
-      document.addEventListener("touchstart", (event) => onTouchStart(event));
+      // document.addEventListener("touchmove", (event) => onTouchMove(event), {
+      //   passive: false,
+      // });
+      // document.addEventListener("touchstart", (event) => onTouchStart(event));
+      // document.getElementById("additional-scroll")!.addEventListener(
+      //   "touchmove",
+      //   function () {
+      //     if (!isOnScrolledElement.current) {
+      //       console.log('tetedsad');
+      //       document.removeEventListener("touchmove", (event) => onTouchMove(event), false);
+      //       document.removeEventListener("touchstart", (event) => onTouchStart(event), false);
+      //     }
+      //     isOnScrolledElement.current = true;
+      //   },
+      //   false
+      // );
+      // document.getElementById("additional-scroll")!.addEventListener(
+      //   "touchend",
+      //   function () {
+      //     if (isOnScrolledElement.current) {
+      //       document.addEventListener("touchmove", (event) => onTouchMove(event), {
+      //         passive: false,
+      //       });
+      //       document.addEventListener("touchstart", (event) => onTouchStart(event));          }
+      //     isOnScrolledElement.current = false;
+      //   },
+      //   false
+      // );
     } else {
       document.addEventListener("wheel", onScroll, { passive: false });
+
+      document.getElementById("additional-scroll")!.addEventListener(
+        "mouseover",
+        function () {
+          if (!isOnScrolledElement.current) {
+            document.removeEventListener("wheel", onScroll, false); // Fails
+          }
+          isOnScrolledElement.current = true;
+        },
+        false
+      );
+
+      document.getElementById("additional-scroll")!.addEventListener(
+        "mouseleave",
+        function () {
+          if (isOnScrolledElement.current) {
+            document.addEventListener("wheel", onScroll, { passive: false });
+          }
+          isOnScrolledElement.current = false;
+        },
+        false
+      );
     }
   }, []);
 

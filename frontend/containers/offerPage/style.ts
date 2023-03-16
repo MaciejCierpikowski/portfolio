@@ -164,6 +164,8 @@ export const Card = styled.div<Props>`
   opacity: 1;
   position: relative;
 
+  cursor: pointer;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -334,7 +336,7 @@ export const ChildrenInner = styled.div`
     height: 100%;
     width: 100%;
 
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     align-items: flex-end;
@@ -343,7 +345,7 @@ export const ChildrenInner = styled.div`
       position: absolute;
 
       left: 72%;
-      top: 80%;
+      top: 90%;
       transform: translate(-50%, -50%);
     }
   }

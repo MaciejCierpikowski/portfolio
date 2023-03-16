@@ -3,13 +3,16 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+
   text-align: center;
 `;
 
 export const Inner = styled.div`
-  overflow: scroll;
   width: 100%;
   height: 70%;
+
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const Text = styled.div`
