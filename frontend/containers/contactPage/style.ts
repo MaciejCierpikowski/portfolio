@@ -60,6 +60,10 @@ export const FormWrapper = styled.div`
   }
 `;
 
+export const InputWrapper = styled.div`
+  position: relative;
+`;
+
 export const Header = styled.p`
   font: normal normal 300 32px/39px var(--font-montserrat);
 

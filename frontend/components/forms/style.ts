@@ -59,11 +59,15 @@ export const TextAreaElement = styled.textarea<Props>`
   border-top: 0;
   border-left: 0;
   border-right: 0;
+
   height: 50px;
   width: 100%;
+  margin: 20px 0;
+
+  resize: none;
+
   color: ${(props) => props.theme.palette.common.white};
   font: normal normal 300 20px/24px var(--font-montserrat);
-  margin: 20px 0;
 
   &::placeholder {
     color: ${(props) => props.theme.palette.common.white};
@@ -94,5 +98,18 @@ export const TextAreaElement = styled.textarea<Props>`
     margin: 5px 0;
     padding: 0px 0;
     height: 30px;
+  }
+`;
+
+export const ErrorWrapper = styled.p`
+  position: absolute;
+  bottom: -20px;
+  font-family: var(--font-montserrat);
+  font-weight: 300;
+  color: darkred;
+  white-space: nowrap;
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightL}px) {
+    right: 0;
+    bottom: 0;
   }
 `;
