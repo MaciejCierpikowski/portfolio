@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.footer`
   height: 400px;
   width: 100%;
 
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const SocialItem = styled.div`
+export const SocialItem = styled.a`
   background: ${(props) => props.theme.palette.common.white};
   border-radius: 50%;
 

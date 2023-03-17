@@ -26,7 +26,7 @@ const ModalContent = ({ date }: IModalContent) => {
         ))}
       </Inner>
       <Text>
-        <AddButton />
+        <AddButton small />
         zapisz się na zajęcia
       </Text>
     </Wrapper>

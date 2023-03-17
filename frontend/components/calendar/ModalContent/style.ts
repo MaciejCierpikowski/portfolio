@@ -1,8 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface Props {
+  small?: boolean;
+}
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 92%;
 
   text-align: center;
 `;
@@ -78,7 +82,7 @@ export const Frame = styled.div`
   }
 `;
 
-export const AddButton = styled.div`
+export const AddButton = styled.div<Props>`
   position: relative;
   width: 35px;
   height: 35px;
@@ -109,4 +113,29 @@ export const AddButton = styled.div`
   &:after {
     transform: rotate(0deg);
   }
+
+  ${({ small }) =>
+    small &&
+    css`
+      width: 15px;
+      height: 15px;
+
+      @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+        width: 25px;
+        height: 25px;
+      }
+
+      &:before,
+      &:after {
+        left: 10px;
+
+        height: 15px;
+        width: 2px;
+
+        @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+          height: 25px;
+          width: 4px;
+        }
+      }
+    `}
 `;

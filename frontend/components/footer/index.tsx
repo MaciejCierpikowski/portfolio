@@ -14,6 +14,9 @@ import {
 } from "./style";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
+import animatedScrollTo from "../../utils/animated-scroll-to";
 
 const Footer = () => {
   const data = {
@@ -51,14 +54,26 @@ const Footer = () => {
     },
   };
   const windowSize = useWindowResize();
+  const scrollDown = useAppSelector((state) => state.general.scrollDown);
+  const dispatch = useAppDispatch();
+
+  const scrollToSlide = (index: number) => {
+    if (index === 0) {
+      dispatch(toggleScrollDown(false));
+    } else {
+      !scrollDown && dispatch(toggleScrollDown(true));
+    }
+    dispatch(setActiveSlide(index));
+    animatedScrollTo(index * windowSize[1], () => {});
+  };
 
   return (
     <Wrapper>
       <SocialMedia>
         <SocialIcons>
-          <SocialItem>
+          <SocialItem href="tel:533267344">
             <Image
-              alt="instagram"
+              alt="phone"
               src="/assets/phone.svg"
               width={data.icon.width[getBreakpoint(windowSize[0])!]}
               height={data.icon.height[getBreakpoint(windowSize[0])!]}
@@ -72,9 +87,9 @@ const Footer = () => {
               height={data.icon.height[getBreakpoint(windowSize[0])!]}
             />
           </SocialItem>
-          <SocialItem>
+          <SocialItem href="mailto:julita.klocek1@gmail.com">
             <Image
-              alt="instagram"
+              alt="mail"
               src="/assets/mail.svg"
               width={data.icon.width[getBreakpoint(windowSize[0])!]}
               height={data.icon.height[getBreakpoint(windowSize[0])!]}
@@ -93,11 +108,11 @@ const Footer = () => {
         height={data.image.height[getBreakpoint(windowSize[0])!]}
       />
       <Menu>
-        <Item>Główna</Item>
-        <Item>Oferta</Item>
-        <Item>Harmonogram</Item>
-        <Item>Opinie</Item>
-        <Item>Kontakt</Item>
+        <Item onClick={() => scrollToSlide(0)}>Główna</Item>
+        <Item onClick={() => scrollToSlide(1)}>Oferta</Item>
+        <Item onClick={() => scrollToSlide(2)}>Harmonogram</Item>
+        <Item onClick={() => scrollToSlide(3)}>Opinie</Item>
+        <Item onClick={() => scrollToSlide(4)}>Kontakt</Item>
       </Menu>
     </Wrapper>
   );

@@ -35,6 +35,10 @@ export const Wrapper = styled.div<Props>`
     margin: 40px 40px 0 40px;
   }
 
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    height: 70px;
+  }
+
   span {
     display: block;
     width: 15px;

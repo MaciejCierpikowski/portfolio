@@ -18,6 +18,10 @@ export const Wrapper = styled.div`
 
   padding-bottom: 120px;
 
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    padding-bottom: 90px;
+  }
+
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     flex-direction: row;
     justify-content: center;
@@ -30,12 +34,20 @@ export const Wrapper = styled.div`
       position: absolute;
       left: 6%;
       bottom: 140px;
+
+      @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+        bottom: 110px;
+      }
     }
 
     div.arrow-right {
       position: absolute;
       right: 6%;
       bottom: 140px;
+
+      @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+        bottom: 110px;
+      }
     }
   }
 `;
@@ -67,10 +79,11 @@ export const Background = styled.div`
 export const WrapperCalendar = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 
   width: 80%;
+  height: 72%;
   padding: 0;
 
   background: ${(props) => props.theme.palette.common.white} 0% 0% no-repeat
@@ -81,6 +94,10 @@ export const WrapperCalendar = styled.div`
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 70%;
     height: 90%;
+
+    @media (max-height: ${(props) => props.theme.sizesHeight.heightL}px) {
+      height: 85%;
+    }
 
     padding: 50px 125px;
     order: 0;
@@ -100,14 +117,21 @@ export const WrapperGrid = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 6px;
-  height: 96%;
-  position: absolute;
-  right: 29%;
+  width: 3px;
+  height: 100%;
 
-  top: 15px;
+  position: absolute;
+
+  left: 70%;
+  top: 0px;
+
   background: ${(props) => props.theme.palette.common.orange} 0% 0% no-repeat
     padding-box;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    width: 5px;
+    left: 72%;
+  }
 `;
 
 export const CellItem = styled.div<Props>`
@@ -127,8 +151,16 @@ export const CellItem = styled.div<Props>`
   opacity: 1;
 
   margin: 3px;
-  width: 40px;
+  width: 30px;
   height: 50px;
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    height: 37px;
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+    width: 40px;
+  }
 
   ${({ border, theme }) =>
     border &&
@@ -170,6 +202,11 @@ export const CellItem = styled.div<Props>`
     width: 90px;
     height: 80px;
     margin: 10px;
+
+    @media (max-height: ${(props) => props.theme.sizesHeight.heightL}px) {
+      width: 80px;
+      height: 65px;
+    }
 
     font: normal normal 300 40px/50px var(--font-montserrat);
 
@@ -216,7 +253,11 @@ export const LegendInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
+  margin: 0 0;
+
+  @media (min-width: ${(props) => props.theme.sizes.mobileM}px) {
+    margin: 0 10px;
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     margin: 0 40px;
@@ -240,14 +281,19 @@ export const HeadlineWrapper = styled.div`
 
   img {
     align-self: end;
-    margin-top: -25px;
     flex-direction: column;
+    @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
+      margin-top: -15px;
+    }
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 300px;
-    margin: 0 100px 0 0;
+    margin: 0 50px 0 0;
     flex-direction: column;
+  }
+  @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
+    margin: 0 100px 0 0;
   }
 `;
 
