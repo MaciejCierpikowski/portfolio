@@ -114,11 +114,12 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
 
     const scrollDown = (event.wheelDelta || -event.deltaY || -event.detail) < 0;
     let activeSlideTemp = activeSlideRef.current;
-
-    if (scrollDown) {
-      setActiveSlideState(activeSlideTemp++);
-    } else {
-      setActiveSlideState(activeSlideTemp--);
+    if (!isScrollPending.current) {
+      if (scrollDown) {
+        setActiveSlideState(activeSlideTemp++);
+      } else {
+        setActiveSlideState(activeSlideTemp--);
+      }
     }
 
     scrollToSlide(activeSlideTemp);

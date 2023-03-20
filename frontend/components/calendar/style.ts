@@ -154,6 +154,12 @@ export const CellItem = styled.div<Props>`
   width: 30px;
   height: 50px;
 
+  @media only screen and (min-height: ${(props) =>
+      props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+      props.theme.sizesHeight.heightL}px) {
+    height: 45px;
+  }
+
   @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
     height: 37px;
   }

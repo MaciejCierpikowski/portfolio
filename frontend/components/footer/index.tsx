@@ -87,7 +87,7 @@ const Footer = () => {
               height={data.icon.height[getBreakpoint(windowSize[0])!]}
             />
           </SocialItem>
-          <SocialItem href="mailto:julita.klocek1@gmail.com">
+          <SocialItem href="mailto:julita.klocek@interia.pl">
             <Image
               alt="mail"
               src="/assets/mail.svg"
