@@ -24,6 +24,7 @@ import Button from "../../components/button";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { setActiveSlide, toggleScrollDown } from "../../store/generalState";
 import animatedScrollTo from "../../utils/animated-scroll-to";
+import Script from "next/script";
 
 interface IModalInner {
   currentCard: number;
@@ -153,66 +154,81 @@ const OfferPage = () => {
   ];
 
   return (
-    <Wrapper>
-      <MainHeadline text="Oferta" />
-      <Carousel isModal={isOpen && !isLaptop} disable={isLaptop}>
-        {data.map((item, index) => (
-          <CarouselItem key={index} disable={isLaptop}>
-            {index === 0 && isLaptop && (
-              <Modal isOpen={isOpen} toggle={toggle}>
-                <ModalInner currentCard={currentCard} />
-              </Modal>
-            )}
-            <CardWrapper
-              isModal={isOpen && !isLaptop}
-              isOpen={isOpen}
-              isAnimation={index === currentCard}
-            >
-              <Card
-                isOpen={isOpen}
-                isAnimation={index === currentCard}
-                index={index}
-                isModal={isOpen && !isLaptop}
-                onClick={() => {
-                  toggle();
-                  setCurrentCard(index);
-                }}
-              >
-                <Image
-                  alt={item.alt}
-                  src={item.src}
-                  width={item.width[getBreakpoint(windowSize[0])!]}
-                  height={item.height[getBreakpoint(windowSize[0])!]}
-                />
-              </Card>
-              <Headline
-                isModal={isOpen && !isLaptop}
-                isOpen={isOpen}
-                isAnimation={index === currentCard}
-                index={index}
-                color={item.color}
-              >
-                {item.headlineText}
-              </Headline>
-              <Text
-                isModal={isOpen && !isLaptop}
-                index={index}
-                isOpen={isOpen}
-                isAnimation={index === currentCard}
-              >
-                {item.text}
-              </Text>
-              {isOpen && !isLaptop && index === currentCard && (
-                <ModalInner currentCard={currentCard} />
-              )}
-            </CardWrapper>
-          </CarouselItem>
-        ))}
-      </Carousel>
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-LXJ0D4GEWP"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      <Background />
-      <ArrowWrapper />
-    </Wrapper>
+        gtag('config', 'G-LXJ0D4GEWP');
+      `}
+      </Script>
+      <Wrapper>
+        <MainHeadline text="Oferta" />
+        <Carousel isModal={isOpen && !isLaptop} disable={isLaptop}>
+          {data.map((item, index) => (
+            <CarouselItem key={index} disable={isLaptop}>
+              {index === 0 && isLaptop && (
+                <Modal isOpen={isOpen} toggle={toggle}>
+                  <ModalInner currentCard={currentCard} />
+                </Modal>
+              )}
+              <CardWrapper
+                isModal={isOpen && !isLaptop}
+                isOpen={isOpen}
+                isAnimation={index === currentCard}
+              >
+                <Card
+                  isOpen={isOpen}
+                  isAnimation={index === currentCard}
+                  index={index}
+                  isModal={isOpen && !isLaptop}
+                  onClick={() => {
+                    toggle();
+                    setCurrentCard(index);
+                  }}
+                >
+                  <Image
+                    alt={item.alt}
+                    src={item.src}
+                    width={item.width[getBreakpoint(windowSize[0])!]}
+                    height={item.height[getBreakpoint(windowSize[0])!]}
+                  />
+                </Card>
+                <Headline
+                  isModal={isOpen && !isLaptop}
+                  isOpen={isOpen}
+                  isAnimation={index === currentCard}
+                  index={index}
+                  color={item.color}
+                >
+                  {item.headlineText}
+                </Headline>
+                <Text
+                  isModal={isOpen && !isLaptop}
+                  index={index}
+                  isOpen={isOpen}
+                  isAnimation={index === currentCard}
+                >
+                  {item.text}
+                </Text>
+                {isOpen && !isLaptop && index === currentCard && (
+                  <ModalInner currentCard={currentCard} />
+                )}
+              </CardWrapper>
+            </CarouselItem>
+          ))}
+        </Carousel>
+
+        <Background />
+        <ArrowWrapper />
+      </Wrapper>
+    </>
   );
 };
 
