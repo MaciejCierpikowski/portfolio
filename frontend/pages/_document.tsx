@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
 import Favicon from "../components/favicon";
 
 export default function Document() {
@@ -16,17 +15,12 @@ export default function Document() {
           name="keywords"
           content="korepetycje, matematyka, matematyka dla klas 4-8, nauczyciele matematyki, nauka matematyki online, korepetycje online, przygotowanie do testów i egzaminów, metody nauczania matematyki, zadania i ćwiczenia matematyczne, poprawa wyników z matematyki"
         />
-
-        <Favicon />
-      </Head>
-
-      <body>
-        <Script
+        <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-LXJ0D4GEWP"
         />
 
-        <Script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
                 window.dataLayer = window.dataLayer || [];
@@ -37,6 +31,11 @@ export default function Document() {
         '`,
           }}
         />
+        <Favicon />
+      </Head>
+
+      <body>
+
         <Main />
         <NextScript />
       </body>
