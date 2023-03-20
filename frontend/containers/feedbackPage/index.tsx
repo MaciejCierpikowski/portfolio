@@ -97,7 +97,7 @@ const Feedback = () => {
     {
       name: "Kacper",
       opinion:
-        "Zdecydowanie polecam Panią. Zajęcia są dobrze przygotowane i przeprowadzane w sposób zrozumiały dla uczniów. Dzięki Pani pomocy zdałem egzamin na wysokim poziomie.",
+        "Zajęcia są dobrze przygotowane i przeprowadzane w sposób zrozumiały dla uczniów. Dzięki Pani pomocy zdałem egzamin na wysokim poziomie.",
     },
     {
       name: "Kasia",

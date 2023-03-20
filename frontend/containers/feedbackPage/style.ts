@@ -174,24 +174,31 @@ export const CardWrapper = styled.div`
 
 export const DescriptionWrapper = styled.div`
   position: absolute;
-  top: 45%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 85%;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    top: 45%;
+    width: 80%;
+  }
 `;
 
 export const Description = styled.p`
-  font: normal normal 300 10px/13px var(--font-montserrat);
+  font: normal normal 300 13px/16px var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   opacity: 1;
 
+  margin: 2px 0;
+
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    font: normal normal 300 15px/18px var(--font-montserrat);
+    font: normal normal 300 17px/20px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
-    font: normal normal 300 20px/25px var(--font-montserrat);
+    font: normal normal 300 22px/25px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {

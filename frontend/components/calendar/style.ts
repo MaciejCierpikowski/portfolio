@@ -38,6 +38,9 @@ export const Wrapper = styled.div`
       @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
         bottom: 80px;
       }
+      @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+        left: 0%;
+      }
     }
 
     div.arrow-right {
@@ -47,6 +50,9 @@ export const Wrapper = styled.div`
 
       @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
         bottom: 80px;
+      }
+      @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+        right: 0%;
       }
     }
   }

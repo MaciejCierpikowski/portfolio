@@ -60,6 +60,8 @@ export const ArrowSingleWrapper = styled.div<Props>`
   top: 50%;
   transform: translateY(-50%);
 
+  z-index: 2;
+
   ${({ direction }) =>
     direction === "LEFT" &&
     css`
