@@ -136,18 +136,18 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
         </WrapperGrid>
         <Legend>
           <LegendInner>
-            <Cell inLegend>27</Cell>
+            <Cell inLegend>7</Cell>
             <CellText>wolne</CellText>
           </LegendInner>
           <LegendInner>
             <Cell inLegend border>
-              27
+              7
             </Cell>
             <CellText>częściowo zajęte</CellText>
           </LegendInner>
           <LegendInner>
             <Cell inLegend fill>
-              27
+              7
             </Cell>
             <CellText>zajęte</CellText>
           </LegendInner>

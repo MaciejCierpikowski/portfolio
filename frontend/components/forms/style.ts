@@ -44,7 +44,7 @@ export const InputElement = styled.input<Props>`
   @media only screen and (min-height: ${(props) =>
       props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
       props.theme.sizesHeight.heightL}px) {
-    margin: 10px 0;
+    margin: 8px 0;
   }
 
   @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
@@ -91,7 +91,8 @@ export const TextAreaElement = styled.textarea<Props>`
   @media only screen and (min-height: ${(props) =>
       props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
       props.theme.sizesHeight.heightL}px) {
-    margin: 10px 0;
+    margin: 8px 0;
+    height: 35px;
   }
 
   @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {

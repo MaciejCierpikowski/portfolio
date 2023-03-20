@@ -16,10 +16,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  padding-bottom: 120px;
+  padding-bottom: 80px;
 
   @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
-    padding-bottom: 90px;
+    padding-bottom: 60px;
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
@@ -33,20 +33,20 @@ export const Wrapper = styled.div`
     div.arrow-left {
       position: absolute;
       left: 6%;
-      bottom: 140px;
+      bottom: 100px;
 
       @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
-        bottom: 110px;
+        bottom: 80px;
       }
     }
 
     div.arrow-right {
       position: absolute;
       right: 6%;
-      bottom: 140px;
+      bottom: 100px;
 
       @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
-        bottom: 110px;
+        bottom: 80px;
       }
     }
   }
@@ -57,7 +57,7 @@ export const Background = styled.div`
   bottom: 0;
 
   width: 100vw;
-  height: 29vh;
+  height: 25vh;
 
   background: ${(props) => props.theme.palette.common.yellow} 0% 0% no-repeat
     padding-box;
@@ -83,7 +83,7 @@ export const WrapperCalendar = styled.div`
   position: relative;
 
   width: 80%;
-  height: 72%;
+  height: 75%;
   padding: 0;
 
   background: ${(props) => props.theme.palette.common.white} 0% 0% no-repeat
@@ -157,11 +157,11 @@ export const CellItem = styled.div<Props>`
   @media only screen and (min-height: ${(props) =>
       props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
       props.theme.sizesHeight.heightL}px) {
-    height: 45px;
+    height: 42px;
   }
 
   @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
-    height: 37px;
+    height: 32px;
   }
 
   @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
@@ -183,10 +183,11 @@ export const CellItem = styled.div<Props>`
   ${({ inLegend }) =>
     inLegend &&
     css`
-      width: 32px;
+      width: 25px;
       height: 40px;
       font: normal normal bold 20px/24px var(--font-montserrat);
     `}
+
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 60px;
@@ -261,7 +262,7 @@ export const LegendInner = styled.div`
   justify-content: center;
   margin: 0 0;
 
-  @media (min-width: ${(props) => props.theme.sizes.mobileM}px) {
+  @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
     margin: 0 10px;
   }
 
@@ -274,6 +275,10 @@ export const CellText = styled.div`
   font: normal normal 300 17px/20px var(--font-montserrat);
   letter-spacing: 0px;
   color: ${(props) => props.theme.palette.common.black};
+
+  @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+    font: normal normal 300 15px/20px var(--font-montserrat);
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     font: normal normal 300 25px/30px var(--font-montserrat);
