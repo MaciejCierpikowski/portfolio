@@ -20,19 +20,33 @@ export const Wrapper = styled.div`
 
 export const HeadlineWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  justify-content: flex-end;
   flex-direction: column;
 
   position: relative;
-  height: 100%;
-  padding-bottom: 10vh;
+  height: 50%;
   width: 100vw;
+  padding: 175px 0 100px 0px;
+
+  @media only screen and (min-height: ${(props) =>
+      props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+      props.theme.sizesHeight.heightL}px) {
+    padding: 175px 0 75px 0px;
+    justify-content: space-between;
+  }
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    padding: 152px 0 50px 0px;
+    justify-content: space-between;
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     align-self: center;
     width: 50vw;
+    height: 100%;
+    padding: 0 0 10vh 0;
+    justify-content: flex-end;
   }
 `;
 
@@ -62,6 +76,10 @@ export const Headline = styled.h1`
 
   background-color: ${(props) => props.theme.palette.common.white};
 
+  @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+    padding: 0 4vw;
+  }
+
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     padding: 0 5vw;
   }
@@ -71,7 +89,6 @@ export const HeadlineInner = styled.div`
   position: relative;
   height: 14%;
   width: 100%;
-  margin-top: 20%;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     height: 19%;
@@ -81,18 +98,34 @@ export const HeadlineInner = styled.div`
 
 export const ImageWrapper = styled.div<Props>`
   position: absolute;
-  top: -19.6vh;
+  bottom: 45%;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    bottom: 50%;
+  }
 
   ${({ right }) =>
     right &&
     css`
-      right: 6vw;
+      @media (max-width: ${(props) => props.theme.sizes.laptop}px) {
+        left: 6vw;
+      }
+
+      @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+        right: 6vw;
+      }
     `}
 
   ${({ left }) =>
     left &&
     css`
-      left: 9vw;
+      @media (max-width: ${(props) => props.theme.sizes.laptop}px) {
+        right: 6vw;
+      }
+
+      @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+        left: 6vw;
+      }
     `}
 `;
 
@@ -102,9 +135,10 @@ export const FeedbackWrapper = styled.div`
   flex-direction: column;
   justify-content: end;
 
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 50%;
   width: 100vw;
+
+  padding-bottom: 50px;
 
   order: -1;
 
@@ -112,6 +146,19 @@ export const FeedbackWrapper = styled.div`
     width: 50vw;
     order: 0;
     justify-content: center;
+
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  & > div {
+    @media (max-width: ${(props) => props.theme.sizes.laptop}px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  div.dots {
+    margin-top: 30px;
   }
 `;
 

@@ -42,7 +42,7 @@ interface IDots {
 
 export const Dots = ({ length, active, color }: IDots) => {
   return (
-    <WrapperDots>
+    <WrapperDots className="dots">
       {Array.from({ length: length }).map((_, index) => (
         <DotItem key={index} active={active === index} color={color} />
       ))}
