@@ -6,13 +6,14 @@ import { WrapperModalContent, ChildrenInner } from "./style";
 import { useTheme } from "styled-components";
 
 interface IModalContent {
+  isOpen?: boolean;
   children: ReactNode;
 }
 
-const ModalContent = ({ children }: IModalContent) => {
+const ModalContent = ({ isOpen, children }: IModalContent) => {
   const theme = useTheme();
 
-  return <ChildrenInner>{children}</ChildrenInner>;
+  return <ChildrenInner isOpen={isOpen}>{children}</ChildrenInner>;
 };
 
 export default ModalContent;

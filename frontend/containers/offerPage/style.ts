@@ -65,7 +65,7 @@ const fadeInTextMobile = () =>
 
     }
     100% {
-      transform: translate(6vw,-20vh);
+      transform: translate(0vw,-20vh);
     }
 `;
 
@@ -76,7 +76,7 @@ const fadeOutTextMobile = () =>
 
     }
     0% {
-      transform: translate(6vw,-20vh);
+      transform: translate(0vw,-20vh);
 
     }
 `;
@@ -100,6 +100,34 @@ const fadeOutImage = (index: number) =>
     }
     0% {
       transform: translate(${positionsImage[index]}) scale(1.5);
+
+    }
+`;
+
+const fadeIn = () =>
+  keyframes`
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+
+    }
+    0% {
+opacity: 0;
+transform: translateY(3vh);
+
+    }
+`;
+
+const fadeOut = () =>
+  keyframes`
+    100% {
+      opacity: 0;
+      transform: translateY(3vh);
+
+    }
+    0% {
+      opacity: 1;
+      transform: translateY(0);
 
     }
 `;
@@ -189,8 +217,20 @@ export const Card = styled.div<Props>`
         isModal &&
         css`
           transform: scale(1.3, 2.5);
-          top: 28%;
+          top: 22%;
           transition: transform 0.6s;
+
+          @media only screen and (min-height: ${(props) =>
+              props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+              props.theme.sizesHeight.heightL}px) {
+            transform: scale(1.3, 2.7);
+            top: 28%;
+          }
+
+          @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+            transform: scale(1.3, 2.9);
+            top: 28%;
+          }
         `}
     }
   }
@@ -295,6 +335,8 @@ export const Text = styled.p<Props>`
   color: ${(props) => props.theme.palette.common.black};
   opacity: 1;
   margin: 0;
+  white-space: normal;
+  width: 100%;
 
   z-index: 1;
 
@@ -321,7 +363,7 @@ export const Text = styled.p<Props>`
   }
 `;
 
-export const ChildrenInner = styled.div`
+export const ChildrenInner = styled.div<Props>`
   position: absolute;
   width: 110%;
   top: 50%;
@@ -349,16 +391,36 @@ export const ChildrenInner = styled.div`
       transform: translate(-50%, -50%);
     }
   }
+
+  button {
+    animation: ${(props) => (props.isOpen ? fadeOut() : fadeIn())} 0.6s;
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
+  }
 `;
 
 export const WrapperModalContent = styled.div``;
-export const Description = styled.p`
+export const Description = styled.p<Props>`
   letter-spacing: 0px;
   color: #161616;
   opacity: 1;
   white-space: normal;
   width: 100%;
+
   font: normal normal 300 19px/23px var(--font-montserrat);
+  min-height: 31vh;
+
+  @media only screen and (min-height: ${(props) =>
+      props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+      props.theme.sizesHeight.heightL}px) {
+    font: normal normal 300 17px/21px var(--font-montserrat);
+    min-height: 29vh;
+  }
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    font: normal normal 300 15px/19px var(--font-montserrat);
+    min-height: 27vh;
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 45%;
@@ -370,4 +432,51 @@ export const Description = styled.p`
 
     font: normal normal 300 24px/34px var(--font-montserrat);
   }
+
+  animation: ${(props) => (props.isOpen ? fadeOut() : fadeIn())} 0.6s;
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+`;
+
+export const Close = styled.div<Props>`
+  position: absolute;
+  right: -35px;
+  top: -27%;
+  width: 35px;
+  height: 35px;
+  z-index: 2;
+
+  @media only screen and (min-height: ${(props) =>
+      props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+      props.theme.sizesHeight.heightL}px) {
+    top: -27%;
+  }
+
+  @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+    top: -25%;
+  }
+
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 35px;
+    width: 2px;
+    background-color: ${(props) => props.theme.palette.common.green};
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  animation: ${(props) => (props.isOpen ? fadeIn() : fadeOut())} 0.6s;
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
 `;

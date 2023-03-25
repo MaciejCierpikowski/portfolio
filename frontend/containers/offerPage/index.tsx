@@ -10,6 +10,7 @@ import {
   Background,
   Text,
   Description,
+  Close,
 } from "./style";
 import { useTheme } from "styled-components";
 import ArrowWrapper from "../../components/arrowWrapper";
@@ -28,9 +29,10 @@ import Script from "next/script";
 
 interface IModalInner {
   currentCard: number;
+  isOpen?: boolean;
 }
 
-const ModalInner = ({ currentCard }: IModalInner) => {
+const ModalInner = ({ currentCard, isOpen }: IModalInner) => {
   const windowSize = useWindowResize();
   const theme = useTheme();
 
@@ -54,8 +56,8 @@ const ModalInner = ({ currentCard }: IModalInner) => {
   ];
 
   return (
-    <ModalContent>
-      <Description>{data[currentCard]}</Description>
+    <ModalContent isOpen={isOpen}>
+      <Description isOpen={isOpen}>{data[currentCard]}</Description>
       <Button
         sizes={{
           widthMobile: 320,
@@ -175,7 +177,7 @@ const OfferPage = () => {
             <CarouselItem key={index} disable={isLaptop}>
               {index === 0 && isLaptop && (
                 <Modal isOpen={isOpen} toggle={toggle}>
-                  <ModalInner currentCard={currentCard} />
+                  <ModalInner currentCard={currentCard} isOpen={isOpen} />
                 </Modal>
               )}
               <CardWrapper
@@ -183,6 +185,10 @@ const OfferPage = () => {
                 isOpen={isOpen}
                 isAnimation={index === currentCard}
               >
+                {isOpen && !isLaptop && (
+                  <Close isOpen={isOpen} onClick={toggle} />
+                )}
+
                 <Card
                   isOpen={isOpen}
                   isAnimation={index === currentCard}
