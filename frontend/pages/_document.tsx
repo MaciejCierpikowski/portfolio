@@ -9,11 +9,11 @@ export default function Document() {
         <title>Matematyka z pasją</title>
         <meta
           name="description"
-          content="Tajniki Matematyki dla uczniów klas 4-8 - Korepetycje z pasjonatką matematyki."
+          content="Tajniki Matematyki dla uczniów klas 1-8 - Korepetycje z pasjonatką matematyki."
         />
         <meta
           name="keywords"
-          content="korepetycje, matematyka, matematyka dla klas 4-8, nauczyciele matematyki, nauka matematyki online, korepetycje online, przygotowanie do testów i egzaminów, metody nauczania matematyki, zadania i ćwiczenia matematyczne, poprawa wyników z matematyki"
+          content="korepetycje, matematyka, matematyka dla klas 1-8, nauczyciele matematyki, nauka matematyki online, korepetycje online, przygotowanie do testów i egzaminów, metody nauczania matematyki, zadania i ćwiczenia matematyczne, poprawa wyników z matematyki"
         />
         <Favicon />
       </Head>

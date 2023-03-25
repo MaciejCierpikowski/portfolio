@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 
@@ -37,17 +37,24 @@ const ContactPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<IFormInput>({
     mode: "onTouched",
   });
 
   const dispatch = useAppDispatch();
   const { error } = useAppSelector((state) => state.authentication);
+  const selectedDate = useAppSelector((state) => state.general.selectedDate);
+
   const windowSize = useWindowResize();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     // dispatch(authenticateUser(data));
   };
+
+  useEffect(() => {
+    setValue("message", selectedDate, { shouldValidate: true });
+  }, [selectedDate]);
 
   const data = {
     icons: {
@@ -83,7 +90,6 @@ const ContactPage = () => {
       },
     },
   };
-  console.log(errors, "errors");
 
   return (
     <Wrapper>

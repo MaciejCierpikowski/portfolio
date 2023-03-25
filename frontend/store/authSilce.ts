@@ -46,7 +46,6 @@ export const authenticateUser =
       );
       dispatch(success(data));
     } catch (err: any) {
-      console.log(err);
       dispatch(error(err?.response?.data?.error?.message));
     }
   };

@@ -50,7 +50,7 @@ const ModalInner = ({ currentCard }: IModalInner) => {
   const data = [
     "Jako pasjonatka matematyki chętnie pomogę Wam w odrabianiu prac domowych, przyswojeniu wiedzy oraz rozwiązaniu trudnych zadań. Moje podejście do nauki jest ciekawe, przystępne i opiera się na rozumieniu matematycznych reguł.",
     "Jeśli macie trudności z matematyką, a jednocześnie szukacie nauczyciela, który pozwoli Wam zrozumieć trudne zagadnienia w ciekawy sposób, to dobrze trafiliście! Jestem pasjonatką matematyki i chętnie pomogę Wam w opanowaniu tego przedmiotu.",
-    "Korepetycje z matematyki dla uczniów klas 4-8, prowadzone przez entuzjastyczną nauczycielkę. Zajęcia są indywidualne lub grupowe, w zależności od Waszych potrzeb i preferencji.",
+    "Korepetycje z matematyki dla uczniów klas 1-8, prowadzone przez entuzjastyczną nauczycielkę. Zajęcia są indywidualne dostosowane do Twoich potrzeb i preferencji.",
   ];
 
   return (

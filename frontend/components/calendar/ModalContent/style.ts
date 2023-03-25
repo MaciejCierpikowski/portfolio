@@ -103,6 +103,8 @@ export const AddButton = styled.div<Props>`
   width: 35px;
   height: 35px;
 
+  cursor: pointer;
+
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: 45px;
     height: 45px;
