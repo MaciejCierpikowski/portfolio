@@ -13,15 +13,17 @@ export const InputElement = styled.input<Props>`
   height: 24px;
   width: 100%;
   color: ${(props) => props.theme.palette.common.white};
-  font: normal normal 300 20px/24px var(--font-montserrat);
+  font: normal normal 300 16px/20px var(--font-montserrat);
 
   padding: 15px 0;
   margin: 15px 0;
 
   &::placeholder {
     color: ${(props) => props.theme.palette.common.white};
-    font: normal normal 300 20px/24px var(--font-montserrat);
-
+    font: normal normal 300 16px/20px var(--font-montserrat);
+    @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+      font: normal normal 300 20px/24px var(--font-montserrat);
+    }
     @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
       width: ${(props) => props.width}%;
       font: normal normal 300 24px/29px var(--font-montserrat);
@@ -30,6 +32,10 @@ export const InputElement = styled.input<Props>`
 
   &:focus {
     outline: none;
+  }
+
+  @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+    font: normal normal 300 20px/24px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
@@ -67,11 +73,15 @@ export const TextAreaElement = styled.textarea<Props>`
   resize: none;
 
   color: ${(props) => props.theme.palette.common.white};
-  font: normal normal 300 20px/24px var(--font-montserrat);
+  font: normal normal 300 16px/20px var(--font-montserrat);
 
   &::placeholder {
     color: ${(props) => props.theme.palette.common.white};
-    font: normal normal 300 20px/24px var(--font-montserrat);
+    font: normal normal 300 16px/20px var(--font-montserrat);
+
+    @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+      font: normal normal 300 20px/24px var(--font-montserrat);
+    }
 
     @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
       font: normal normal 300 24px/29px var(--font-montserrat);
@@ -81,6 +91,10 @@ export const TextAreaElement = styled.textarea<Props>`
   &:focus {
     outline: none;
   }
+  
+  @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+    font: normal normal 300 20px/24px var(--font-montserrat);
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     width: ${(props) => props.width}%;
@@ -88,6 +102,7 @@ export const TextAreaElement = styled.textarea<Props>`
 
     font: normal normal 300 24px/29px var(--font-montserrat);
   }
+
   @media only screen and (min-height: ${(props) =>
       props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
       props.theme.sizesHeight.heightL}px) {
