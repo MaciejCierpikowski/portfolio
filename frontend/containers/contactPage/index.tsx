@@ -53,7 +53,7 @@ const ContactPage = () => {
   };
 
   useEffect(() => {
-    setValue("message", selectedDate, { shouldValidate: true });
+    setValue("message", selectedDate);
   }, [selectedDate]);
 
   const data = {

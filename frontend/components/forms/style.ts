@@ -91,7 +91,7 @@ export const TextAreaElement = styled.textarea<Props>`
   &:focus {
     outline: none;
   }
-  
+
   @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
     font: normal normal 300 20px/24px var(--font-montserrat);
   }
