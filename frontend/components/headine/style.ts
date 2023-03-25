@@ -20,7 +20,7 @@ export const Header = styled.h1`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  padding: 0 10vw;
+  padding: 0 5vw;
 
   text-transform: inherit;
 

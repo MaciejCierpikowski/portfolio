@@ -253,9 +253,13 @@ export const Legend = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   padding-top: 20px;
+
+  @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+    justify-content: center;
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     padding-top: 0px;
@@ -267,6 +271,15 @@ export const LegendInner = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 0;
+  width: 33%;
+
+  &:first-child {
+    justify-content: flex-start;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
+  }
 
   @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
     margin: 0 10px;
@@ -274,6 +287,7 @@ export const LegendInner = styled.div`
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     margin: 0 40px;
+    width: auto;
   }
 `;
 

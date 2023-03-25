@@ -30,6 +30,7 @@ import { useWindowResize } from "../../hooks/useWindowResize";
 import useModal from "../../hooks/useModal";
 import Modal from "../modal";
 import ModalContent from "./ModalContent";
+import { useTheme } from "styled-components";
 
 interface ICalendar {
   value?: Date;
@@ -75,6 +76,7 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
     },
   };
   const windowSize = useWindowResize();
+  const theme = useTheme();
 
   return (
     <Wrapper>
@@ -136,18 +138,20 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
         </WrapperGrid>
         <Legend>
           <LegendInner>
-            <Cell inLegend>7</Cell>
+            <Cell inLegend>
+              {windowSize[0] <= theme.sizes.mobileM ? 7 : 27}
+            </Cell>
             <CellText>wolne</CellText>
           </LegendInner>
           <LegendInner>
             <Cell inLegend border>
-              7
+              {windowSize[0] <= theme.sizes.mobileM ? 7 : 27}
             </Cell>
             <CellText>częściowo zajęte</CellText>
           </LegendInner>
           <LegendInner>
             <Cell inLegend fill>
-              7
+              {windowSize[0] <= theme.sizes.mobileM ? 7 : 27}
             </Cell>
             <CellText>zajęte</CellText>
           </LegendInner>

@@ -27,7 +27,7 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
   const touchStart = React.useRef<number>(0);
 
   const slides = React.useRef<Array<number>>([]);
-  const touchSensitivity = 5;
+  const touchSensitivity = 30;
 
   const [slidesCount] = useState<number>(getChildrenCount(children));
 
@@ -132,6 +132,9 @@ const FullPageSlider = ({ children }: IFullPageSlider) => {
     event.preventDefault();
     const touchEnd = event.changedTouches[0].clientY;
     if (!isScrollPending.current && !isScrolledAlready.current) {
+      console.log(touchStart.current, touchEnd + touchSensitivity, "+1");
+      // console.log(touchStart.current, touchEnd - touchSensitivity, '-1');
+
       if (touchStart.current > touchEnd + touchSensitivity) {
         scrollToSlide(activeSlideRef.current + 1);
       } else if (touchStart.current < touchEnd - touchSensitivity) {

@@ -51,15 +51,40 @@ const ContactPage = () => {
 
   const data = {
     icons: {
-      width: { isLaptopXL: 160, isLaptopL: 160, isLaptop: 160, isMobile: 160 },
-      height: { isLaptopXL: 100, isLaptopL: 100, isLaptop: 100, isMobile: 86 },
+      width: {
+        isLaptopXL: 60,
+        isLaptopL: 60,
+        isLaptop: 60,
+        isMobileL: 40,
+        isMobileM: 40,
+      },
+      height: {
+        isLaptopXL: 60,
+        isLaptopL: 60,
+        isLaptop: 60,
+        isMobileL: 40,
+        isMobileM: 40,
+      },
     },
     box: {
-      width: { isLaptopXL: 860, isLaptopL: 183, isLaptop: 150, isMobile: 121 },
-      height: { isLaptopXL: 700, isLaptopL: 130, isLaptop: 100, isMobile: 86 },
+      width: {
+        isLaptopXL: 225,
+        isLaptopL: 200,
+        isLaptop: 200,
+        isMobileL: 105,
+        isMobileM: 105,
+      },
+      height: {
+        isLaptopXL: 144,
+        isLaptopL: 128,
+        isLaptop: 128,
+        isMobileL: 64,
+        isMobileM: 64,
+      },
     },
   };
   console.log(errors, "errors");
+
   return (
     <Wrapper>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -145,20 +170,39 @@ const ContactPage = () => {
         </FormWrapper>
       </form>
       <HeadlineWrapper>
-        {/* <ImageWrapper>
+        <ImageWrapper
+          leftPosition="0.5vw"
+          bottomPosition="170px"
+          leftPositionMobile="13vw"
+          bottomPositionMobile="30%"
+          width={data.icons.width[getBreakpoint(windowSize[0])!]}
+          height={data.icons.height[getBreakpoint(windowSize[0])!]}
+          type="icons"
+        >
           <Image
             alt="post_box_icons"
-            src="/assets/contact_icons.svg"
+            src="/assets/contact_icons.png"
             width={data.icons.width[getBreakpoint(windowSize[0])!]}
             height={data.icons.height[getBreakpoint(windowSize[0])!]}
           />
+        </ImageWrapper>
+
+        <ImageWrapper
+          leftPosition="2.5vw"
+          bottomPosition="62px"
+          leftPositionMobile="70vw"
+          bottomPositionMobile="21%"
+          width={data.box.width[getBreakpoint(windowSize[0])!]}
+          height={data.box.height[getBreakpoint(windowSize[0])!]}
+          type="post_box"
+        >
           <Image
             alt="post_box"
-            src="/assets/contact_post_box.svg"
+            src="/assets/contact_post.png"
             width={data.box.width[getBreakpoint(windowSize[0])!]}
             height={data.box.height[getBreakpoint(windowSize[0])!]}
           />
-        </ImageWrapper> */}
+        </ImageWrapper>
         <HeadlineInner>
           <Line />
 

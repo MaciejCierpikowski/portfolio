@@ -186,7 +186,7 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const Description = styled.p`
-  font: normal normal 300 13px/16px var(--font-montserrat);
+  font: normal normal 300 12px/15px var(--font-montserrat);
   letter-spacing: 0px;
   color: #161616;
   opacity: 1;
