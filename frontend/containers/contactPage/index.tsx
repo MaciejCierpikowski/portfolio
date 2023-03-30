@@ -23,10 +23,12 @@ import TextArea from "../../components/forms/text-area";
 import { useWindowResize } from "../../hooks/useWindowResize";
 import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 import ArrowWrapper from "../../components/arrowWrapper";
+import { addContact } from "../../store/contactSilce";
+import { Contact } from "../../types/contact";
 
 interface IFormInput {
-  name: string;
-  surname: string;
+  firstname: string;
+  lastname: string;
   email: string;
   phone: string;
   message: string;
@@ -48,8 +50,8 @@ const ContactPage = () => {
 
   const windowSize = useWindowResize();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    // dispatch(authenticateUser(data));
+  const onSubmit: SubmitHandler<IFormInput> = (data: Contact) => {
+    dispatch(addContact(data));
   };
 
   useEffect(() => {
@@ -102,19 +104,23 @@ const ContactPage = () => {
                 <Input
                   width={100}
                   label="Imię"
-                  {...register("name", { required: "To pole jest wymagane" })}
+                  {...register("firstname", {
+                    required: "To pole jest wymagane",
+                  })}
                 />
-                {errors.name && <Error message={errors.name.message} />}
+                {errors.firstname && (
+                  <Error message={errors.firstname.message} />
+                )}
               </InputWrapper>
               <InputWrapper>
                 <Input
                   label="Nawisko"
                   width={100}
-                  {...register("surname", {
+                  {...register("lastname", {
                     required: "To pole jest wymagane",
                   })}
                 />
-                {errors.surname && <Error message={errors.surname.message} />}
+                {errors.lastname && <Error message={errors.lastname.message} />}
               </InputWrapper>
             </Names>
             <InputWrapper>
