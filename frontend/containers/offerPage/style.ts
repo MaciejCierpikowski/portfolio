@@ -389,6 +389,7 @@ export const ChildrenInner = styled.div<Props>`
       left: 72%;
       top: 90%;
       transform: translate(-50%, -50%);
+      animation: none !important;
     }
   }
 
@@ -431,6 +432,9 @@ export const Description = styled.p<Props>`
     box-shadow: 0px 0px 16px #00000029;
 
     font: normal normal 300 24px/34px var(--font-montserrat);
+    animation: ${(props) => (props.isOpen ? fadeIn() : fadeIn())} 0.6s;
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
   }
 
   animation: ${(props) => (props.isOpen ? fadeOut() : fadeIn())} 0.6s;

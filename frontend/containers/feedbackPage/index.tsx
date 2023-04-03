@@ -79,14 +79,14 @@ const Feedback = () => {
       width: {
         isLaptopXL: 585,
         isLaptopL: 450,
-        isLaptop: 320,
+        isLaptop: 400,
         isMobileL: 245,
         isMobileM: 245,
       },
       height: {
         isLaptopXL: 390,
         isLaptopL: 300,
-        isLaptop: 250,
+        isLaptop: 280,
         isMobileL: 163,
         isMobileM: 163,
       },
@@ -160,6 +160,7 @@ const Feedback = () => {
           disable={false}
           color={theme.palette.common.ping}
           width={isLaptop ? 70 : 100}
+          {...(isLaptop && { movePerecentProp: 75 })}
         >
           {feedbacks.map((item, index) => (
             <CarouselItem key={index} disable={isLaptop} margin="0%">

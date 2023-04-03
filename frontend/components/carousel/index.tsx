@@ -57,6 +57,7 @@ interface ICarousel {
   color?: string;
   initActiveIndex?: number;
   width?: number;
+  movePerecentProp?: number;
 }
 
 const Carousel = ({
@@ -66,6 +67,7 @@ const Carousel = ({
   color,
   initActiveIndex = 0,
   width,
+  movePerecentProp,
 }: ICarousel) => {
   const [activeIndex, setActiveIndex] = useState(initActiveIndex);
   const [paused, setPaused] = useState(false);
@@ -81,21 +83,21 @@ const Carousel = ({
     setActiveIndex(newIndex);
   };
 
-  // useEffect(() => {
-  //   if (disable) return;
+  useEffect(() => {
+    if (disable) return;
 
-  //   const interval = setInterval(() => {
-  //     if (!paused) {
-  //       updateIndex(activeIndex + 1);
-  //     }
-  //   }, 3000);
+    const interval = setInterval(() => {
+      if (!paused) {
+        updateIndex(activeIndex + 1);
+      }
+    }, 3000);
 
-  //   return () => {
-  //     if (interval) {
-  //       clearInterval(interval);
-  //     }
-  //   };
-  // });
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  });
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
@@ -109,7 +111,11 @@ const Carousel = ({
     isMobileL: 0,
     isMobileM: 0,
   };
-  const movePerecent = Number(width) ? Number(width) : 100;
+  console.log(movePerecentProp, "movePerecentProp");
+  const movePerecent =
+    movePerecentProp || (Number(width) ? Number(width) : 100);
+  console.log(movePerecent, "movePerecent");
+
   return (
     <Wrapper
       {...(!disable && handlers)}
@@ -118,7 +124,7 @@ const Carousel = ({
     >
       <Content>
         {!disable && !isModal && (
-          <ArrowSingleWrapper direction="LEFT">
+          <ArrowSingleWrapper direction="LEFT" className="left">
             <ArrowSingle
               direction="LEFT"
               onClick={() => {
@@ -130,6 +136,7 @@ const Carousel = ({
 
         <Inner
           disable={disable}
+          className="inner"
           style={{ transform: `translateX(-${activeIndex * movePerecent}%)` }}
         >
           {React.Children.map(children, (child: any, index) => {
@@ -143,7 +150,7 @@ const Carousel = ({
           })}
         </Inner>
         {!disable && !isModal && (
-          <ArrowSingleWrapper direction="RIGHT">
+          <ArrowSingleWrapper direction="RIGHT" className="right">
             <ArrowSingle
               direction="RIGHT"
               onClick={() => {

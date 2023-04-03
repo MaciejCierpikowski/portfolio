@@ -157,6 +157,24 @@ export const FeedbackWrapper = styled.div`
       flex-direction: column;
     }
   }
+
+  div.inner {
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      position: relative;
+      left: 135px;
+    }
+  }
+  div.right {
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      right: 70px;
+    }
+  }
+  div.left {
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      left: 70px;
+    }
+  }
+
   div.dots {
     margin-top: 30px;
   }
