@@ -8,6 +8,7 @@ import {
   setDate,
   startOfMonth,
   sub,
+  getMonth
 } from "date-fns";
 import pl from "date-fns/locale/pl";
 
@@ -46,6 +47,7 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
 
   const prefixDays = startDate.getDay() - 1;
   const suffixDays = 7 - endDate.getDay();
+
 
   const prevMonth = () => onChange(sub(value, { months: 1 }));
   const nextMonth = () => onChange(add(value, { months: 1 }));
@@ -123,6 +125,8 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
                 key={date}
                 isActive={isCurrentDate}
                 onClick={() => handleClickDate(date)}
+                border={date%(4-Math.round(12 - getMonth(value) / 2)) === 0}
+                fill={date%(14+Math.round(12 - getMonth(value) / 2)) === 0}
               >
                 {date}
               </Cell>
