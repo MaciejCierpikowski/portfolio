@@ -25,6 +25,9 @@ import { getBreakpoint } from "../../utils/getCurrentBreakPoint";
 import ArrowWrapper from "../../components/arrowWrapper";
 import { addContact } from "../../store/contactSilce";
 import { Contact } from "../../types/contact";
+import Modal from "../../components/modal";
+import ModalContent from "./ModalContent";
+import { relative } from "path";
 
 interface IFormInput {
   firstname: string;
@@ -47,10 +50,15 @@ const ContactPage = () => {
   const dispatch = useAppDispatch();
   const { error } = useAppSelector((state) => state.authentication);
   const selectedDate = useAppSelector((state) => state.general.selectedDate);
+  const { success, isProcessingRequest } = useAppSelector(
+    (state) => state.contact
+  );
 
   const windowSize = useWindowResize();
 
   const onSubmit: SubmitHandler<IFormInput> = (data: Contact) => {
+    if (isProcessingRequest) return;
+
     dispatch(addContact(data));
   };
 
@@ -97,88 +105,103 @@ const ContactPage = () => {
     <Wrapper>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormWrapper>
-          <Header>Zapisz się na zajęcia</Header>
-          <div>
-            <Names>
+          <div style={{ position: "relative" }}>
+            <Header>Zapisz się na zajęcia</Header>
+            <div>
+              <Modal
+                isOpen={success}
+                toggle={() => {}}
+                isClose={false}
+                isOutOfContent={false}
+              >
+                <ModalContent />
+              </Modal>
+              <Names>
+                <InputWrapper>
+                  <Input
+                    width={100}
+                    label="Imię"
+                    {...register("firstname", {
+                      required: "To pole jest wymagane",
+                    })}
+                  />
+                  {errors.firstname && (
+                    <Error message={errors.firstname.message} />
+                  )}
+                </InputWrapper>
+                <InputWrapper>
+                  <Input
+                    label="Nawisko"
+                    width={100}
+                    {...register("lastname", {
+                      required: "To pole jest wymagane",
+                    })}
+                  />
+                  {errors.lastname && (
+                    <Error message={errors.lastname.message} />
+                  )}
+                </InputWrapper>
+              </Names>
               <InputWrapper>
                 <Input
+                  type="text"
+                  label="Email"
+                  width={80}
+                  {...register("email", {
+                    required: "To pole jest wymagane",
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      message: "Niepoprawny format",
+                    },
+                  })}
+                />
+                {errors.email && <Error message={errors.email.message} />}
+              </InputWrapper>
+
+              <InputWrapper>
+                <Input
+                  label="Telefon"
+                  {...register("phone", {
+                    required: "To pole jest wymagane",
+                    pattern: {
+                      value: /^\d{9}$/,
+                      message: "Nieprawidłowy numer telefonu",
+                    },
+                  })}
+                  width={70}
+                />
+                {errors.phone && <Error message={errors.phone.message} />}
+              </InputWrapper>
+
+              <InputWrapper>
+                <TextArea
+                  label="Wiadomość"
                   width={100}
-                  label="Imię"
-                  {...register("firstname", {
+                  {...register("message", {
                     required: "To pole jest wymagane",
                   })}
                 />
-                {errors.firstname && (
-                  <Error message={errors.firstname.message} />
-                )}
+                {errors.message && <Error message={errors.message.message} />}
               </InputWrapper>
-              <InputWrapper>
-                <Input
-                  label="Nawisko"
-                  width={100}
-                  {...register("lastname", {
-                    required: "To pole jest wymagane",
-                  })}
-                />
-                {errors.lastname && <Error message={errors.lastname.message} />}
-              </InputWrapper>
-            </Names>
-            <InputWrapper>
-              <Input
-                type="text"
-                label="Email"
-                width={80}
-                {...register("email", {
-                  required: "To pole jest wymagane",
-                  pattern: {
-                    value:
-                      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                    message: "Niepoprawny format",
-                  },
-                })}
-              />
-              {errors.email && <Error message={errors.email.message} />}
-            </InputWrapper>
 
-            <InputWrapper>
-              <Input
-                label="Telefon"
-                {...register("phone", {
-                  required: "To pole jest wymagane",
-                  pattern: {
-                    value: /^\d{9}$/,
-                    message: "Nieprawidłowy numer telefonu",
-                  },
-                })}
-                width={70}
-              />
-              {errors.phone && <Error message={errors.phone.message} />}
-            </InputWrapper>
+              {error && <Error message={error} />}
 
-            <InputWrapper>
-              <TextArea
-                label="Wiadomość"
-                width={100}
-                {...register("message", { required: "To pole jest wymagane" })}
-              />
-              {errors.message && <Error message={errors.message.message} />}
-            </InputWrapper>
-
-            {error && <Error message={error} />}
+              <Button
+                type="submit"
+                onClick={() => console.log()}
+                disabled={isProcessingRequest}
+                sizes={{
+                  widthMobile: 200,
+                  heightMobile: 50,
+                  widthDesktop: 200,
+                  heightDesktop: 70,
+                }}
+              >
+                Wyślij
+              </Button>
+            </div>
           </div>
-
-          <Button
-            type="submit"
-            onClick={() => console.log()}
-            sizes={{
-              widthMobile: 200,
-              heightMobile: 50,
-              widthDesktop: 200,
-              heightDesktop: 70,
-            }}
-          >
-            Wyślij
-          </Button>
         </FormWrapper>
       </form>
       <HeadlineWrapper>

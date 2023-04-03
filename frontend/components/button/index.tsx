@@ -6,6 +6,7 @@ interface IButton {
   children: ReactNode;
   onClick: () => Promise<void> | any;
   type: "button" | "submit" | "reset" | undefined;
+  disabled?: boolean;
   color?: string;
   sizes?: {
     widthMobile: number;
@@ -25,6 +26,7 @@ const Button = ({
   children,
   onClick,
   type,
+  disabled = false,
   sizes = {
     widthMobile: 272,
     heightMobile: 66,
@@ -45,6 +47,7 @@ const Button = ({
     onClick={onClick}
     sizes={sizes}
     fontSizes={fontSizes}
+    disabled={disabled}
   >
     {children}
   </Wrapper>
