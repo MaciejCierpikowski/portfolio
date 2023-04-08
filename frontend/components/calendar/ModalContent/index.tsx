@@ -50,7 +50,15 @@ const ModalContent = ({ date, fakeDatesState }: IModalContent) => {
       !scrollDown && dispatch(toggleScrollDown(true));
     }
     dispatch(setActiveSlide(index));
-    dispatch(setSelectedDate(date + " " + currentTime));
+    dispatch(
+      setSelectedDate(
+        format(date, "d MMMM (EEEE)", {
+          locale: pl,
+        }) +
+          " " +
+          currentTime
+      )
+    );
 
     animatedScrollTo(index * windowSize[1], () => {});
   };
