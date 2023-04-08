@@ -32,6 +32,17 @@ const montserratLocal = localFont({
   ],
 });
 
+const signPainterHouseLocal = localFont({
+  variable: "--font-signPainter",
+  src: [
+    {
+      path: "./fonts/SignPainterHouseScript.ttf",
+      weight: "normal",
+      style: "normal",
+    },
+  ],
+});
+
 const Home: NextPage = () => {
   const theme = useTheme();
   const windowSize = useWindowResize();
@@ -43,7 +54,11 @@ const Home: NextPage = () => {
   }, [windowSize]);
 
   return (
-    <div className={montserratLocal.variable}>
+    <div
+      className={
+        montserratLocal.variable + " " + signPainterHouseLocal.variable
+      }
+    >
       {windowSize[0] > theme.sizes.laptop ? (
         <Navigation />
       ) : (

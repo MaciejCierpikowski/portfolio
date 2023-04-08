@@ -182,6 +182,7 @@ export const CellItem = styled.div<Props>`
     border &&
     css`
       border: 3px solid ${theme.palette.common.orange};
+      padding: 3px;
     `}
 
   ${({ fill, theme }) =>

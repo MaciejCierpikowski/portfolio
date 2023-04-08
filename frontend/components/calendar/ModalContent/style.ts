@@ -47,7 +47,8 @@ export const Header = styled.p`
   text-transform: uppercase;
   opacity: 1;
 
-  margin: 20px auto;
+  margin: 20px auto 10px auto;
+
   width: 72%;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
@@ -66,7 +67,7 @@ export const Item = styled.div`
   margin: 40px auto;
 
   &:first-child {
-    margin: 0 auto 40px auto;
+    margin: 10px auto 40px auto;
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
@@ -91,6 +92,13 @@ export const Frame = styled.div`
 
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 0px 6px #00000029;
+
+  text-align: center;
+
+  font: normal normal normal 30px/35px var(--font-signPainter);
+  letter-spacing: 0px;
+  color: #161616;
+  opacity: 1;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
     height: 70px;

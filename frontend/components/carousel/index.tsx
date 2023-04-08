@@ -117,10 +117,9 @@ const Carousel = ({
     isMobileL: 0,
     isMobileM: 0,
   };
-  console.log(movePerecentProp, "movePerecentProp");
+
   const movePerecent =
     movePerecentProp || (Number(width) ? Number(width) : 100);
-  console.log(movePerecent, "movePerecent");
 
   return (
     <Wrapper

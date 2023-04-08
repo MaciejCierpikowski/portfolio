@@ -32,6 +32,8 @@ import useModal from "../../hooks/useModal";
 import Modal from "../modal";
 import ModalContent from "./ModalContent";
 import { useTheme } from "styled-components";
+import { useEffect, useState } from "react";
+import { getRandomNumbers } from "../../utils/getRandomNumber";
 
 interface ICalendar {
   value?: Date;
@@ -40,6 +42,9 @@ interface ICalendar {
 
 const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
   const { isOpen, toggle } = useModal();
+  const [fakeDatesState, setFakeDatesState] = useState<{
+    [x: number]: number[];
+  }>();
 
   const startDate = startOfMonth(value);
   const endDate = endOfMonth(value);
@@ -79,6 +84,50 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
   const windowSize = useWindowResize();
   const theme = useTheme();
 
+  useEffect(() => {
+    const fakeDates = localStorage.getItem("matematyka-z-pasja-partlyBusy");
+    if (fakeDates) {
+      const fakeDatesParsed = JSON.parse(fakeDates);
+
+      if (
+        Object.keys(fakeDatesParsed)
+          .map((k: string) => Number(k) === getMonth(value))
+          .includes(true)
+      ) {
+        setFakeDatesState(fakeDatesParsed);
+        return;
+      } else {
+        const partlyBusy = {
+          [getMonth(value)]: Array.from({ length: 12 }).map(() =>
+            getRandomNumbers(1, numDays)
+          ),
+        };
+
+        localStorage.setItem(
+          "matematyka-z-pasja-partlyBusy",
+          JSON.stringify({ ...partlyBusy, ...fakeDatesParsed })
+        );
+
+        setFakeDatesState({ ...partlyBusy, ...fakeDatesParsed });
+
+        return;
+      }
+    }
+
+    const partlyBusy: { [x: number]: number[] } = {
+      [getMonth(value)]: Array.from({ length: 12 }).map(() =>
+        getRandomNumbers(1, numDays)
+      ),
+    };
+
+    setFakeDatesState(partlyBusy);
+
+    localStorage.setItem(
+      "matematyka-z-pasja-partlyBusy",
+      JSON.stringify(partlyBusy)
+    );
+  }, [value]);
+
   return (
     <Wrapper>
       <ArrowSingle
@@ -107,43 +156,49 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
           toggle={toggle}
           isOutOfContent={false}
         >
-          <ModalContent
-            date={format(value, "d MMMM (EEEE)", {
-              locale: pl,
-            })}
-          />
+          <ModalContent date={value} fakeDatesState={fakeDatesState} />
         </Modal>
-        <WrapperGrid>
-          {Array.from({ length: prefixDays === -1 ? 6 : prefixDays }).map(
-            (_, index) => (
-              <Cell key={index} />
-            )
-          )}
+        {fakeDatesState && (
+          <WrapperGrid>
+            {Array.from({ length: prefixDays === -1 ? 6 : prefixDays }).map(
+              (_, index) => (
+                <Cell key={index} />
+              )
+            )}
 
-          {Array.from({ length: numDays }).map((_, index) => {
-            const date = index + 1;
-            const isCurrentDate = date === value.getDate();
+            {Array.from({ length: numDays }).map((_, index) => {
+              const date = index + 1;
+              const isCurrentDate = date === value.getDate();
 
-            return (
-              <Cell
-                key={date}
-                isActive={isCurrentDate}
-                onClick={() => handleClickDate(date)}
-                border={date % (4 - Math.round(12 - getMonth(value) / 2)) === 0}
-                fill={date % (14 + Math.round(12 - getMonth(value) / 2)) === 0}
-              >
-                {date}
-              </Cell>
-            );
-          })}
+              return (
+                fakeDatesState![Number(getMonth(value))] && (
+                  <Cell
+                    key={date}
+                    isActive={isCurrentDate}
+                    onClick={() => handleClickDate(date)}
+                    border={
+                      !!fakeDatesState![Number(getMonth(value))].find(
+                        (fakeDate) => fakeDate === index
+                      )
+                    }
+                    fill={
+                      date % (14 + Math.round(12 - getMonth(value) / 2)) === 0
+                    }
+                  >
+                    {date}
+                  </Cell>
+                )
+              );
+            })}
 
-          {Array.from({ length: suffixDays === 7 ? 0 : suffixDays }).map(
-            (_, index) => (
-              <Cell key={index} />
-            )
-          )}
-          <Line />
-        </WrapperGrid>
+            {Array.from({ length: suffixDays === 7 ? 0 : suffixDays }).map(
+              (_, index) => (
+                <Cell key={index} />
+              )
+            )}
+            <Line />
+          </WrapperGrid>
+        )}
         <Legend>
           <LegendInner>
             <Cell inLegend>

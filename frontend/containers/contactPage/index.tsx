@@ -107,7 +107,7 @@ const ContactPage = () => {
         <FormWrapper>
           <div style={{ position: "relative" }}>
             <Header>Zapisz się na zajęcia</Header>
-            <div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <Modal
                 isOpen={success}
                 toggle={() => {}}
