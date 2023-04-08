@@ -18,6 +18,10 @@ export const Wrapper = styled.div`
 
   padding-bottom: 80px;
 
+  @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+    padding-bottom: 90px;
+  }
+
   @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
     padding-bottom: 60px;
   }

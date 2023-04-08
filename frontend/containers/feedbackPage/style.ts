@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 interface Props {
   left?: boolean;
   right?: boolean;
+  positionRightArrow?: number;
 }
 
 export const Wrapper = styled.div`
@@ -161,11 +162,20 @@ export const FeedbackWrapper = styled.div`
   div.inner {
     @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
       position: relative;
+      left: 95px;
+    }
+    @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
       left: 135px;
     }
   }
   div.right {
     @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      right: 40px;
+    }
+    @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
+      right: 30px;
+    }
+    @media (min-width: ${(props) => props.theme.sizes.laptopXL}px) {
       right: 70px;
     }
   }
@@ -176,7 +186,7 @@ export const FeedbackWrapper = styled.div`
   }
 
   div.dots {
-    margin-top: 30px;
+    margin-top: 45px;
   }
 `;
 
@@ -212,7 +222,7 @@ export const Description = styled.p`
   margin: 2px 0;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    font: normal normal 300 17px/20px var(--font-montserrat);
+    font: normal normal 300 13px/17px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {
@@ -233,7 +243,7 @@ export const Name = styled.p`
   text-align: center;
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
-    font: normal normal 300 38px/45px var(--font-montserrat);
+    font: normal normal 300 33px/40px var(--font-montserrat);
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptopL}px) {

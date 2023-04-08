@@ -100,8 +100,8 @@ export const Frame = styled.div`
 
 export const AddButton = styled.div<Props>`
   position: relative;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
 
   cursor: pointer;
 
@@ -116,7 +116,7 @@ export const AddButton = styled.div<Props>`
     left: 15px;
     content: " ";
 
-    height: 35px;
+    height: 25px;
     width: 4px;
     background-color: ${(props) => props.theme.palette.common.orange};
 

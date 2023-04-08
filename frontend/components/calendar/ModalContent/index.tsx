@@ -43,7 +43,7 @@ const ModalContent = ({ date }: IModalContent) => {
       <Header>{date}</Header>
       <Inner id="additional-scroll">
         {Array.from({ length: 12 }).map((_, index) => (
-          <Item onClick={() => scrollToSlide(4, `${index + 8}:00`)}>
+          <Item key={index} onClick={() => scrollToSlide(4, `${index + 8}:00`)}>
             <Hour>{index + 8}:00</Hour>
             <Frame />
             <AddButton />

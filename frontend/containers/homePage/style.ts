@@ -102,6 +102,10 @@ export const ImageWrapper = styled.div<Props>`
     inset: ${(p) => p.topOffset - 2}px 0 0 ${(p) => p.leftOffsetMobile}px !important;
     width: ${(props) => props.width! + 5}% !important;
 
+    @media (min-width: ${(props) => props.theme.sizes.mobileL}px) {
+      width: ${(props) => props.width! - 10}% !important;
+    }
+
     @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
       width: ${(props) => props.width}% !important;
       inset: ${(p) => p.topOffset}px 0 0 ${(p) => p.leftOffset}px !important;

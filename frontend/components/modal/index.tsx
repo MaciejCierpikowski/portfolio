@@ -8,6 +8,7 @@ interface IModal {
   toggle: () => void;
   isOutOfContent?: boolean;
   isClose?: boolean;
+  closeColor?: string;
 }
 
 const Modal = ({
@@ -16,11 +17,12 @@ const Modal = ({
   toggle,
   isOutOfContent = true,
   isClose = true,
+  closeColor,
 }: IModal) => {
   return (
     <Wrapper isOpen={isOpen} isOutOfContent={isOutOfContent}>
       {isOutOfContent && <Background />}
-      {isClose && <Close onClick={toggle} />}
+      {isClose && <Close closeColor={closeColor} onClick={toggle} />}
       {children}
     </Wrapper>
   );

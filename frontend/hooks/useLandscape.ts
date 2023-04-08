@@ -5,8 +5,7 @@ export const useLandscape = () => {
   const windowSize = useWindowResize();
 
   const [orientation, setOrientation] = useState<string>();
-
-  useEffect(() => {
+  const detect = () => {
     window.addEventListener(
       "orientationchange",
       function () {
@@ -16,7 +15,16 @@ export const useLandscape = () => {
       },
       false
     );
+  };
+  useEffect(() => {
+    detect();
   }, [windowSize]);
+
+  useEffect(() => {
+    setOrientation(
+      Number(window.orientation) === 90 ? "landscape" : "portrait"
+    );
+  }, []);
 
   return orientation;
 };

@@ -66,11 +66,17 @@ export const ArrowSingleWrapper = styled.div<Props>`
     direction === "LEFT" &&
     css`
       left: 18px;
+      @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+        left: 0px;
+      }
     `}
   ${({ direction }) =>
     direction === "RIGHT" &&
     css`
       right: 18px;
+      @media (max-width: ${(props) => props.theme.sizes.mobileM}px) {
+        right: 0px;
+      }
     `}
 `;
 

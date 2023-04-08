@@ -79,14 +79,14 @@ const Feedback = () => {
       width: {
         isLaptopXL: 585,
         isLaptopL: 450,
-        isLaptop: 400,
+        isLaptop: 300,
         isMobileL: 245,
         isMobileM: 245,
       },
       height: {
         isLaptopXL: 390,
         isLaptopL: 300,
-        isLaptop: 280,
+        isLaptop: 180,
         isMobileL: 163,
         isMobileM: 163,
       },

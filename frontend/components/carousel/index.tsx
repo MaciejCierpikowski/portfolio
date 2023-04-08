@@ -38,13 +38,19 @@ interface IDots {
   length: number;
   active: number;
   color?: string;
+  onClick: Function;
 }
 
-export const Dots = ({ length, active, color }: IDots) => {
+export const Dots = ({ onClick, length, active, color }: IDots) => {
   return (
     <WrapperDots className="dots">
       {Array.from({ length: length }).map((_, index) => (
-        <DotItem key={index} active={active === index} color={color} />
+        <DotItem
+          onClick={() => onClick(index)}
+          key={index}
+          active={active === index}
+          color={color}
+        />
       ))}
     </WrapperDots>
   );
@@ -161,7 +167,14 @@ const Carousel = ({
         )}
       </Content>
 
-      {!disable && <Dots color={color} length={3} active={activeIndex} />}
+      {!disable && (
+        <Dots
+          onClick={updateIndex}
+          color={color}
+          length={3}
+          active={activeIndex}
+        />
+      )}
     </Wrapper>
   );
 };

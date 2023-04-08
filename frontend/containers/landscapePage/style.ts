@@ -12,6 +12,7 @@ export const Wrapper = styled.div<Props>`
   z-index: 999;
 
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
 
   flex-direction: column;
@@ -27,4 +28,5 @@ export const Text = styled.p`
   color: ${(props) => props.theme.palette.common.black};
   opacity: 1;
   margin: 0;
+  margin-top: 15px;
 `;

@@ -171,10 +171,15 @@ export const CardWrapper = styled.div<Props>`
   flex-direction: column;
 
   height: 100%;
-  width: 100%;
   padding-top: 20px;
 
+  @media (max-width: ${(props) => props.theme.sizes.mobileL}px) {
+    width: 100%;
+    min-width: initial;
+  }
+
   position: relative;
+  min-width: 40vw;
 
   ${({ isAnimation, isOpen }) =>
     !isAnimation &&
@@ -184,7 +189,9 @@ export const CardWrapper = styled.div<Props>`
     `}
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    width: 100%;
     padding-top: 0px;
+    min-width: initial;
   }
 `;
 
@@ -236,6 +243,21 @@ export const Card = styled.div<Props>`
   }
 
   @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    min-height: 400px;
+    max-height: 500px;
+
+    @media only screen and (min-height: ${(props) =>
+        props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
+        props.theme.sizesHeight.heightL}px) {
+      min-height: 350px;
+    }
+
+    @media (max-height: ${(props) => props.theme.sizesHeight.heightS}px) {
+      margin: 5px 0;
+      padding: 0px 0;
+      min-height: 350px;
+    }
+
     box-shadow: ${({ isAnimation, isOpen }) =>
       isAnimation && isOpen ? `none;` : `0px 0px 16px #00000029;`};
 
@@ -444,11 +466,17 @@ export const Description = styled.p<Props>`
 
 export const Close = styled.div<Props>`
   position: absolute;
-  right: -35px;
+  right: -30px;
   top: -27%;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
   z-index: 2;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    width: 35px;
+    height: 35px;
+    right: -35px;
+  }
 
   @media only screen and (min-height: ${(props) =>
       props.theme.sizesHeight.heightS}px) and (max-height: ${(props) =>
@@ -467,9 +495,13 @@ export const Close = styled.div<Props>`
     position: absolute;
     left: 15px;
     content: " ";
-    height: 35px;
+    height: 25px;
     width: 2px;
     background-color: ${(props) => props.theme.palette.common.green};
+
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      height: 35px;
+    }
   }
 
   &:before {

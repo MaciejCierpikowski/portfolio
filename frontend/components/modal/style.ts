@@ -1,8 +1,9 @@
 import styled, { css, keyframes } from "styled-components";
 
 interface Props {
-  isOpen: boolean;
+  isOpen?: boolean;
   isOutOfContent?: boolean;
+  closeColor?: string;
 }
 
 const fadeInOutOfContent = () =>
@@ -78,24 +79,34 @@ export const Wrapper = styled.div<Props>`
         `}
 `;
 
-export const Close = styled.div`
+export const Close = styled.div<Props>`
   position: absolute;
   right: 10px;
   top: 10px;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
   z-index: 2;
 
   cursor: pointer;
+
+  @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+    width: 35px;
+    height: 35px;
+  }
 
   &:before,
   &:after {
     position: absolute;
     left: 15px;
     content: " ";
-    height: 35px;
+    height: 25px;
     width: 2px;
-    background-color: ${(props) => props.theme.palette.common.green};
+    background-color: ${(props) =>
+      props.closeColor ? props.closeColor : props.theme.palette.common.green};
+
+    @media (min-width: ${(props) => props.theme.sizes.laptop}px) {
+      height: 35px;
+    }
   }
   &:before {
     transform: rotate(45deg);

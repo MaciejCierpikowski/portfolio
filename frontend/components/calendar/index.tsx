@@ -65,14 +65,14 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
         isLaptopL: 183,
         isLaptop: 150,
         isMobileL: 121,
-        isMobileM: 121,
+        isMobileM: 101,
       },
       height: {
         isLaptopXL: 130,
         isLaptopL: 130,
         isLaptop: 100,
         isMobileL: 86,
-        isMobileM: 86,
+        isMobileM: 66,
       },
     },
   };
@@ -101,7 +101,12 @@ const Calendar = ({ value = new Date(), onChange }: ICalendar) => {
       </HeadlineWrapper>
 
       <WrapperCalendar>
-        <Modal isOpen={isOpen} toggle={toggle} isOutOfContent={false}>
+        <Modal
+          closeColor={theme.palette.common.black}
+          isOpen={isOpen}
+          toggle={toggle}
+          isOutOfContent={false}
+        >
           <ModalContent
             date={format(value, "d MMMM (EEEE)", {
               locale: pl,
